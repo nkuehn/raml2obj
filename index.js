@@ -7,6 +7,7 @@ const tools = require('datatype-expansion');
 const fs = require('fs');
 const makeExamplesAndTypesConsistent = require('./consistency-helpers');
 const helpers = require('./arrays-objects-helpers');
+const liteCanonicalizer = require('./lite-canonicalizer')
 
 function _makeUniqueId(string) {
   const stringWithSpacesReplaced = string.replace(/\W/g, '_');
@@ -82,7 +83,8 @@ function _expandRootTypes(types) {
       const canonical = tools.canonicalForm(expanded, { hoistUnions: false });
       // Save a reference to the type as defined in the RAML, so we can differentiate between declared
       // and inherited facets, particularly annotations.
-      canonical.rawType = original;
+      // canonical.rawType = original;
+
       types[key] = canonical;
     } catch (err) {
       // Dump the error to stderr and continue with the non-canonical form
@@ -95,11 +97,12 @@ function _expandRootTypes(types) {
   return types;
 }
 
-function _enhanceRamlObj(ramlObj, options) {
+function _enhanceRamlObj(ramlObj, options, api) {
   // Override default options
   options = Object.assign(
     {
       collectionFormat: 'objects',
+      canonicalTypeImpl: 'datatype-expansion',
     },
     options
   );
@@ -124,7 +127,13 @@ function _enhanceRamlObj(ramlObj, options) {
 
   // We want to expand inherited root types, so that later on when we copy type properties into an object,
   // we get the full graph.
-  const types = makeExamplesAndTypesConsistent(_expandRootTypes(ramlObj.types));
+  var types = ramlObj.types
+  if(options.canonicalTypeImpl == 'datatype-expansion'){
+    types = makeExamplesAndTypesConsistent(_expandRootTypes(types, options));
+  } else if (options.canonicalTypeImpl == 'lite-canonicalizer'){
+    types = makeExamplesAndTypesConsistent(liteCanonicalizer.expandTypes(types, api));
+  }
+
   // Delete the types from the ramlObj so it's not processed again later on.
   delete ramlObj.types;
 
@@ -181,12 +190,13 @@ function _sourceToRamlObj(source, options = {}) {
           rejectOnErrors: !!options.validate,
         })
         .then(result => {
+          // TODO shouldn't this use  RAMLVersion()=="RAML10" instead of looking into the internal data structure??
           if (result._node._universe._typedVersion === '0.8') {
             throw new Error('_sourceToRamlObj: only RAML 1.0 is supported!');
           }
 
           if (result.expand) {
-            return result.expand(true).toJSON({ serializeMetadata: false });
+            return result.expand(true)
           }
 
           return new Promise((resolve, reject) => {
@@ -219,7 +229,7 @@ function _sourceToRamlObj(source, options = {}) {
 }
 
 module.exports.parse = function(source, options) {
-  return _sourceToRamlObj(source, options).then(ramlObj =>
-    _enhanceRamlObj(ramlObj, options)
+  return _sourceToRamlObj(source, options).then(api =>
+      _enhanceRamlObj(api.toJSON({ serializeMetadata: false }), options, api)
   );
 };

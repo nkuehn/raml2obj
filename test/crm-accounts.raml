@@ -1,0 +1,290 @@
+#%RAML 1.0
+title: Account and Contract Information and Status API (CRM Data)
+traits:
+  secure:
+    securedBy:
+      - jwt
+    protocols:
+      - HTTPS
+    headers:
+      Authorization:
+        description: OAuth Bearer Token
+        example: Bearer 123456789
+        required: true
+  fallible:
+    headers:
+      X-Correlation-ID:
+        required: false
+        type: String
+        description: |
+          Correlation IDs are strings that may only contain alphanumeric characters, underscores and hyphens and have a length of 8 to 256 characters.
+          If passed, the value is used for the the correlation ID logged and returned in `ErrorResponse`.
+          Otherwise a random UUID is generated as correlation ID.
+        pattern: [a-zA-Z0-9_-]{8,256}
+    responses:
+      500:
+        body:
+          application/json:
+            type: ErrorResponse
+      502:
+        description: 502 "Bad Gateway" is returned if the CRM system that is backing this API returned an error.
+        body:
+          application/json:
+            type: ErrorResponse
+      404:
+        body:
+          application/json:
+            type: ErrorResponse
+          text/html:
+      401:
+        body:
+          application/json:
+            type: ErrorResponse
+      403:
+        body:
+          application/json:
+            type: ErrorResponse
+  pagedResult:
+    queryParameters:
+      limit:
+        description: |
+          The maximum number of results to be returned.
+          Values above 200 are truncated to 200.
+        type: integer
+        default: 20
+        minimum: 0
+        maximum: 200
+        required: false
+      offset:
+        description: |
+          E.g. an offset of 20 causes the results array to start with the 21st result returned.
+          `offset` is limited to maximally 2000.
+          Offsets beyond 2000 cause an error code "BACKEND:NUMBER_OUTSIDE_VALID_RANGE".
+        type: integer
+        default: 0
+        minimum: 0
+        maximum: 2000
+        required: false
+  accountsFilterable:
+    queryParameters:
+      number:
+        type: string
+        description: |
+          Filters the results by account number.
+          Comma separate multiple alternatively allowed values.
+        required: false
+      type:
+        type: string
+        description: |
+          Filters the results by account type.
+          Comma separate multiple alternatively allowed values.
+        required: false
+        example: "Customer,exCustomer"
+      country:
+        type: string
+        description: |
+          Two-letter ISO code of the country assigned.
+          Comma separate multiple alternatively allowed values.
+        required: false
+      businessRegion:
+        type: string
+        description: |
+          Filters the results by account business region.
+          Comma separate multiple alternatively allowed values.
+        required: false
+      ownerId:
+        type: string
+        description: |
+          Filters the results by owner. Pass the `id` of the Owner.
+          Comma separate multiple alternatively allowed values.
+        required: false
+      emailDomain:
+        type: string
+        description: |
+          Filters the results by matching on either the website domain or the main contact email's domain.
+          Emails are lowercased automatically in the CRM system, so the query should be lowercased, too.
+          Comma separate multiple alternatively allowed values.
+        required: false
+types:
+  Link:
+    type: object
+    description: A pragmatic hypermedia link that does the job.
+    properties:
+      href:
+        type: string
+        description: Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).
+      rel:
+        type: string
+        enum: [self]
+        description: Only "self" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2
+  PagedQueryResult:
+    type: object
+    properties:
+      offset:
+        type: number
+        description: The `offset` parameter that was effectively applied
+      limit:
+        type: number
+        description: The `limit` parameter that was effectively applied
+      count:
+        type: number
+        description: |
+          The number of results contained in the API response.
+          A total count of results beyond the ones returned is not available.
+  AccountsQueryResult:
+    type: PagedQueryResult
+    properties:
+      results: Account[]
+  Account:
+    description: |
+      An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.
+      It's not a Contract (an Account can have multiple contracts or contract opportunities with us)
+      and it's not the Person itself (that's a "Contact")
+    type: object
+    properties:
+      links: Link[]
+      id: string
+      name:
+        type: string
+        description: The name of the company's legal entity.
+      brand:
+        type: string
+        description: |
+          If the brand differs from the company name, this field contains one or many
+          brand names as free text.
+        required: false
+      number:
+        type: string
+        description: |
+          A number assigned to the account (company) to connect internal systems.
+          The master for this number is the financial accounting team and their IT system.
+        required: false
+      type:
+        type: string
+        description: |
+          A classification of the accounts by their relationship to the company.
+          New Values can be added any time.
+        required: false
+      businessRegion:
+        type: string
+        required: false
+        description: |
+          The regional organization structure inside the company that is responsible for
+          this account.
+          Values can change any time as the structure of the sales organization changes.
+      owner:
+        type: User
+        description: |
+          The sales manager or partner manager responsible for the account.
+          In doubt all decisions concerning the account are to be taken by this person.
+          Responsibility can be superseded by ownership of a specific Contract (Opportunity).
+      country:
+        type: string
+        description: |
+          The country the account is designated to internally.
+          An ISO two-letter country code where parsed and known.
+          Can fall back to the name of the country, this is a bug - please report unmapped country names.
+        required: false
+      generalEmail:
+        type: string
+        description: |
+          The general contact email address of the account.
+          All email addresses are automatically lowercased in the current implementation of the CRM.
+        required: false
+      website:
+        type: string
+        description: |
+          The main website URL of the account
+        required: false
+  User:
+    type: object
+    description: |
+      A commerectools employee by her/his account in the CRM.
+    properties:
+      links: Link[]
+      id:
+        type: string
+        description: The user's CRM ID.
+      email: string
+      name:
+        type: string
+        description: The user's full name.
+  ErrorResponse:
+    type: object
+    properties:
+      statusCode:
+        type: integer
+        description: The HTTP status code, repeated.
+      errors: Error[]
+      correlationId:
+        type: string
+        description: A unique random identifier that can be found in the server logs to identify the specific error situation
+  Error:
+    type: object
+    properties:
+      code:
+        type: string
+        description: |
+          On HTTP 502 the error code from the backing CRM API, prefixed with "BACKEND:",
+          E.g. "BACKEND:INVALID_FIELD".
+          Else an error code defined by this service.
+      message:
+        type: string
+        description: A plain text message containing further information.
+/accounts:
+  is:  [fallible, secure]
+  get:
+    description: query customer accounts
+    is:  [pagedResult, accountsFilterable]
+    responses:
+      200:
+        body:
+          application/json:
+            type: AccountsQueryResult
+  /search:
+    is:  [fallible, secure]
+    get:
+      is:  [pagedResult, accountsFilterable]
+      description: |
+        Provides full text search over the accounts.
+        Searches only over the CRM fields that are returned, too.
+      queryParameters:
+        text:
+          type: string
+          description:
+            The text string to search in all fields of the data in the CRM as a full-text search.
+          required: false
+          example:
+            Americ* AND "John Smith"
+      responses:
+        200:
+          body:
+            application/json:
+              type: AccountsQueryResult
+  /{key}={value}:
+    is:  [fallible, secure]
+    get:
+      description:
+      responses:
+        200:
+          body:
+            application/json:
+              type: Account
+    uriParameters:
+      key:
+        type: string
+        description: One of the allowed unique fields: `id` or `number`.
+        required: true
+      value: string
+        type: string
+        required: true
+securitySchemes:
+  jwt:
+    type: x-JWT
+    displayName: JWT
+    description: |
+      Requires a JWT to be passed as an "Authentication: Bearer ..." header.
+      Requires "scopes" to be passed as an array claim.
+      Available scopes: "view_accounts".
+      Algorithm must be RS256 (asymmetric).
+      The public key must be known to this service.

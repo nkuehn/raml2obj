@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "datatype-expansion": "^0.3.4",
+    "lodash": "^4.17.11",
     "raml-1-parser": "1.1.47"
   },
   "devDependencies": {

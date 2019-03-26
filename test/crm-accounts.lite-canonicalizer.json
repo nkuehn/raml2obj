@@ -1,0 +1,3416 @@
+{
+  "traits": {
+    "secure": {
+      "headers": [
+        {
+          "name": "Authorization",
+          "displayName": "Authorization",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": true,
+          "description": "OAuth Bearer Token",
+          "examples": [
+            {
+              "value": "Bearer 123456789",
+              "strict": true,
+              "name": null,
+              "structuredValue": "Bearer 123456789"
+            }
+          ],
+          "key": "Authorization"
+        }
+      ],
+      "protocols": [
+        "HTTPS"
+      ],
+      "securedBy": [
+        {
+          "schemeName": "jwt"
+        }
+      ],
+      "name": "secure",
+      "orderHint": 0
+    },
+    "fallible": {
+      "headers": [
+        {
+          "name": "X-Correlation-ID",
+          "displayName": "X-Correlation-ID",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "String",
+          "required": false,
+          "description": "Correlation IDs are strings that may only contain alphanumeric characters, underscores and hyphens and have a length of 8 to 256 characters.\nIf passed, the value is used for the the correlation ID logged and returned in `ErrorResponse`.\nOtherwise a random UUID is generated as correlation ID.\n",
+          "key": "X-Correlation-ID"
+        }
+      ],
+      "responses": [
+        {
+          "code": "401",
+          "body": [
+            {
+              "name": "ErrorResponse",
+              "displayName": "ErrorResponse",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "object",
+              "properties": [
+                {
+                  "name": "statusCode",
+                  "displayName": "statusCode",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "integer",
+                  "required": true,
+                  "description": "The HTTP status code, repeated.",
+                  "key": "statusCode"
+                },
+                {
+                  "name": "errors",
+                  "displayName": "errors",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "array",
+                  "required": true,
+                  "items": {
+                    "name": "Error",
+                    "displayName": "Error",
+                    "typePropertyKind": "TYPE_EXPRESSION",
+                    "type": "object",
+                    "properties": [
+                      {
+                        "name": "code",
+                        "displayName": "code",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "string",
+                        "required": true,
+                        "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                        "key": "code"
+                      },
+                      {
+                        "name": "message",
+                        "displayName": "message",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "string",
+                        "required": true,
+                        "description": "A plain text message containing further information.",
+                        "key": "message"
+                      }
+                    ],
+                    "orderHint": 6
+                  },
+                  "key": "errors"
+                },
+                {
+                  "name": "correlationId",
+                  "displayName": "correlationId",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": true,
+                  "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                  "key": "correlationId"
+                }
+              ],
+              "orderHint": 5,
+              "key": "application/json"
+            }
+          ],
+          "key": "401"
+        },
+        {
+          "code": "403",
+          "body": [
+            {
+              "name": "ErrorResponse",
+              "displayName": "ErrorResponse",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "object",
+              "properties": [
+                {
+                  "name": "statusCode",
+                  "displayName": "statusCode",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "integer",
+                  "required": true,
+                  "description": "The HTTP status code, repeated.",
+                  "key": "statusCode"
+                },
+                {
+                  "name": "errors",
+                  "displayName": "errors",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "array",
+                  "required": true,
+                  "items": {
+                    "name": "Error",
+                    "displayName": "Error",
+                    "typePropertyKind": "TYPE_EXPRESSION",
+                    "type": "object",
+                    "properties": [
+                      {
+                        "name": "code",
+                        "displayName": "code",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "string",
+                        "required": true,
+                        "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                        "key": "code"
+                      },
+                      {
+                        "name": "message",
+                        "displayName": "message",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "string",
+                        "required": true,
+                        "description": "A plain text message containing further information.",
+                        "key": "message"
+                      }
+                    ],
+                    "orderHint": 6
+                  },
+                  "key": "errors"
+                },
+                {
+                  "name": "correlationId",
+                  "displayName": "correlationId",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": true,
+                  "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                  "key": "correlationId"
+                }
+              ],
+              "orderHint": 5,
+              "key": "application/json"
+            }
+          ],
+          "key": "403"
+        },
+        {
+          "code": "404",
+          "body": [
+            {
+              "name": "ErrorResponse",
+              "displayName": "ErrorResponse",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "object",
+              "properties": [
+                {
+                  "name": "statusCode",
+                  "displayName": "statusCode",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "integer",
+                  "required": true,
+                  "description": "The HTTP status code, repeated.",
+                  "key": "statusCode"
+                },
+                {
+                  "name": "errors",
+                  "displayName": "errors",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "array",
+                  "required": true,
+                  "items": {
+                    "name": "Error",
+                    "displayName": "Error",
+                    "typePropertyKind": "TYPE_EXPRESSION",
+                    "type": "object",
+                    "properties": [
+                      {
+                        "name": "code",
+                        "displayName": "code",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "string",
+                        "required": true,
+                        "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                        "key": "code"
+                      },
+                      {
+                        "name": "message",
+                        "displayName": "message",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "string",
+                        "required": true,
+                        "description": "A plain text message containing further information.",
+                        "key": "message"
+                      }
+                    ],
+                    "orderHint": 6
+                  },
+                  "key": "errors"
+                },
+                {
+                  "name": "correlationId",
+                  "displayName": "correlationId",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": true,
+                  "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                  "key": "correlationId"
+                }
+              ],
+              "orderHint": 5,
+              "key": "application/json"
+            },
+            {
+              "name": "text/html",
+              "displayName": "text/html",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "any",
+              "key": "text/html"
+            }
+          ],
+          "key": "404"
+        },
+        {
+          "code": "500",
+          "body": [
+            {
+              "name": "ErrorResponse",
+              "displayName": "ErrorResponse",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "object",
+              "properties": [
+                {
+                  "name": "statusCode",
+                  "displayName": "statusCode",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "integer",
+                  "required": true,
+                  "description": "The HTTP status code, repeated.",
+                  "key": "statusCode"
+                },
+                {
+                  "name": "errors",
+                  "displayName": "errors",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "array",
+                  "required": true,
+                  "items": {
+                    "name": "Error",
+                    "displayName": "Error",
+                    "typePropertyKind": "TYPE_EXPRESSION",
+                    "type": "object",
+                    "properties": [
+                      {
+                        "name": "code",
+                        "displayName": "code",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "string",
+                        "required": true,
+                        "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                        "key": "code"
+                      },
+                      {
+                        "name": "message",
+                        "displayName": "message",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "string",
+                        "required": true,
+                        "description": "A plain text message containing further information.",
+                        "key": "message"
+                      }
+                    ],
+                    "orderHint": 6
+                  },
+                  "key": "errors"
+                },
+                {
+                  "name": "correlationId",
+                  "displayName": "correlationId",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": true,
+                  "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                  "key": "correlationId"
+                }
+              ],
+              "orderHint": 5,
+              "key": "application/json"
+            }
+          ],
+          "key": "500"
+        },
+        {
+          "code": "502",
+          "body": [
+            {
+              "name": "ErrorResponse",
+              "displayName": "ErrorResponse",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "object",
+              "properties": [
+                {
+                  "name": "statusCode",
+                  "displayName": "statusCode",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "integer",
+                  "required": true,
+                  "description": "The HTTP status code, repeated.",
+                  "key": "statusCode"
+                },
+                {
+                  "name": "errors",
+                  "displayName": "errors",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "array",
+                  "required": true,
+                  "items": {
+                    "name": "Error",
+                    "displayName": "Error",
+                    "typePropertyKind": "TYPE_EXPRESSION",
+                    "type": "object",
+                    "properties": [
+                      {
+                        "name": "code",
+                        "displayName": "code",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "string",
+                        "required": true,
+                        "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                        "key": "code"
+                      },
+                      {
+                        "name": "message",
+                        "displayName": "message",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "string",
+                        "required": true,
+                        "description": "A plain text message containing further information.",
+                        "key": "message"
+                      }
+                    ],
+                    "orderHint": 6
+                  },
+                  "key": "errors"
+                },
+                {
+                  "name": "correlationId",
+                  "displayName": "correlationId",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": true,
+                  "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                  "key": "correlationId"
+                }
+              ],
+              "orderHint": 5,
+              "key": "application/json"
+            }
+          ],
+          "description": "502 \"Bad Gateway\" is returned if the CRM system that is backing this API returned an error.",
+          "key": "502"
+        }
+      ],
+      "name": "fallible",
+      "orderHint": 1
+    },
+    "pagedResult": {
+      "queryParameters": [
+        {
+          "name": "limit",
+          "displayName": "limit",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "integer",
+          "default": 20,
+          "required": false,
+          "description": "The maximum number of results to be returned.\nValues above 200 are truncated to 200.\n",
+          "minimum": 0,
+          "maximum": 200,
+          "key": "limit"
+        },
+        {
+          "name": "offset",
+          "displayName": "offset",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "integer",
+          "default": 0,
+          "required": false,
+          "description": "E.g. an offset of 20 causes the results array to start with the 21st result returned.\n`offset` is limited to maximally 2000.\nOffsets beyond 2000 cause an error code \"BACKEND:NUMBER_OUTSIDE_VALID_RANGE\".\n",
+          "minimum": 0,
+          "maximum": 2000,
+          "key": "offset"
+        }
+      ],
+      "name": "pagedResult",
+      "orderHint": 2
+    },
+    "accountsFilterable": {
+      "queryParameters": [
+        {
+          "name": "number",
+          "displayName": "number",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "Filters the results by account number.\nComma separate multiple alternatively allowed values.\n",
+          "key": "number"
+        },
+        {
+          "name": "type",
+          "displayName": "type",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "Filters the results by account type.\nComma separate multiple alternatively allowed values.\n",
+          "examples": [
+            {
+              "value": "Customer,exCustomer",
+              "strict": true,
+              "name": null,
+              "structuredValue": "Customer,exCustomer"
+            }
+          ],
+          "key": "type"
+        },
+        {
+          "name": "country",
+          "displayName": "country",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "Two-letter ISO code of the country assigned.\nComma separate multiple alternatively allowed values.\n",
+          "key": "country"
+        },
+        {
+          "name": "businessRegion",
+          "displayName": "businessRegion",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "Filters the results by account business region.\nComma separate multiple alternatively allowed values.\n",
+          "key": "businessRegion"
+        },
+        {
+          "name": "ownerId",
+          "displayName": "ownerId",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "Filters the results by owner. Pass the `id` of the Owner.\nComma separate multiple alternatively allowed values.\n",
+          "key": "ownerId"
+        },
+        {
+          "name": "emailDomain",
+          "displayName": "emailDomain",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "Filters the results by matching on either the website domain or the main contact email's domain.\nEmails are lowercased automatically in the CRM system, so the query should be lowercased, too.\nComma separate multiple alternatively allowed values.\n",
+          "key": "emailDomain"
+        }
+      ],
+      "name": "accountsFilterable",
+      "orderHint": 3
+    }
+  },
+  "title": "Account and Contract Information and Status API (CRM Data)",
+  "resources": [
+    {
+      "methods": [
+        {
+          "queryParameters": [
+            {
+              "name": "limit",
+              "displayName": "limit",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "integer",
+              "default": 20,
+              "required": false,
+              "description": "The maximum number of results to be returned.\nValues above 200 are truncated to 200.\n",
+              "minimum": 0,
+              "maximum": 200,
+              "key": "limit"
+            },
+            {
+              "name": "offset",
+              "displayName": "offset",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "integer",
+              "default": 0,
+              "required": false,
+              "description": "E.g. an offset of 20 causes the results array to start with the 21st result returned.\n`offset` is limited to maximally 2000.\nOffsets beyond 2000 cause an error code \"BACKEND:NUMBER_OUTSIDE_VALID_RANGE\".\n",
+              "minimum": 0,
+              "maximum": 2000,
+              "key": "offset"
+            },
+            {
+              "name": "number",
+              "displayName": "number",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string",
+              "required": false,
+              "description": "Filters the results by account number.\nComma separate multiple alternatively allowed values.\n",
+              "key": "number"
+            },
+            {
+              "name": "type",
+              "displayName": "type",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string",
+              "required": false,
+              "description": "Filters the results by account type.\nComma separate multiple alternatively allowed values.\n",
+              "examples": [
+                {
+                  "value": "Customer,exCustomer",
+                  "strict": true,
+                  "name": null,
+                  "structuredValue": "Customer,exCustomer"
+                }
+              ],
+              "key": "type"
+            },
+            {
+              "name": "country",
+              "displayName": "country",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string",
+              "required": false,
+              "description": "Two-letter ISO code of the country assigned.\nComma separate multiple alternatively allowed values.\n",
+              "key": "country"
+            },
+            {
+              "name": "businessRegion",
+              "displayName": "businessRegion",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string",
+              "required": false,
+              "description": "Filters the results by account business region.\nComma separate multiple alternatively allowed values.\n",
+              "key": "businessRegion"
+            },
+            {
+              "name": "ownerId",
+              "displayName": "ownerId",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string",
+              "required": false,
+              "description": "Filters the results by owner. Pass the `id` of the Owner.\nComma separate multiple alternatively allowed values.\n",
+              "key": "ownerId"
+            },
+            {
+              "name": "emailDomain",
+              "displayName": "emailDomain",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string",
+              "required": false,
+              "description": "Filters the results by matching on either the website domain or the main contact email's domain.\nEmails are lowercased automatically in the CRM system, so the query should be lowercased, too.\nComma separate multiple alternatively allowed values.\n",
+              "key": "emailDomain"
+            }
+          ],
+          "headers": [
+            {
+              "name": "X-Correlation-ID",
+              "displayName": "X-Correlation-ID",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "String",
+              "required": false,
+              "description": "Correlation IDs are strings that may only contain alphanumeric characters, underscores and hyphens and have a length of 8 to 256 characters.\nIf passed, the value is used for the the correlation ID logged and returned in `ErrorResponse`.\nOtherwise a random UUID is generated as correlation ID.\n",
+              "key": "X-Correlation-ID"
+            },
+            {
+              "name": "Authorization",
+              "displayName": "Authorization",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string",
+              "required": true,
+              "description": "OAuth Bearer Token",
+              "examples": [
+                {
+                  "value": "Bearer 123456789",
+                  "strict": true,
+                  "name": null,
+                  "structuredValue": "Bearer 123456789"
+                }
+              ],
+              "key": "Authorization"
+            }
+          ],
+          "responses": [
+            {
+              "code": "200",
+              "body": [
+                {
+                  "name": "AccountsQueryResult",
+                  "displayName": "AccountsQueryResult",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "PagedQueryResult",
+                  "properties": [
+                    {
+                      "name": "offset",
+                      "displayName": "offset",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "number",
+                      "required": true,
+                      "description": "The `offset` parameter that was effectively applied",
+                      "key": "offset"
+                    },
+                    {
+                      "name": "limit",
+                      "displayName": "limit",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "number",
+                      "required": true,
+                      "description": "The `limit` parameter that was effectively applied",
+                      "key": "limit"
+                    },
+                    {
+                      "name": "count",
+                      "displayName": "count",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "number",
+                      "required": true,
+                      "description": "The number of results contained in the API response.\nA total count of results beyond the ones returned is not available.\n",
+                      "key": "count"
+                    },
+                    {
+                      "name": "results",
+                      "displayName": "results",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "array",
+                      "required": true,
+                      "items": {
+                        "name": "Account",
+                        "displayName": "Account",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "object",
+                        "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
+                        "properties": [
+                          {
+                            "name": "links",
+                            "displayName": "links",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "array",
+                            "required": true,
+                            "items": {
+                              "name": "Link",
+                              "displayName": "Link",
+                              "typePropertyKind": "TYPE_EXPRESSION",
+                              "type": "object",
+                              "description": "A pragmatic hypermedia link that does the job.",
+                              "properties": [
+                                {
+                                  "name": "href",
+                                  "displayName": "href",
+                                  "typePropertyKind": "TYPE_EXPRESSION",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+                                  "key": "href"
+                                },
+                                {
+                                  "name": "rel",
+                                  "displayName": "rel",
+                                  "typePropertyKind": "TYPE_EXPRESSION",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                                  "enum": [
+                                    "self"
+                                  ],
+                                  "key": "rel"
+                                }
+                              ],
+                              "orderHint": 0
+                            },
+                            "key": "links"
+                          },
+                          {
+                            "name": "id",
+                            "displayName": "id",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": true,
+                            "key": "id"
+                          },
+                          {
+                            "name": "name",
+                            "displayName": "name",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": true,
+                            "description": "The name of the company's legal entity.",
+                            "key": "name"
+                          },
+                          {
+                            "name": "brand",
+                            "displayName": "brand",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": false,
+                            "description": "If the brand differs from the company name, this field contains one or many\nbrand names as free text.\n",
+                            "key": "brand"
+                          },
+                          {
+                            "name": "number",
+                            "displayName": "number",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": false,
+                            "description": "A number assigned to the account (company) to connect internal systems.\nThe master for this number is the financial accounting team and their IT system.\n",
+                            "key": "number"
+                          },
+                          {
+                            "name": "type",
+                            "displayName": "type",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": false,
+                            "description": "A classification of the accounts by their relationship to the company.\nNew Values can be added any time.\n",
+                            "key": "type"
+                          },
+                          {
+                            "name": "businessRegion",
+                            "displayName": "businessRegion",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": false,
+                            "description": "The regional organization structure inside the company that is responsible for\nthis account.\nValues can change any time as the structure of the sales organization changes.\n",
+                            "key": "businessRegion"
+                          },
+                          {
+                            "name": "User",
+                            "displayName": "User",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "required": true,
+                            "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
+                            "properties": [
+                              {
+                                "name": "links",
+                                "displayName": "links",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "array",
+                                "required": true,
+                                "items": {
+                                  "name": "Link",
+                                  "displayName": "Link",
+                                  "typePropertyKind": "TYPE_EXPRESSION",
+                                  "type": "object",
+                                  "description": "A pragmatic hypermedia link that does the job.",
+                                  "properties": [
+                                    {
+                                      "name": "href",
+                                      "displayName": "href",
+                                      "typePropertyKind": "TYPE_EXPRESSION",
+                                      "type": "string",
+                                      "required": true,
+                                      "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+                                      "key": "href"
+                                    },
+                                    {
+                                      "name": "rel",
+                                      "displayName": "rel",
+                                      "typePropertyKind": "TYPE_EXPRESSION",
+                                      "type": "string",
+                                      "required": true,
+                                      "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                                      "enum": [
+                                        "self"
+                                      ],
+                                      "key": "rel"
+                                    }
+                                  ],
+                                  "orderHint": 0
+                                },
+                                "key": "links"
+                              },
+                              {
+                                "name": "id",
+                                "displayName": "id",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "The user's CRM ID.",
+                                "key": "id"
+                              },
+                              {
+                                "name": "email",
+                                "displayName": "email",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "key": "email"
+                              },
+                              {
+                                "name": "name",
+                                "displayName": "name",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "The user's full name.",
+                                "key": "name"
+                              }
+                            ],
+                            "orderHint": 4,
+                            "key": "owner"
+                          },
+                          {
+                            "name": "country",
+                            "displayName": "country",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": false,
+                            "description": "The country the account is designated to internally.\nAn ISO two-letter country code where parsed and known.\nCan fall back to the name of the country, this is a bug - please report unmapped country names.\n",
+                            "key": "country"
+                          },
+                          {
+                            "name": "generalEmail",
+                            "displayName": "generalEmail",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": false,
+                            "description": "The general contact email address of the account.\nAll email addresses are automatically lowercased in the current implementation of the CRM.\n",
+                            "key": "generalEmail"
+                          },
+                          {
+                            "name": "website",
+                            "displayName": "website",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": false,
+                            "description": "The main website URL of the account\n",
+                            "key": "website"
+                          }
+                        ],
+                        "orderHint": 3
+                      },
+                      "key": "results"
+                    }
+                  ],
+                  "orderHint": 2,
+                  "key": "application/json"
+                }
+              ],
+              "key": "200"
+            },
+            {
+              "code": "401",
+              "body": [
+                {
+                  "name": "ErrorResponse",
+                  "displayName": "ErrorResponse",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "object",
+                  "properties": [
+                    {
+                      "name": "statusCode",
+                      "displayName": "statusCode",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "integer",
+                      "required": true,
+                      "description": "The HTTP status code, repeated.",
+                      "key": "statusCode"
+                    },
+                    {
+                      "name": "errors",
+                      "displayName": "errors",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "array",
+                      "required": true,
+                      "items": {
+                        "name": "Error",
+                        "displayName": "Error",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "object",
+                        "properties": [
+                          {
+                            "name": "code",
+                            "displayName": "code",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": true,
+                            "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                            "key": "code"
+                          },
+                          {
+                            "name": "message",
+                            "displayName": "message",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": true,
+                            "description": "A plain text message containing further information.",
+                            "key": "message"
+                          }
+                        ],
+                        "orderHint": 6
+                      },
+                      "key": "errors"
+                    },
+                    {
+                      "name": "correlationId",
+                      "displayName": "correlationId",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "string",
+                      "required": true,
+                      "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                      "key": "correlationId"
+                    }
+                  ],
+                  "orderHint": 5,
+                  "key": "application/json"
+                }
+              ],
+              "key": "401"
+            },
+            {
+              "code": "403",
+              "body": [
+                {
+                  "name": "ErrorResponse",
+                  "displayName": "ErrorResponse",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "object",
+                  "properties": [
+                    {
+                      "name": "statusCode",
+                      "displayName": "statusCode",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "integer",
+                      "required": true,
+                      "description": "The HTTP status code, repeated.",
+                      "key": "statusCode"
+                    },
+                    {
+                      "name": "errors",
+                      "displayName": "errors",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "array",
+                      "required": true,
+                      "items": {
+                        "name": "Error",
+                        "displayName": "Error",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "object",
+                        "properties": [
+                          {
+                            "name": "code",
+                            "displayName": "code",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": true,
+                            "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                            "key": "code"
+                          },
+                          {
+                            "name": "message",
+                            "displayName": "message",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": true,
+                            "description": "A plain text message containing further information.",
+                            "key": "message"
+                          }
+                        ],
+                        "orderHint": 6
+                      },
+                      "key": "errors"
+                    },
+                    {
+                      "name": "correlationId",
+                      "displayName": "correlationId",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "string",
+                      "required": true,
+                      "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                      "key": "correlationId"
+                    }
+                  ],
+                  "orderHint": 5,
+                  "key": "application/json"
+                }
+              ],
+              "key": "403"
+            },
+            {
+              "code": "404",
+              "body": [
+                {
+                  "name": "ErrorResponse",
+                  "displayName": "ErrorResponse",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "object",
+                  "properties": [
+                    {
+                      "name": "statusCode",
+                      "displayName": "statusCode",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "integer",
+                      "required": true,
+                      "description": "The HTTP status code, repeated.",
+                      "key": "statusCode"
+                    },
+                    {
+                      "name": "errors",
+                      "displayName": "errors",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "array",
+                      "required": true,
+                      "items": {
+                        "name": "Error",
+                        "displayName": "Error",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "object",
+                        "properties": [
+                          {
+                            "name": "code",
+                            "displayName": "code",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": true,
+                            "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                            "key": "code"
+                          },
+                          {
+                            "name": "message",
+                            "displayName": "message",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": true,
+                            "description": "A plain text message containing further information.",
+                            "key": "message"
+                          }
+                        ],
+                        "orderHint": 6
+                      },
+                      "key": "errors"
+                    },
+                    {
+                      "name": "correlationId",
+                      "displayName": "correlationId",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "string",
+                      "required": true,
+                      "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                      "key": "correlationId"
+                    }
+                  ],
+                  "orderHint": 5,
+                  "key": "application/json"
+                },
+                {
+                  "name": "text/html",
+                  "displayName": "text/html",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "any",
+                  "key": "text/html"
+                }
+              ],
+              "key": "404"
+            },
+            {
+              "code": "500",
+              "body": [
+                {
+                  "name": "ErrorResponse",
+                  "displayName": "ErrorResponse",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "object",
+                  "properties": [
+                    {
+                      "name": "statusCode",
+                      "displayName": "statusCode",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "integer",
+                      "required": true,
+                      "description": "The HTTP status code, repeated.",
+                      "key": "statusCode"
+                    },
+                    {
+                      "name": "errors",
+                      "displayName": "errors",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "array",
+                      "required": true,
+                      "items": {
+                        "name": "Error",
+                        "displayName": "Error",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "object",
+                        "properties": [
+                          {
+                            "name": "code",
+                            "displayName": "code",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": true,
+                            "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                            "key": "code"
+                          },
+                          {
+                            "name": "message",
+                            "displayName": "message",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": true,
+                            "description": "A plain text message containing further information.",
+                            "key": "message"
+                          }
+                        ],
+                        "orderHint": 6
+                      },
+                      "key": "errors"
+                    },
+                    {
+                      "name": "correlationId",
+                      "displayName": "correlationId",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "string",
+                      "required": true,
+                      "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                      "key": "correlationId"
+                    }
+                  ],
+                  "orderHint": 5,
+                  "key": "application/json"
+                }
+              ],
+              "key": "500"
+            },
+            {
+              "code": "502",
+              "body": [
+                {
+                  "name": "ErrorResponse",
+                  "displayName": "ErrorResponse",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "object",
+                  "properties": [
+                    {
+                      "name": "statusCode",
+                      "displayName": "statusCode",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "integer",
+                      "required": true,
+                      "description": "The HTTP status code, repeated.",
+                      "key": "statusCode"
+                    },
+                    {
+                      "name": "errors",
+                      "displayName": "errors",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "array",
+                      "required": true,
+                      "items": {
+                        "name": "Error",
+                        "displayName": "Error",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "type": "object",
+                        "properties": [
+                          {
+                            "name": "code",
+                            "displayName": "code",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": true,
+                            "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                            "key": "code"
+                          },
+                          {
+                            "name": "message",
+                            "displayName": "message",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "string",
+                            "required": true,
+                            "description": "A plain text message containing further information.",
+                            "key": "message"
+                          }
+                        ],
+                        "orderHint": 6
+                      },
+                      "key": "errors"
+                    },
+                    {
+                      "name": "correlationId",
+                      "displayName": "correlationId",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "string",
+                      "required": true,
+                      "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                      "key": "correlationId"
+                    }
+                  ],
+                  "orderHint": 5,
+                  "key": "application/json"
+                }
+              ],
+              "description": "502 \"Bad Gateway\" is returned if the CRM system that is backing this API returned an error.",
+              "key": "502"
+            }
+          ],
+          "protocols": [
+            "HTTPS"
+          ],
+          "is": [
+            "pagedResult",
+            "accountsFilterable"
+          ],
+          "securedBy": [
+            {
+              "schemeName": "jwt"
+            }
+          ],
+          "description": "query customer accounts",
+          "method": "get",
+          "allUriParameters": []
+        }
+      ],
+      "is": [
+        "fallible",
+        "secure"
+      ],
+      "relativeUri": "/accounts",
+      "displayName": "/accounts",
+      "resources": [
+        {
+          "methods": [
+            {
+              "queryParameters": [
+                {
+                  "name": "text",
+                  "displayName": "text",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": false,
+                  "description": "The text string to search in all fields of the data in the CRM as a full-text search.",
+                  "examples": [
+                    {
+                      "value": "Americ* AND \"John Smith\"",
+                      "strict": true,
+                      "name": null,
+                      "structuredValue": "Americ* AND \"John Smith\""
+                    }
+                  ],
+                  "key": "text"
+                },
+                {
+                  "name": "limit",
+                  "displayName": "limit",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "integer",
+                  "default": 20,
+                  "required": false,
+                  "description": "The maximum number of results to be returned.\nValues above 200 are truncated to 200.\n",
+                  "minimum": 0,
+                  "maximum": 200,
+                  "key": "limit"
+                },
+                {
+                  "name": "offset",
+                  "displayName": "offset",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "integer",
+                  "default": 0,
+                  "required": false,
+                  "description": "E.g. an offset of 20 causes the results array to start with the 21st result returned.\n`offset` is limited to maximally 2000.\nOffsets beyond 2000 cause an error code \"BACKEND:NUMBER_OUTSIDE_VALID_RANGE\".\n",
+                  "minimum": 0,
+                  "maximum": 2000,
+                  "key": "offset"
+                },
+                {
+                  "name": "number",
+                  "displayName": "number",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": false,
+                  "description": "Filters the results by account number.\nComma separate multiple alternatively allowed values.\n",
+                  "key": "number"
+                },
+                {
+                  "name": "type",
+                  "displayName": "type",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": false,
+                  "description": "Filters the results by account type.\nComma separate multiple alternatively allowed values.\n",
+                  "examples": [
+                    {
+                      "value": "Customer,exCustomer",
+                      "strict": true,
+                      "name": null,
+                      "structuredValue": "Customer,exCustomer"
+                    }
+                  ],
+                  "key": "type"
+                },
+                {
+                  "name": "country",
+                  "displayName": "country",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": false,
+                  "description": "Two-letter ISO code of the country assigned.\nComma separate multiple alternatively allowed values.\n",
+                  "key": "country"
+                },
+                {
+                  "name": "businessRegion",
+                  "displayName": "businessRegion",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": false,
+                  "description": "Filters the results by account business region.\nComma separate multiple alternatively allowed values.\n",
+                  "key": "businessRegion"
+                },
+                {
+                  "name": "ownerId",
+                  "displayName": "ownerId",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": false,
+                  "description": "Filters the results by owner. Pass the `id` of the Owner.\nComma separate multiple alternatively allowed values.\n",
+                  "key": "ownerId"
+                },
+                {
+                  "name": "emailDomain",
+                  "displayName": "emailDomain",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": false,
+                  "description": "Filters the results by matching on either the website domain or the main contact email's domain.\nEmails are lowercased automatically in the CRM system, so the query should be lowercased, too.\nComma separate multiple alternatively allowed values.\n",
+                  "key": "emailDomain"
+                }
+              ],
+              "headers": [
+                {
+                  "name": "X-Correlation-ID",
+                  "displayName": "X-Correlation-ID",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "String",
+                  "required": false,
+                  "description": "Correlation IDs are strings that may only contain alphanumeric characters, underscores and hyphens and have a length of 8 to 256 characters.\nIf passed, the value is used for the the correlation ID logged and returned in `ErrorResponse`.\nOtherwise a random UUID is generated as correlation ID.\n",
+                  "key": "X-Correlation-ID"
+                },
+                {
+                  "name": "Authorization",
+                  "displayName": "Authorization",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": true,
+                  "description": "OAuth Bearer Token",
+                  "examples": [
+                    {
+                      "value": "Bearer 123456789",
+                      "strict": true,
+                      "name": null,
+                      "structuredValue": "Bearer 123456789"
+                    }
+                  ],
+                  "key": "Authorization"
+                }
+              ],
+              "responses": [
+                {
+                  "code": "200",
+                  "body": [
+                    {
+                      "name": "AccountsQueryResult",
+                      "displayName": "AccountsQueryResult",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "PagedQueryResult",
+                      "properties": [
+                        {
+                          "name": "offset",
+                          "displayName": "offset",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "number",
+                          "required": true,
+                          "description": "The `offset` parameter that was effectively applied",
+                          "key": "offset"
+                        },
+                        {
+                          "name": "limit",
+                          "displayName": "limit",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "number",
+                          "required": true,
+                          "description": "The `limit` parameter that was effectively applied",
+                          "key": "limit"
+                        },
+                        {
+                          "name": "count",
+                          "displayName": "count",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "number",
+                          "required": true,
+                          "description": "The number of results contained in the API response.\nA total count of results beyond the ones returned is not available.\n",
+                          "key": "count"
+                        },
+                        {
+                          "name": "results",
+                          "displayName": "results",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "name": "Account",
+                            "displayName": "Account",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
+                            "properties": [
+                              {
+                                "name": "links",
+                                "displayName": "links",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "array",
+                                "required": true,
+                                "items": {
+                                  "name": "Link",
+                                  "displayName": "Link",
+                                  "typePropertyKind": "TYPE_EXPRESSION",
+                                  "type": "object",
+                                  "description": "A pragmatic hypermedia link that does the job.",
+                                  "properties": [
+                                    {
+                                      "name": "href",
+                                      "displayName": "href",
+                                      "typePropertyKind": "TYPE_EXPRESSION",
+                                      "type": "string",
+                                      "required": true,
+                                      "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+                                      "key": "href"
+                                    },
+                                    {
+                                      "name": "rel",
+                                      "displayName": "rel",
+                                      "typePropertyKind": "TYPE_EXPRESSION",
+                                      "type": "string",
+                                      "required": true,
+                                      "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                                      "enum": [
+                                        "self"
+                                      ],
+                                      "key": "rel"
+                                    }
+                                  ],
+                                  "orderHint": 0
+                                },
+                                "key": "links"
+                              },
+                              {
+                                "name": "id",
+                                "displayName": "id",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "key": "id"
+                              },
+                              {
+                                "name": "name",
+                                "displayName": "name",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "The name of the company's legal entity.",
+                                "key": "name"
+                              },
+                              {
+                                "name": "brand",
+                                "displayName": "brand",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": false,
+                                "description": "If the brand differs from the company name, this field contains one or many\nbrand names as free text.\n",
+                                "key": "brand"
+                              },
+                              {
+                                "name": "number",
+                                "displayName": "number",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": false,
+                                "description": "A number assigned to the account (company) to connect internal systems.\nThe master for this number is the financial accounting team and their IT system.\n",
+                                "key": "number"
+                              },
+                              {
+                                "name": "type",
+                                "displayName": "type",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": false,
+                                "description": "A classification of the accounts by their relationship to the company.\nNew Values can be added any time.\n",
+                                "key": "type"
+                              },
+                              {
+                                "name": "businessRegion",
+                                "displayName": "businessRegion",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": false,
+                                "description": "The regional organization structure inside the company that is responsible for\nthis account.\nValues can change any time as the structure of the sales organization changes.\n",
+                                "key": "businessRegion"
+                              },
+                              {
+                                "name": "User",
+                                "displayName": "User",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "object",
+                                "required": true,
+                                "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
+                                "properties": [
+                                  {
+                                    "name": "links",
+                                    "displayName": "links",
+                                    "typePropertyKind": "TYPE_EXPRESSION",
+                                    "type": "array",
+                                    "required": true,
+                                    "items": {
+                                      "name": "Link",
+                                      "displayName": "Link",
+                                      "typePropertyKind": "TYPE_EXPRESSION",
+                                      "type": "object",
+                                      "description": "A pragmatic hypermedia link that does the job.",
+                                      "properties": [
+                                        {
+                                          "name": "href",
+                                          "displayName": "href",
+                                          "typePropertyKind": "TYPE_EXPRESSION",
+                                          "type": "string",
+                                          "required": true,
+                                          "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+                                          "key": "href"
+                                        },
+                                        {
+                                          "name": "rel",
+                                          "displayName": "rel",
+                                          "typePropertyKind": "TYPE_EXPRESSION",
+                                          "type": "string",
+                                          "required": true,
+                                          "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                                          "enum": [
+                                            "self"
+                                          ],
+                                          "key": "rel"
+                                        }
+                                      ],
+                                      "orderHint": 0
+                                    },
+                                    "key": "links"
+                                  },
+                                  {
+                                    "name": "id",
+                                    "displayName": "id",
+                                    "typePropertyKind": "TYPE_EXPRESSION",
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "The user's CRM ID.",
+                                    "key": "id"
+                                  },
+                                  {
+                                    "name": "email",
+                                    "displayName": "email",
+                                    "typePropertyKind": "TYPE_EXPRESSION",
+                                    "type": "string",
+                                    "required": true,
+                                    "key": "email"
+                                  },
+                                  {
+                                    "name": "name",
+                                    "displayName": "name",
+                                    "typePropertyKind": "TYPE_EXPRESSION",
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "The user's full name.",
+                                    "key": "name"
+                                  }
+                                ],
+                                "orderHint": 4,
+                                "key": "owner"
+                              },
+                              {
+                                "name": "country",
+                                "displayName": "country",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": false,
+                                "description": "The country the account is designated to internally.\nAn ISO two-letter country code where parsed and known.\nCan fall back to the name of the country, this is a bug - please report unmapped country names.\n",
+                                "key": "country"
+                              },
+                              {
+                                "name": "generalEmail",
+                                "displayName": "generalEmail",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": false,
+                                "description": "The general contact email address of the account.\nAll email addresses are automatically lowercased in the current implementation of the CRM.\n",
+                                "key": "generalEmail"
+                              },
+                              {
+                                "name": "website",
+                                "displayName": "website",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": false,
+                                "description": "The main website URL of the account\n",
+                                "key": "website"
+                              }
+                            ],
+                            "orderHint": 3
+                          },
+                          "key": "results"
+                        }
+                      ],
+                      "orderHint": 2,
+                      "key": "application/json"
+                    }
+                  ],
+                  "key": "200"
+                },
+                {
+                  "code": "401",
+                  "body": [
+                    {
+                      "name": "ErrorResponse",
+                      "displayName": "ErrorResponse",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "object",
+                      "properties": [
+                        {
+                          "name": "statusCode",
+                          "displayName": "statusCode",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "integer",
+                          "required": true,
+                          "description": "The HTTP status code, repeated.",
+                          "key": "statusCode"
+                        },
+                        {
+                          "name": "errors",
+                          "displayName": "errors",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "name": "Error",
+                            "displayName": "Error",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "properties": [
+                              {
+                                "name": "code",
+                                "displayName": "code",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                                "key": "code"
+                              },
+                              {
+                                "name": "message",
+                                "displayName": "message",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "A plain text message containing further information.",
+                                "key": "message"
+                              }
+                            ],
+                            "orderHint": 6
+                          },
+                          "key": "errors"
+                        },
+                        {
+                          "name": "correlationId",
+                          "displayName": "correlationId",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                          "key": "correlationId"
+                        }
+                      ],
+                      "orderHint": 5,
+                      "key": "application/json"
+                    }
+                  ],
+                  "key": "401"
+                },
+                {
+                  "code": "403",
+                  "body": [
+                    {
+                      "name": "ErrorResponse",
+                      "displayName": "ErrorResponse",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "object",
+                      "properties": [
+                        {
+                          "name": "statusCode",
+                          "displayName": "statusCode",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "integer",
+                          "required": true,
+                          "description": "The HTTP status code, repeated.",
+                          "key": "statusCode"
+                        },
+                        {
+                          "name": "errors",
+                          "displayName": "errors",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "name": "Error",
+                            "displayName": "Error",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "properties": [
+                              {
+                                "name": "code",
+                                "displayName": "code",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                                "key": "code"
+                              },
+                              {
+                                "name": "message",
+                                "displayName": "message",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "A plain text message containing further information.",
+                                "key": "message"
+                              }
+                            ],
+                            "orderHint": 6
+                          },
+                          "key": "errors"
+                        },
+                        {
+                          "name": "correlationId",
+                          "displayName": "correlationId",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                          "key": "correlationId"
+                        }
+                      ],
+                      "orderHint": 5,
+                      "key": "application/json"
+                    }
+                  ],
+                  "key": "403"
+                },
+                {
+                  "code": "404",
+                  "body": [
+                    {
+                      "name": "ErrorResponse",
+                      "displayName": "ErrorResponse",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "object",
+                      "properties": [
+                        {
+                          "name": "statusCode",
+                          "displayName": "statusCode",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "integer",
+                          "required": true,
+                          "description": "The HTTP status code, repeated.",
+                          "key": "statusCode"
+                        },
+                        {
+                          "name": "errors",
+                          "displayName": "errors",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "name": "Error",
+                            "displayName": "Error",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "properties": [
+                              {
+                                "name": "code",
+                                "displayName": "code",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                                "key": "code"
+                              },
+                              {
+                                "name": "message",
+                                "displayName": "message",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "A plain text message containing further information.",
+                                "key": "message"
+                              }
+                            ],
+                            "orderHint": 6
+                          },
+                          "key": "errors"
+                        },
+                        {
+                          "name": "correlationId",
+                          "displayName": "correlationId",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                          "key": "correlationId"
+                        }
+                      ],
+                      "orderHint": 5,
+                      "key": "application/json"
+                    },
+                    {
+                      "name": "text/html",
+                      "displayName": "text/html",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "any",
+                      "key": "text/html"
+                    }
+                  ],
+                  "key": "404"
+                },
+                {
+                  "code": "500",
+                  "body": [
+                    {
+                      "name": "ErrorResponse",
+                      "displayName": "ErrorResponse",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "object",
+                      "properties": [
+                        {
+                          "name": "statusCode",
+                          "displayName": "statusCode",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "integer",
+                          "required": true,
+                          "description": "The HTTP status code, repeated.",
+                          "key": "statusCode"
+                        },
+                        {
+                          "name": "errors",
+                          "displayName": "errors",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "name": "Error",
+                            "displayName": "Error",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "properties": [
+                              {
+                                "name": "code",
+                                "displayName": "code",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                                "key": "code"
+                              },
+                              {
+                                "name": "message",
+                                "displayName": "message",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "A plain text message containing further information.",
+                                "key": "message"
+                              }
+                            ],
+                            "orderHint": 6
+                          },
+                          "key": "errors"
+                        },
+                        {
+                          "name": "correlationId",
+                          "displayName": "correlationId",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                          "key": "correlationId"
+                        }
+                      ],
+                      "orderHint": 5,
+                      "key": "application/json"
+                    }
+                  ],
+                  "key": "500"
+                },
+                {
+                  "code": "502",
+                  "body": [
+                    {
+                      "name": "ErrorResponse",
+                      "displayName": "ErrorResponse",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "object",
+                      "properties": [
+                        {
+                          "name": "statusCode",
+                          "displayName": "statusCode",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "integer",
+                          "required": true,
+                          "description": "The HTTP status code, repeated.",
+                          "key": "statusCode"
+                        },
+                        {
+                          "name": "errors",
+                          "displayName": "errors",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "name": "Error",
+                            "displayName": "Error",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "properties": [
+                              {
+                                "name": "code",
+                                "displayName": "code",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                                "key": "code"
+                              },
+                              {
+                                "name": "message",
+                                "displayName": "message",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "A plain text message containing further information.",
+                                "key": "message"
+                              }
+                            ],
+                            "orderHint": 6
+                          },
+                          "key": "errors"
+                        },
+                        {
+                          "name": "correlationId",
+                          "displayName": "correlationId",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                          "key": "correlationId"
+                        }
+                      ],
+                      "orderHint": 5,
+                      "key": "application/json"
+                    }
+                  ],
+                  "description": "502 \"Bad Gateway\" is returned if the CRM system that is backing this API returned an error.",
+                  "key": "502"
+                }
+              ],
+              "protocols": [
+                "HTTPS"
+              ],
+              "is": [
+                "pagedResult",
+                "accountsFilterable"
+              ],
+              "securedBy": [
+                {
+                  "schemeName": "jwt"
+                }
+              ],
+              "description": "Provides full text search over the accounts.\nSearches only over the CRM fields that are returned, too.\n",
+              "method": "get",
+              "allUriParameters": []
+            }
+          ],
+          "is": [
+            "fallible",
+            "secure"
+          ],
+          "relativeUri": "/search",
+          "displayName": "/search",
+          "relativeUriPathSegments": [
+            "search"
+          ],
+          "absoluteUri": "/accounts/search",
+          "parentUrl": "/accounts",
+          "uniqueId": "accounts_search",
+          "allUriParameters": []
+        },
+        {
+          "methods": [
+            {
+              "headers": [
+                {
+                  "name": "X-Correlation-ID",
+                  "displayName": "X-Correlation-ID",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "String",
+                  "required": false,
+                  "description": "Correlation IDs are strings that may only contain alphanumeric characters, underscores and hyphens and have a length of 8 to 256 characters.\nIf passed, the value is used for the the correlation ID logged and returned in `ErrorResponse`.\nOtherwise a random UUID is generated as correlation ID.\n",
+                  "key": "X-Correlation-ID"
+                },
+                {
+                  "name": "Authorization",
+                  "displayName": "Authorization",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": true,
+                  "description": "OAuth Bearer Token",
+                  "examples": [
+                    {
+                      "value": "Bearer 123456789",
+                      "strict": true,
+                      "name": null,
+                      "structuredValue": "Bearer 123456789"
+                    }
+                  ],
+                  "key": "Authorization"
+                }
+              ],
+              "responses": [
+                {
+                  "code": "200",
+                  "body": [
+                    {
+                      "name": "Account",
+                      "displayName": "Account",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "object",
+                      "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
+                      "properties": [
+                        {
+                          "name": "links",
+                          "displayName": "links",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "name": "Link",
+                            "displayName": "Link",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "description": "A pragmatic hypermedia link that does the job.",
+                            "properties": [
+                              {
+                                "name": "href",
+                                "displayName": "href",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+                                "key": "href"
+                              },
+                              {
+                                "name": "rel",
+                                "displayName": "rel",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                                "enum": [
+                                  "self"
+                                ],
+                                "key": "rel"
+                              }
+                            ],
+                            "orderHint": 0
+                          },
+                          "key": "links"
+                        },
+                        {
+                          "name": "id",
+                          "displayName": "id",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "key": "id"
+                        },
+                        {
+                          "name": "name",
+                          "displayName": "name",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "The name of the company's legal entity.",
+                          "key": "name"
+                        },
+                        {
+                          "name": "brand",
+                          "displayName": "brand",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": false,
+                          "description": "If the brand differs from the company name, this field contains one or many\nbrand names as free text.\n",
+                          "key": "brand"
+                        },
+                        {
+                          "name": "number",
+                          "displayName": "number",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": false,
+                          "description": "A number assigned to the account (company) to connect internal systems.\nThe master for this number is the financial accounting team and their IT system.\n",
+                          "key": "number"
+                        },
+                        {
+                          "name": "type",
+                          "displayName": "type",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": false,
+                          "description": "A classification of the accounts by their relationship to the company.\nNew Values can be added any time.\n",
+                          "key": "type"
+                        },
+                        {
+                          "name": "businessRegion",
+                          "displayName": "businessRegion",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": false,
+                          "description": "The regional organization structure inside the company that is responsible for\nthis account.\nValues can change any time as the structure of the sales organization changes.\n",
+                          "key": "businessRegion"
+                        },
+                        {
+                          "name": "User",
+                          "displayName": "User",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "object",
+                          "required": true,
+                          "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
+                          "properties": [
+                            {
+                              "name": "links",
+                              "displayName": "links",
+                              "typePropertyKind": "TYPE_EXPRESSION",
+                              "type": "array",
+                              "required": true,
+                              "items": {
+                                "name": "Link",
+                                "displayName": "Link",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "object",
+                                "description": "A pragmatic hypermedia link that does the job.",
+                                "properties": [
+                                  {
+                                    "name": "href",
+                                    "displayName": "href",
+                                    "typePropertyKind": "TYPE_EXPRESSION",
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+                                    "key": "href"
+                                  },
+                                  {
+                                    "name": "rel",
+                                    "displayName": "rel",
+                                    "typePropertyKind": "TYPE_EXPRESSION",
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                                    "enum": [
+                                      "self"
+                                    ],
+                                    "key": "rel"
+                                  }
+                                ],
+                                "orderHint": 0
+                              },
+                              "key": "links"
+                            },
+                            {
+                              "name": "id",
+                              "displayName": "id",
+                              "typePropertyKind": "TYPE_EXPRESSION",
+                              "type": "string",
+                              "required": true,
+                              "description": "The user's CRM ID.",
+                              "key": "id"
+                            },
+                            {
+                              "name": "email",
+                              "displayName": "email",
+                              "typePropertyKind": "TYPE_EXPRESSION",
+                              "type": "string",
+                              "required": true,
+                              "key": "email"
+                            },
+                            {
+                              "name": "name",
+                              "displayName": "name",
+                              "typePropertyKind": "TYPE_EXPRESSION",
+                              "type": "string",
+                              "required": true,
+                              "description": "The user's full name.",
+                              "key": "name"
+                            }
+                          ],
+                          "orderHint": 4,
+                          "key": "owner"
+                        },
+                        {
+                          "name": "country",
+                          "displayName": "country",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": false,
+                          "description": "The country the account is designated to internally.\nAn ISO two-letter country code where parsed and known.\nCan fall back to the name of the country, this is a bug - please report unmapped country names.\n",
+                          "key": "country"
+                        },
+                        {
+                          "name": "generalEmail",
+                          "displayName": "generalEmail",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": false,
+                          "description": "The general contact email address of the account.\nAll email addresses are automatically lowercased in the current implementation of the CRM.\n",
+                          "key": "generalEmail"
+                        },
+                        {
+                          "name": "website",
+                          "displayName": "website",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": false,
+                          "description": "The main website URL of the account\n",
+                          "key": "website"
+                        }
+                      ],
+                      "orderHint": 3,
+                      "key": "application/json"
+                    }
+                  ],
+                  "key": "200"
+                },
+                {
+                  "code": "401",
+                  "body": [
+                    {
+                      "name": "ErrorResponse",
+                      "displayName": "ErrorResponse",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "object",
+                      "properties": [
+                        {
+                          "name": "statusCode",
+                          "displayName": "statusCode",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "integer",
+                          "required": true,
+                          "description": "The HTTP status code, repeated.",
+                          "key": "statusCode"
+                        },
+                        {
+                          "name": "errors",
+                          "displayName": "errors",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "name": "Error",
+                            "displayName": "Error",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "properties": [
+                              {
+                                "name": "code",
+                                "displayName": "code",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                                "key": "code"
+                              },
+                              {
+                                "name": "message",
+                                "displayName": "message",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "A plain text message containing further information.",
+                                "key": "message"
+                              }
+                            ],
+                            "orderHint": 6
+                          },
+                          "key": "errors"
+                        },
+                        {
+                          "name": "correlationId",
+                          "displayName": "correlationId",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                          "key": "correlationId"
+                        }
+                      ],
+                      "orderHint": 5,
+                      "key": "application/json"
+                    }
+                  ],
+                  "key": "401"
+                },
+                {
+                  "code": "403",
+                  "body": [
+                    {
+                      "name": "ErrorResponse",
+                      "displayName": "ErrorResponse",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "object",
+                      "properties": [
+                        {
+                          "name": "statusCode",
+                          "displayName": "statusCode",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "integer",
+                          "required": true,
+                          "description": "The HTTP status code, repeated.",
+                          "key": "statusCode"
+                        },
+                        {
+                          "name": "errors",
+                          "displayName": "errors",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "name": "Error",
+                            "displayName": "Error",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "properties": [
+                              {
+                                "name": "code",
+                                "displayName": "code",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                                "key": "code"
+                              },
+                              {
+                                "name": "message",
+                                "displayName": "message",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "A plain text message containing further information.",
+                                "key": "message"
+                              }
+                            ],
+                            "orderHint": 6
+                          },
+                          "key": "errors"
+                        },
+                        {
+                          "name": "correlationId",
+                          "displayName": "correlationId",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                          "key": "correlationId"
+                        }
+                      ],
+                      "orderHint": 5,
+                      "key": "application/json"
+                    }
+                  ],
+                  "key": "403"
+                },
+                {
+                  "code": "404",
+                  "body": [
+                    {
+                      "name": "ErrorResponse",
+                      "displayName": "ErrorResponse",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "object",
+                      "properties": [
+                        {
+                          "name": "statusCode",
+                          "displayName": "statusCode",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "integer",
+                          "required": true,
+                          "description": "The HTTP status code, repeated.",
+                          "key": "statusCode"
+                        },
+                        {
+                          "name": "errors",
+                          "displayName": "errors",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "name": "Error",
+                            "displayName": "Error",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "properties": [
+                              {
+                                "name": "code",
+                                "displayName": "code",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                                "key": "code"
+                              },
+                              {
+                                "name": "message",
+                                "displayName": "message",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "A plain text message containing further information.",
+                                "key": "message"
+                              }
+                            ],
+                            "orderHint": 6
+                          },
+                          "key": "errors"
+                        },
+                        {
+                          "name": "correlationId",
+                          "displayName": "correlationId",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                          "key": "correlationId"
+                        }
+                      ],
+                      "orderHint": 5,
+                      "key": "application/json"
+                    },
+                    {
+                      "name": "text/html",
+                      "displayName": "text/html",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "any",
+                      "key": "text/html"
+                    }
+                  ],
+                  "key": "404"
+                },
+                {
+                  "code": "500",
+                  "body": [
+                    {
+                      "name": "ErrorResponse",
+                      "displayName": "ErrorResponse",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "object",
+                      "properties": [
+                        {
+                          "name": "statusCode",
+                          "displayName": "statusCode",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "integer",
+                          "required": true,
+                          "description": "The HTTP status code, repeated.",
+                          "key": "statusCode"
+                        },
+                        {
+                          "name": "errors",
+                          "displayName": "errors",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "name": "Error",
+                            "displayName": "Error",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "properties": [
+                              {
+                                "name": "code",
+                                "displayName": "code",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                                "key": "code"
+                              },
+                              {
+                                "name": "message",
+                                "displayName": "message",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "A plain text message containing further information.",
+                                "key": "message"
+                              }
+                            ],
+                            "orderHint": 6
+                          },
+                          "key": "errors"
+                        },
+                        {
+                          "name": "correlationId",
+                          "displayName": "correlationId",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                          "key": "correlationId"
+                        }
+                      ],
+                      "orderHint": 5,
+                      "key": "application/json"
+                    }
+                  ],
+                  "key": "500"
+                },
+                {
+                  "code": "502",
+                  "body": [
+                    {
+                      "name": "ErrorResponse",
+                      "displayName": "ErrorResponse",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "object",
+                      "properties": [
+                        {
+                          "name": "statusCode",
+                          "displayName": "statusCode",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "integer",
+                          "required": true,
+                          "description": "The HTTP status code, repeated.",
+                          "key": "statusCode"
+                        },
+                        {
+                          "name": "errors",
+                          "displayName": "errors",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "name": "Error",
+                            "displayName": "Error",
+                            "typePropertyKind": "TYPE_EXPRESSION",
+                            "type": "object",
+                            "properties": [
+                              {
+                                "name": "code",
+                                "displayName": "code",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                                "key": "code"
+                              },
+                              {
+                                "name": "message",
+                                "displayName": "message",
+                                "typePropertyKind": "TYPE_EXPRESSION",
+                                "type": "string",
+                                "required": true,
+                                "description": "A plain text message containing further information.",
+                                "key": "message"
+                              }
+                            ],
+                            "orderHint": 6
+                          },
+                          "key": "errors"
+                        },
+                        {
+                          "name": "correlationId",
+                          "displayName": "correlationId",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+                          "key": "correlationId"
+                        }
+                      ],
+                      "orderHint": 5,
+                      "key": "application/json"
+                    }
+                  ],
+                  "description": "502 \"Bad Gateway\" is returned if the CRM system that is backing this API returned an error.",
+                  "key": "502"
+                }
+              ],
+              "protocols": [
+                "HTTPS"
+              ],
+              "securedBy": [
+                {
+                  "schemeName": "jwt"
+                }
+              ],
+              "description": null,
+              "method": "get",
+              "allUriParameters": [
+                {
+                  "name": "key",
+                  "displayName": "key",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string",
+                  "required": true,
+                  "description": "One of the allowed unique fields",
+                  "key": "key"
+                },
+                {
+                  "name": "value",
+                  "displayName": "value",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "string type",
+                  "required": true,
+                  "key": "value"
+                }
+              ]
+            }
+          ],
+          "is": [
+            "fallible",
+            "secure"
+          ],
+          "uriParameters": [
+            {
+              "name": "key",
+              "displayName": "key",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string",
+              "required": true,
+              "description": "One of the allowed unique fields",
+              "key": "key"
+            },
+            {
+              "name": "value",
+              "displayName": "value",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string type",
+              "required": true,
+              "key": "value"
+            }
+          ],
+          "relativeUri": "/{key}={value}",
+          "displayName": "/{key}={value}",
+          "relativeUriPathSegments": [
+            "{key}={value}"
+          ],
+          "absoluteUri": "/accounts/{key}={value}",
+          "parentUrl": "/accounts",
+          "uniqueId": "accounts__key___value_",
+          "allUriParameters": [
+            {
+              "name": "key",
+              "displayName": "key",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string",
+              "required": true,
+              "description": "One of the allowed unique fields",
+              "key": "key"
+            },
+            {
+              "name": "value",
+              "displayName": "value",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string type",
+              "required": true,
+              "key": "value"
+            }
+          ]
+        }
+      ],
+      "relativeUriPathSegments": [
+        "accounts"
+      ],
+      "absoluteUri": "/accounts",
+      "parentUrl": "",
+      "uniqueId": "accounts",
+      "allUriParameters": []
+    }
+  ],
+  "types": {
+    "Link": {
+      "name": "Link",
+      "displayName": "Link",
+      "typePropertyKind": "TYPE_EXPRESSION",
+      "type": "object",
+      "description": "A pragmatic hypermedia link that does the job.",
+      "properties": [
+        {
+          "name": "href",
+          "displayName": "href",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": true,
+          "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+          "key": "href"
+        },
+        {
+          "name": "rel",
+          "displayName": "rel",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": true,
+          "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+          "enum": [
+            "self"
+          ],
+          "key": "rel"
+        }
+      ],
+      "orderHint": 0
+    },
+    "PagedQueryResult": {
+      "name": "PagedQueryResult",
+      "displayName": "PagedQueryResult",
+      "typePropertyKind": "TYPE_EXPRESSION",
+      "type": "object",
+      "properties": {
+        "offset": {
+          "name": "offset",
+          "displayName": "offset",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "number",
+          "required": true,
+          "description": "The `offset` parameter that was effectively applied"
+        },
+        "limit": {
+          "name": "limit",
+          "displayName": "limit",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "number",
+          "required": true,
+          "description": "The `limit` parameter that was effectively applied"
+        },
+        "count": {
+          "name": "count",
+          "displayName": "count",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "number",
+          "required": true,
+          "description": "The number of results contained in the API response.\nA total count of results beyond the ones returned is not available.\n"
+        }
+      },
+      "orderHint": 1
+    },
+    "AccountsQueryResult": {
+      "name": "AccountsQueryResult",
+      "displayName": "AccountsQueryResult",
+      "typePropertyKind": "TYPE_EXPRESSION",
+      "type": "PagedQueryResult",
+      "properties": {
+        "offset": {
+          "name": "offset",
+          "displayName": "offset",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "number",
+          "required": true,
+          "description": "The `offset` parameter that was effectively applied",
+          "key": "offset"
+        },
+        "limit": {
+          "name": "limit",
+          "displayName": "limit",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "number",
+          "required": true,
+          "description": "The `limit` parameter that was effectively applied",
+          "key": "limit"
+        },
+        "count": {
+          "name": "count",
+          "displayName": "count",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "number",
+          "required": true,
+          "description": "The number of results contained in the API response.\nA total count of results beyond the ones returned is not available.\n",
+          "key": "count"
+        },
+        "results": {
+          "name": "results",
+          "displayName": "results",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "array",
+          "required": true,
+          "items": {
+            "name": "Account",
+            "displayName": "Account",
+            "typePropertyKind": "TYPE_EXPRESSION",
+            "type": "object",
+            "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
+            "properties": [
+              {
+                "name": "links",
+                "displayName": "links",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "array",
+                "required": true,
+                "items": {
+                  "name": "Link",
+                  "displayName": "Link",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": "object",
+                  "description": "A pragmatic hypermedia link that does the job.",
+                  "properties": [
+                    {
+                      "name": "href",
+                      "displayName": "href",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "string",
+                      "required": true,
+                      "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+                      "key": "href"
+                    },
+                    {
+                      "name": "rel",
+                      "displayName": "rel",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "string",
+                      "required": true,
+                      "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                      "enum": [
+                        "self"
+                      ],
+                      "key": "rel"
+                    }
+                  ],
+                  "orderHint": 0
+                },
+                "key": "links"
+              },
+              {
+                "name": "id",
+                "displayName": "id",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": true,
+                "key": "id"
+              },
+              {
+                "name": "name",
+                "displayName": "name",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": true,
+                "description": "The name of the company's legal entity.",
+                "key": "name"
+              },
+              {
+                "name": "brand",
+                "displayName": "brand",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": false,
+                "description": "If the brand differs from the company name, this field contains one or many\nbrand names as free text.\n",
+                "key": "brand"
+              },
+              {
+                "name": "number",
+                "displayName": "number",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": false,
+                "description": "A number assigned to the account (company) to connect internal systems.\nThe master for this number is the financial accounting team and their IT system.\n",
+                "key": "number"
+              },
+              {
+                "name": "type",
+                "displayName": "type",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": false,
+                "description": "A classification of the accounts by their relationship to the company.\nNew Values can be added any time.\n",
+                "key": "type"
+              },
+              {
+                "name": "businessRegion",
+                "displayName": "businessRegion",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": false,
+                "description": "The regional organization structure inside the company that is responsible for\nthis account.\nValues can change any time as the structure of the sales organization changes.\n",
+                "key": "businessRegion"
+              },
+              {
+                "name": "User",
+                "displayName": "User",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "object",
+                "required": true,
+                "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
+                "properties": [
+                  {
+                    "name": "links",
+                    "displayName": "links",
+                    "typePropertyKind": "TYPE_EXPRESSION",
+                    "type": "array",
+                    "required": true,
+                    "items": {
+                      "name": "Link",
+                      "displayName": "Link",
+                      "typePropertyKind": "TYPE_EXPRESSION",
+                      "type": "object",
+                      "description": "A pragmatic hypermedia link that does the job.",
+                      "properties": [
+                        {
+                          "name": "href",
+                          "displayName": "href",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+                          "key": "href"
+                        },
+                        {
+                          "name": "rel",
+                          "displayName": "rel",
+                          "typePropertyKind": "TYPE_EXPRESSION",
+                          "type": "string",
+                          "required": true,
+                          "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                          "enum": [
+                            "self"
+                          ],
+                          "key": "rel"
+                        }
+                      ],
+                      "orderHint": 0
+                    },
+                    "key": "links"
+                  },
+                  {
+                    "name": "id",
+                    "displayName": "id",
+                    "typePropertyKind": "TYPE_EXPRESSION",
+                    "type": "string",
+                    "required": true,
+                    "description": "The user's CRM ID.",
+                    "key": "id"
+                  },
+                  {
+                    "name": "email",
+                    "displayName": "email",
+                    "typePropertyKind": "TYPE_EXPRESSION",
+                    "type": "string",
+                    "required": true,
+                    "key": "email"
+                  },
+                  {
+                    "name": "name",
+                    "displayName": "name",
+                    "typePropertyKind": "TYPE_EXPRESSION",
+                    "type": "string",
+                    "required": true,
+                    "description": "The user's full name.",
+                    "key": "name"
+                  }
+                ],
+                "orderHint": 4,
+                "key": "owner"
+              },
+              {
+                "name": "country",
+                "displayName": "country",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": false,
+                "description": "The country the account is designated to internally.\nAn ISO two-letter country code where parsed and known.\nCan fall back to the name of the country, this is a bug - please report unmapped country names.\n",
+                "key": "country"
+              },
+              {
+                "name": "generalEmail",
+                "displayName": "generalEmail",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": false,
+                "description": "The general contact email address of the account.\nAll email addresses are automatically lowercased in the current implementation of the CRM.\n",
+                "key": "generalEmail"
+              },
+              {
+                "name": "website",
+                "displayName": "website",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": false,
+                "description": "The main website URL of the account\n",
+                "key": "website"
+              }
+            ],
+            "orderHint": 3
+          },
+          "key": "results"
+        }
+      },
+      "orderHint": 2
+    },
+    "Account": {
+      "name": "Account",
+      "displayName": "Account",
+      "typePropertyKind": "TYPE_EXPRESSION",
+      "type": "object",
+      "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
+      "properties": [
+        {
+          "name": "links",
+          "displayName": "links",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "array",
+          "required": true,
+          "items": {
+            "name": "Link",
+            "displayName": "Link",
+            "typePropertyKind": "TYPE_EXPRESSION",
+            "type": "object",
+            "description": "A pragmatic hypermedia link that does the job.",
+            "properties": [
+              {
+                "name": "href",
+                "displayName": "href",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": true,
+                "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+                "key": "href"
+              },
+              {
+                "name": "rel",
+                "displayName": "rel",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": true,
+                "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                "enum": [
+                  "self"
+                ],
+                "key": "rel"
+              }
+            ],
+            "orderHint": 0
+          },
+          "key": "links"
+        },
+        {
+          "name": "id",
+          "displayName": "id",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": true,
+          "key": "id"
+        },
+        {
+          "name": "name",
+          "displayName": "name",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": true,
+          "description": "The name of the company's legal entity.",
+          "key": "name"
+        },
+        {
+          "name": "brand",
+          "displayName": "brand",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "If the brand differs from the company name, this field contains one or many\nbrand names as free text.\n",
+          "key": "brand"
+        },
+        {
+          "name": "number",
+          "displayName": "number",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "A number assigned to the account (company) to connect internal systems.\nThe master for this number is the financial accounting team and their IT system.\n",
+          "key": "number"
+        },
+        {
+          "name": "type",
+          "displayName": "type",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "A classification of the accounts by their relationship to the company.\nNew Values can be added any time.\n",
+          "key": "type"
+        },
+        {
+          "name": "businessRegion",
+          "displayName": "businessRegion",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "The regional organization structure inside the company that is responsible for\nthis account.\nValues can change any time as the structure of the sales organization changes.\n",
+          "key": "businessRegion"
+        },
+        {
+          "name": "User",
+          "displayName": "User",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "object",
+          "required": true,
+          "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
+          "properties": [
+            {
+              "name": "links",
+              "displayName": "links",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "array",
+              "required": true,
+              "items": {
+                "name": "Link",
+                "displayName": "Link",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "object",
+                "description": "A pragmatic hypermedia link that does the job.",
+                "properties": [
+                  {
+                    "name": "href",
+                    "displayName": "href",
+                    "typePropertyKind": "TYPE_EXPRESSION",
+                    "type": "string",
+                    "required": true,
+                    "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+                    "key": "href"
+                  },
+                  {
+                    "name": "rel",
+                    "displayName": "rel",
+                    "typePropertyKind": "TYPE_EXPRESSION",
+                    "type": "string",
+                    "required": true,
+                    "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                    "enum": [
+                      "self"
+                    ],
+                    "key": "rel"
+                  }
+                ],
+                "orderHint": 0
+              },
+              "key": "links"
+            },
+            {
+              "name": "id",
+              "displayName": "id",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string",
+              "required": true,
+              "description": "The user's CRM ID.",
+              "key": "id"
+            },
+            {
+              "name": "email",
+              "displayName": "email",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string",
+              "required": true,
+              "key": "email"
+            },
+            {
+              "name": "name",
+              "displayName": "name",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "string",
+              "required": true,
+              "description": "The user's full name.",
+              "key": "name"
+            }
+          ],
+          "orderHint": 4,
+          "key": "owner"
+        },
+        {
+          "name": "country",
+          "displayName": "country",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "The country the account is designated to internally.\nAn ISO two-letter country code where parsed and known.\nCan fall back to the name of the country, this is a bug - please report unmapped country names.\n",
+          "key": "country"
+        },
+        {
+          "name": "generalEmail",
+          "displayName": "generalEmail",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "The general contact email address of the account.\nAll email addresses are automatically lowercased in the current implementation of the CRM.\n",
+          "key": "generalEmail"
+        },
+        {
+          "name": "website",
+          "displayName": "website",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": false,
+          "description": "The main website URL of the account\n",
+          "key": "website"
+        }
+      ],
+      "orderHint": 3
+    },
+    "User": {
+      "name": "User",
+      "displayName": "User",
+      "typePropertyKind": "TYPE_EXPRESSION",
+      "type": "object",
+      "description": "A commerectools employee by her/his account in the CRM.\n",
+      "properties": {
+        "links": {
+          "name": "links",
+          "displayName": "links",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "array",
+          "required": true,
+          "items": {
+            "name": "Link",
+            "displayName": "Link",
+            "typePropertyKind": "TYPE_EXPRESSION",
+            "type": "object",
+            "description": "A pragmatic hypermedia link that does the job.",
+            "properties": [
+              {
+                "name": "href",
+                "displayName": "href",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": true,
+                "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+                "key": "href"
+              },
+              {
+                "name": "rel",
+                "displayName": "rel",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": true,
+                "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                "enum": [
+                  "self"
+                ],
+                "key": "rel"
+              }
+            ],
+            "orderHint": 0
+          },
+          "key": "links"
+        },
+        "id": {
+          "name": "id",
+          "displayName": "id",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": true,
+          "description": "The user's CRM ID.",
+          "key": "id"
+        },
+        "email": {
+          "name": "email",
+          "displayName": "email",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": true,
+          "key": "email"
+        },
+        "name": {
+          "name": "name",
+          "displayName": "name",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": true,
+          "description": "The user's full name.",
+          "key": "name"
+        }
+      },
+      "orderHint": 4
+    },
+    "ErrorResponse": {
+      "name": "ErrorResponse",
+      "displayName": "ErrorResponse",
+      "typePropertyKind": "TYPE_EXPRESSION",
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "name": "statusCode",
+          "displayName": "statusCode",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "integer",
+          "required": true,
+          "description": "The HTTP status code, repeated.",
+          "key": "statusCode"
+        },
+        "errors": {
+          "name": "errors",
+          "displayName": "errors",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "array",
+          "required": true,
+          "items": {
+            "name": "Error",
+            "displayName": "Error",
+            "typePropertyKind": "TYPE_EXPRESSION",
+            "type": "object",
+            "properties": [
+              {
+                "name": "code",
+                "displayName": "code",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": true,
+                "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+                "key": "code"
+              },
+              {
+                "name": "message",
+                "displayName": "message",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "type": "string",
+                "required": true,
+                "description": "A plain text message containing further information.",
+                "key": "message"
+              }
+            ],
+            "orderHint": 6
+          },
+          "key": "errors"
+        },
+        "correlationId": {
+          "name": "correlationId",
+          "displayName": "correlationId",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": true,
+          "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
+          "key": "correlationId"
+        }
+      },
+      "orderHint": 5
+    },
+    "Error": {
+      "name": "Error",
+      "displayName": "Error",
+      "typePropertyKind": "TYPE_EXPRESSION",
+      "type": "object",
+      "properties": [
+        {
+          "name": "code",
+          "displayName": "code",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": true,
+          "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+          "key": "code"
+        },
+        {
+          "name": "message",
+          "displayName": "message",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": "string",
+          "required": true,
+          "description": "A plain text message containing further information.",
+          "key": "message"
+        }
+      ],
+      "orderHint": 6
+    }
+  }
+}
