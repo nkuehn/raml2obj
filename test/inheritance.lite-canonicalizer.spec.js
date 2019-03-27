@@ -10,18 +10,20 @@ describe('raml2obj', () => {
     let obj;
 
     before(done => {
-      raml2obj.parse('test/inheritance.raml', {
-        canonicalTypeImpl: 'lite-canonicalizer',
-        collectionFormat: 'arrays',
-      }).then(
-        result => {
-          obj = result;
-          done();
-        },
-        error => {
-          console.log('error', error);
-        }
-      );
+      raml2obj
+        .parse('test/inheritance.raml', {
+          canonicalTypeImpl: 'lite-canonicalizer',
+          collectionFormat: 'arrays',
+        })
+        .then(
+          result => {
+            obj = result;
+            done();
+          },
+          error => {
+            console.log('error', error);
+          }
+        );
     });
 
     it('should test the basic properties of the raml object', () => {
@@ -29,22 +31,41 @@ describe('raml2obj', () => {
       assert.strictEqual(obj.resources.length, 1);
     });
 
-    const getType = name => obj.types.find(t => t.name == name)
-    const getProperty = (typeName, propName) => getType(typeName).properties.find(p => p.name == propName)
+    const getType = name => obj.types.find(t => t.name === name);
+    const getProperty = (typeName, propName) =>
+      getType(typeName).properties.find(p => p.name === propName);
 
     it('should test type inheritance', () => {
-      const passwordProtectedAccountInResource = obj.resources[0].methods[0].body[0];
+      const passwordProtectedAccountInResource =
+        obj.resources[0].methods[0].body[0];
 
-      passwordProtectedAccountInResource.key = getType("PasswordProtectedAccount").key
-      assert.deepStrictEqual(passwordProtectedAccountInResource, getType("PasswordProtectedAccount"))
+      passwordProtectedAccountInResource.key = getType(
+        'PasswordProtectedAccount'
+      ).key;
+      assert.deepStrictEqual(
+        passwordProtectedAccountInResource,
+        getType('PasswordProtectedAccount')
+      );
 
-      assert.strictEqual(getType("Account").properties.length, 3);
-      assert.strictEqual(getType("PasswordProtectedAccount").properties.length, 4);
-      assert.strictEqual(getType("BannableAccount").properties.length, 5);
+      assert.strictEqual(getType('Account').properties.length, 3);
+      assert.strictEqual(
+        getType('PasswordProtectedAccount').properties.length,
+        4
+      );
+      assert.strictEqual(getType('BannableAccount').properties.length, 5);
 
-      assert.strictEqual(getProperty("PasswordProtectedAccount", "password").displayName, 'password');
-      assert.strictEqual(getProperty("PasswordProtectedAccount", "password").type, 'string');
-      assert.strictEqual(getProperty("BannableAccount", "name").displayName, 'name');
+      assert.strictEqual(
+        getProperty('PasswordProtectedAccount', 'password').displayName,
+        'password'
+      );
+      assert.strictEqual(
+        getProperty('PasswordProtectedAccount', 'password').type,
+        'string'
+      );
+      assert.strictEqual(
+        getProperty('BannableAccount', 'name').displayName,
+        'name'
+      );
     });
 
     it('should test description of descendants', () => {

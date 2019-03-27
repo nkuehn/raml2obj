@@ -7,7 +7,7 @@ const tools = require('datatype-expansion');
 const fs = require('fs');
 const makeExamplesAndTypesConsistent = require('./consistency-helpers');
 const helpers = require('./arrays-objects-helpers');
-const liteCanonicalizer = require('./lite-canonicalizer')
+const liteCanonicalizer = require('./lite-canonicalizer');
 
 function _makeUniqueId(string) {
   const stringWithSpacesReplaced = string.replace(/\W/g, '_');
@@ -127,11 +127,13 @@ function _enhanceRamlObj(ramlObj, options, api) {
 
   // We want to expand inherited root types, so that later on when we copy type properties into an object,
   // we get the full graph.
-  var types = ramlObj.types
-  if(options.canonicalTypeImpl == 'datatype-expansion'){
+  var types = ramlObj.types;
+  if (options.canonicalTypeImpl === 'datatype-expansion') {
     types = makeExamplesAndTypesConsistent(_expandRootTypes(types, options));
-  } else if (options.canonicalTypeImpl == 'lite-canonicalizer'){
-    types = makeExamplesAndTypesConsistent(liteCanonicalizer.expandTypes(types, api));
+  } else if (options.canonicalTypeImpl === 'lite-canonicalizer') {
+    types = makeExamplesAndTypesConsistent(
+      liteCanonicalizer.expandTypes(types, api)
+    );
   }
 
   // Delete the types from the ramlObj so it's not processed again later on.
@@ -177,6 +179,12 @@ function _enhanceRamlObj(ramlObj, options, api) {
   return ramlObj;
 }
 
+function _reject(reason) {
+  return new Promise((resolve, reject) => {
+    reject(new Error(reason));
+  });
+}
+
 function _sourceToRamlObj(source, options = {}) {
   // "options" was originally a validation flag
   if (typeof options === 'boolean') {
@@ -190,46 +198,58 @@ function _sourceToRamlObj(source, options = {}) {
           rejectOnErrors: !!options.validate,
         })
         .then(result => {
-          // TODO shouldn't this use  RAMLVersion()=="RAML10" instead of looking into the internal data structure??
-          if (result._node._universe._typedVersion === '0.8') {
-            throw new Error('_sourceToRamlObj: only RAML 1.0 is supported!');
+          if (result.RAMLVersion() === 'RAML08') {
+            return _reject('_sourceToRamlObj: only RAML 1.0 is supported!');
           }
-
           if (result.expand) {
-            return result.expand(true)
+            return result.expand(true);
           }
-
-          return new Promise((resolve, reject) => {
-            reject(
-              new Error(
-                '_sourceToRamlObj: source could not be parsed. Is it a root RAML file?'
-              )
-            );
-          });
+          return _reject(
+            '_sourceToRamlObj: source could not be parsed. Is it a root RAML file?'
+          );
         });
     }
-
-    return new Promise((resolve, reject) => {
-      reject(new Error('_sourceToRamlObj: source does not exist.'));
-    });
+    return _reject('_sourceToRamlObj: source does not exist.');
   } else if (typeof source === 'object') {
-    // Parse RAML object directly
-    return new Promise(resolve => {
-      resolve(source);
-    });
+    if (source.RAMLVersion && typeof source.RAMLVersion === 'function') {
+      // handle as a raml parser interface
+      if (source.RAMLVersion() === 'RAML10') {
+        return new Promise(resolve => {
+          resolve(source);
+        });
+      } else {
+        return _reject('_sourceToRamlObj: only RAML 1.0 is supported!');
+      }
+    } else {
+      // handle as an Api.toJSON() object representation
+      if (options.canonicalTypeImpl === 'lite-canonicalizer') {
+        return _reject(
+          '_sourceToRamlObj: using the lite-canonicalizer requires passing either a file URL or a raml-1-parser `Api` Object'
+        );
+      } else {
+        // Return RAML object directly
+        return new Promise(resolve => {
+          resolve(source);
+        });
+      }
+    }
   }
 
-  return new Promise((resolve, reject) => {
-    reject(
-      new Error(
-        '_sourceToRamlObj: You must supply either file, url or object as source.'
-      )
-    );
-  });
+  return _reject(
+    '_sourceToRamlObj: You must supply either file, url or object as source.'
+  );
 }
 
 module.exports.parse = function(source, options) {
-  return _sourceToRamlObj(source, options).then(api =>
-      _enhanceRamlObj(api.toJSON({ serializeMetadata: false }), options, api)
-  );
+  return _sourceToRamlObj(source, options).then(apiOrObj => {
+    if (apiOrObj.RAMLVersion && typeof apiOrObj.RAMLVersion === 'function') {
+      return _enhanceRamlObj(
+        apiOrObj.toJSON({ serializeMetadata: false }),
+        options,
+        apiOrObj
+      );
+    } else {
+      return _enhanceRamlObj(apiOrObj, options, null);
+    }
+  });
 };
