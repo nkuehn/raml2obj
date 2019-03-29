@@ -52,6 +52,34 @@
               "displayName": "ErrorResponse",
               "typePropertyKind": "TYPE_EXPRESSION",
               "type": "object",
+              "orderHint": 5,
+              "additionalProperties": true,
+              "superTypes": [
+                "object",
+                "any"
+              ],
+              "subTypes": [
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json"
+              ],
               "properties": [
                 {
                   "name": "statusCode",
@@ -73,6 +101,13 @@
                     "displayName": "Error",
                     "typePropertyKind": "TYPE_EXPRESSION",
                     "type": "object",
+                    "orderHint": 6,
+                    "additionalProperties": true,
+                    "superTypes": [
+                      "object",
+                      "any"
+                    ],
+                    "subTypes": [],
                     "properties": [
                       {
                         "name": "code",
@@ -92,8 +127,7 @@
                         "description": "A plain text message containing further information.",
                         "key": "message"
                       }
-                    ],
-                    "orderHint": 6
+                    ]
                   },
                   "key": "errors"
                 },
@@ -107,7 +141,6 @@
                   "key": "correlationId"
                 }
               ],
-              "orderHint": 5,
               "key": "application/json"
             }
           ],
@@ -121,6 +154,34 @@
               "displayName": "ErrorResponse",
               "typePropertyKind": "TYPE_EXPRESSION",
               "type": "object",
+              "orderHint": 5,
+              "additionalProperties": true,
+              "superTypes": [
+                "object",
+                "any"
+              ],
+              "subTypes": [
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json"
+              ],
               "properties": [
                 {
                   "name": "statusCode",
@@ -142,6 +203,13 @@
                     "displayName": "Error",
                     "typePropertyKind": "TYPE_EXPRESSION",
                     "type": "object",
+                    "orderHint": 6,
+                    "additionalProperties": true,
+                    "superTypes": [
+                      "object",
+                      "any"
+                    ],
+                    "subTypes": [],
                     "properties": [
                       {
                         "name": "code",
@@ -161,8 +229,7 @@
                         "description": "A plain text message containing further information.",
                         "key": "message"
                       }
-                    ],
-                    "orderHint": 6
+                    ]
                   },
                   "key": "errors"
                 },
@@ -176,7 +243,6 @@
                   "key": "correlationId"
                 }
               ],
-              "orderHint": 5,
               "key": "application/json"
             }
           ],
@@ -190,6 +256,34 @@
               "displayName": "ErrorResponse",
               "typePropertyKind": "TYPE_EXPRESSION",
               "type": "object",
+              "orderHint": 5,
+              "additionalProperties": true,
+              "superTypes": [
+                "object",
+                "any"
+              ],
+              "subTypes": [
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json"
+              ],
               "properties": [
                 {
                   "name": "statusCode",
@@ -211,6 +305,13 @@
                     "displayName": "Error",
                     "typePropertyKind": "TYPE_EXPRESSION",
                     "type": "object",
+                    "orderHint": 6,
+                    "additionalProperties": true,
+                    "superTypes": [
+                      "object",
+                      "any"
+                    ],
+                    "subTypes": [],
                     "properties": [
                       {
                         "name": "code",
@@ -230,8 +331,7 @@
                         "description": "A plain text message containing further information.",
                         "key": "message"
                       }
-                    ],
-                    "orderHint": 6
+                    ]
                   },
                   "key": "errors"
                 },
@@ -245,7 +345,6 @@
                   "key": "correlationId"
                 }
               ],
-              "orderHint": 5,
               "key": "application/json"
             },
             {
@@ -266,6 +365,34 @@
               "displayName": "ErrorResponse",
               "typePropertyKind": "TYPE_EXPRESSION",
               "type": "object",
+              "orderHint": 5,
+              "additionalProperties": true,
+              "superTypes": [
+                "object",
+                "any"
+              ],
+              "subTypes": [
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json"
+              ],
               "properties": [
                 {
                   "name": "statusCode",
@@ -287,6 +414,13 @@
                     "displayName": "Error",
                     "typePropertyKind": "TYPE_EXPRESSION",
                     "type": "object",
+                    "orderHint": 6,
+                    "additionalProperties": true,
+                    "superTypes": [
+                      "object",
+                      "any"
+                    ],
+                    "subTypes": [],
                     "properties": [
                       {
                         "name": "code",
@@ -306,8 +440,7 @@
                         "description": "A plain text message containing further information.",
                         "key": "message"
                       }
-                    ],
-                    "orderHint": 6
+                    ]
                   },
                   "key": "errors"
                 },
@@ -321,7 +454,6 @@
                   "key": "correlationId"
                 }
               ],
-              "orderHint": 5,
               "key": "application/json"
             }
           ],
@@ -335,6 +467,34 @@
               "displayName": "ErrorResponse",
               "typePropertyKind": "TYPE_EXPRESSION",
               "type": "object",
+              "orderHint": 5,
+              "additionalProperties": true,
+              "superTypes": [
+                "object",
+                "any"
+              ],
+              "subTypes": [
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json",
+                "application/json"
+              ],
               "properties": [
                 {
                   "name": "statusCode",
@@ -356,6 +516,13 @@
                     "displayName": "Error",
                     "typePropertyKind": "TYPE_EXPRESSION",
                     "type": "object",
+                    "orderHint": 6,
+                    "additionalProperties": true,
+                    "superTypes": [
+                      "object",
+                      "any"
+                    ],
+                    "subTypes": [],
                     "properties": [
                       {
                         "name": "code",
@@ -375,8 +542,7 @@
                         "description": "A plain text message containing further information.",
                         "key": "message"
                       }
-                    ],
-                    "orderHint": 6
+                    ]
                   },
                   "key": "errors"
                 },
@@ -390,7 +556,6 @@
                   "key": "correlationId"
                 }
               ],
-              "orderHint": 5,
               "key": "application/json"
             }
           ],
@@ -629,7 +794,19 @@
                   "name": "AccountsQueryResult",
                   "displayName": "AccountsQueryResult",
                   "typePropertyKind": "TYPE_EXPRESSION",
-                  "type": "PagedQueryResult",
+                  "type": "object",
+                  "orderHint": 2,
+                  "additionalProperties": true,
+                  "superTypes": [
+                    "PagedQueryResult",
+                    "object",
+                    "any"
+                  ],
+                  "subTypes": [
+                    "application/json",
+                    "application/json"
+                  ],
+                  "originalType": "PagedQueryResult",
                   "properties": [
                     {
                       "name": "offset",
@@ -670,6 +847,15 @@
                         "typePropertyKind": "TYPE_EXPRESSION",
                         "type": "object",
                         "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
+                        "orderHint": 3,
+                        "additionalProperties": true,
+                        "superTypes": [
+                          "object",
+                          "any"
+                        ],
+                        "subTypes": [
+                          "application/json"
+                        ],
                         "properties": [
                           {
                             "name": "links",
@@ -683,6 +869,13 @@
                               "typePropertyKind": "TYPE_EXPRESSION",
                               "type": "object",
                               "description": "A pragmatic hypermedia link that does the job.",
+                              "orderHint": 0,
+                              "additionalProperties": true,
+                              "superTypes": [
+                                "object",
+                                "any"
+                              ],
+                              "subTypes": [],
                               "properties": [
                                 {
                                   "name": "href",
@@ -705,8 +898,7 @@
                                   ],
                                   "key": "rel"
                                 }
-                              ],
-                              "orderHint": 0
+                              ]
                             },
                             "key": "links"
                           },
@@ -764,80 +956,23 @@
                             "key": "businessRegion"
                           },
                           {
-                            "name": "User",
-                            "displayName": "User",
+                            "name": "owner",
+                            "displayName": "owner",
                             "typePropertyKind": "TYPE_EXPRESSION",
-                            "type": "object",
-                            "required": true,
+                            "type": "o",
                             "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
-                            "properties": [
-                              {
-                                "name": "links",
-                                "displayName": "links",
-                                "typePropertyKind": "TYPE_EXPRESSION",
-                                "type": "array",
-                                "required": true,
-                                "items": {
-                                  "name": "Link",
-                                  "displayName": "Link",
-                                  "typePropertyKind": "TYPE_EXPRESSION",
-                                  "type": "object",
-                                  "description": "A pragmatic hypermedia link that does the job.",
-                                  "properties": [
-                                    {
-                                      "name": "href",
-                                      "displayName": "href",
-                                      "typePropertyKind": "TYPE_EXPRESSION",
-                                      "type": "string",
-                                      "required": true,
-                                      "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
-                                      "key": "href"
-                                    },
-                                    {
-                                      "name": "rel",
-                                      "displayName": "rel",
-                                      "typePropertyKind": "TYPE_EXPRESSION",
-                                      "type": "string",
-                                      "required": true,
-                                      "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
-                                      "enum": [
-                                        "self"
-                                      ],
-                                      "key": "rel"
-                                    }
-                                  ],
-                                  "orderHint": 0
-                                },
-                                "key": "links"
-                              },
-                              {
-                                "name": "id",
-                                "displayName": "id",
-                                "typePropertyKind": "TYPE_EXPRESSION",
-                                "type": "string",
-                                "required": true,
-                                "description": "The user's CRM ID.",
-                                "key": "id"
-                              },
-                              {
-                                "name": "email",
-                                "displayName": "email",
-                                "typePropertyKind": "TYPE_EXPRESSION",
-                                "type": "string",
-                                "required": true,
-                                "key": "email"
-                              },
-                              {
-                                "name": "name",
-                                "displayName": "name",
-                                "typePropertyKind": "TYPE_EXPRESSION",
-                                "type": "string",
-                                "required": true,
-                                "description": "The user's full name.",
-                                "key": "name"
-                              }
-                            ],
                             "orderHint": 4,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [
+                              null,
+                              null
+                            ],
+                            "required": true,
+                            "originalType": "User",
                             "key": "owner"
                           },
                           {
@@ -867,13 +1002,11 @@
                             "description": "The main website URL of the account\n",
                             "key": "website"
                           }
-                        ],
-                        "orderHint": 3
+                        ]
                       },
                       "key": "results"
                     }
                   ],
-                  "orderHint": 2,
                   "key": "application/json"
                 }
               ],
@@ -887,6 +1020,34 @@
                   "displayName": "ErrorResponse",
                   "typePropertyKind": "TYPE_EXPRESSION",
                   "type": "object",
+                  "orderHint": 5,
+                  "additionalProperties": true,
+                  "superTypes": [
+                    "object",
+                    "any"
+                  ],
+                  "subTypes": [
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json"
+                  ],
                   "properties": [
                     {
                       "name": "statusCode",
@@ -908,6 +1069,13 @@
                         "displayName": "Error",
                         "typePropertyKind": "TYPE_EXPRESSION",
                         "type": "object",
+                        "orderHint": 6,
+                        "additionalProperties": true,
+                        "superTypes": [
+                          "object",
+                          "any"
+                        ],
+                        "subTypes": [],
                         "properties": [
                           {
                             "name": "code",
@@ -927,8 +1095,7 @@
                             "description": "A plain text message containing further information.",
                             "key": "message"
                           }
-                        ],
-                        "orderHint": 6
+                        ]
                       },
                       "key": "errors"
                     },
@@ -942,7 +1109,6 @@
                       "key": "correlationId"
                     }
                   ],
-                  "orderHint": 5,
                   "key": "application/json"
                 }
               ],
@@ -956,6 +1122,34 @@
                   "displayName": "ErrorResponse",
                   "typePropertyKind": "TYPE_EXPRESSION",
                   "type": "object",
+                  "orderHint": 5,
+                  "additionalProperties": true,
+                  "superTypes": [
+                    "object",
+                    "any"
+                  ],
+                  "subTypes": [
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json"
+                  ],
                   "properties": [
                     {
                       "name": "statusCode",
@@ -977,6 +1171,13 @@
                         "displayName": "Error",
                         "typePropertyKind": "TYPE_EXPRESSION",
                         "type": "object",
+                        "orderHint": 6,
+                        "additionalProperties": true,
+                        "superTypes": [
+                          "object",
+                          "any"
+                        ],
+                        "subTypes": [],
                         "properties": [
                           {
                             "name": "code",
@@ -996,8 +1197,7 @@
                             "description": "A plain text message containing further information.",
                             "key": "message"
                           }
-                        ],
-                        "orderHint": 6
+                        ]
                       },
                       "key": "errors"
                     },
@@ -1011,7 +1211,6 @@
                       "key": "correlationId"
                     }
                   ],
-                  "orderHint": 5,
                   "key": "application/json"
                 }
               ],
@@ -1025,6 +1224,34 @@
                   "displayName": "ErrorResponse",
                   "typePropertyKind": "TYPE_EXPRESSION",
                   "type": "object",
+                  "orderHint": 5,
+                  "additionalProperties": true,
+                  "superTypes": [
+                    "object",
+                    "any"
+                  ],
+                  "subTypes": [
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json"
+                  ],
                   "properties": [
                     {
                       "name": "statusCode",
@@ -1046,6 +1273,13 @@
                         "displayName": "Error",
                         "typePropertyKind": "TYPE_EXPRESSION",
                         "type": "object",
+                        "orderHint": 6,
+                        "additionalProperties": true,
+                        "superTypes": [
+                          "object",
+                          "any"
+                        ],
+                        "subTypes": [],
                         "properties": [
                           {
                             "name": "code",
@@ -1065,8 +1299,7 @@
                             "description": "A plain text message containing further information.",
                             "key": "message"
                           }
-                        ],
-                        "orderHint": 6
+                        ]
                       },
                       "key": "errors"
                     },
@@ -1080,7 +1313,6 @@
                       "key": "correlationId"
                     }
                   ],
-                  "orderHint": 5,
                   "key": "application/json"
                 },
                 {
@@ -1101,6 +1333,34 @@
                   "displayName": "ErrorResponse",
                   "typePropertyKind": "TYPE_EXPRESSION",
                   "type": "object",
+                  "orderHint": 5,
+                  "additionalProperties": true,
+                  "superTypes": [
+                    "object",
+                    "any"
+                  ],
+                  "subTypes": [
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json"
+                  ],
                   "properties": [
                     {
                       "name": "statusCode",
@@ -1122,6 +1382,13 @@
                         "displayName": "Error",
                         "typePropertyKind": "TYPE_EXPRESSION",
                         "type": "object",
+                        "orderHint": 6,
+                        "additionalProperties": true,
+                        "superTypes": [
+                          "object",
+                          "any"
+                        ],
+                        "subTypes": [],
                         "properties": [
                           {
                             "name": "code",
@@ -1141,8 +1408,7 @@
                             "description": "A plain text message containing further information.",
                             "key": "message"
                           }
-                        ],
-                        "orderHint": 6
+                        ]
                       },
                       "key": "errors"
                     },
@@ -1156,7 +1422,6 @@
                       "key": "correlationId"
                     }
                   ],
-                  "orderHint": 5,
                   "key": "application/json"
                 }
               ],
@@ -1170,6 +1435,34 @@
                   "displayName": "ErrorResponse",
                   "typePropertyKind": "TYPE_EXPRESSION",
                   "type": "object",
+                  "orderHint": 5,
+                  "additionalProperties": true,
+                  "superTypes": [
+                    "object",
+                    "any"
+                  ],
+                  "subTypes": [
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json",
+                    "application/json"
+                  ],
                   "properties": [
                     {
                       "name": "statusCode",
@@ -1191,6 +1484,13 @@
                         "displayName": "Error",
                         "typePropertyKind": "TYPE_EXPRESSION",
                         "type": "object",
+                        "orderHint": 6,
+                        "additionalProperties": true,
+                        "superTypes": [
+                          "object",
+                          "any"
+                        ],
+                        "subTypes": [],
                         "properties": [
                           {
                             "name": "code",
@@ -1210,8 +1510,7 @@
                             "description": "A plain text message containing further information.",
                             "key": "message"
                           }
-                        ],
-                        "orderHint": 6
+                        ]
                       },
                       "key": "errors"
                     },
@@ -1225,7 +1524,6 @@
                       "key": "correlationId"
                     }
                   ],
-                  "orderHint": 5,
                   "key": "application/json"
                 }
               ],
@@ -1401,7 +1699,19 @@
                       "name": "AccountsQueryResult",
                       "displayName": "AccountsQueryResult",
                       "typePropertyKind": "TYPE_EXPRESSION",
-                      "type": "PagedQueryResult",
+                      "type": "object",
+                      "orderHint": 2,
+                      "additionalProperties": true,
+                      "superTypes": [
+                        "PagedQueryResult",
+                        "object",
+                        "any"
+                      ],
+                      "subTypes": [
+                        "application/json",
+                        "application/json"
+                      ],
+                      "originalType": "PagedQueryResult",
                       "properties": [
                         {
                           "name": "offset",
@@ -1442,6 +1752,15 @@
                             "typePropertyKind": "TYPE_EXPRESSION",
                             "type": "object",
                             "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
+                            "orderHint": 3,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [
+                              "application/json"
+                            ],
                             "properties": [
                               {
                                 "name": "links",
@@ -1455,6 +1774,13 @@
                                   "typePropertyKind": "TYPE_EXPRESSION",
                                   "type": "object",
                                   "description": "A pragmatic hypermedia link that does the job.",
+                                  "orderHint": 0,
+                                  "additionalProperties": true,
+                                  "superTypes": [
+                                    "object",
+                                    "any"
+                                  ],
+                                  "subTypes": [],
                                   "properties": [
                                     {
                                       "name": "href",
@@ -1477,8 +1803,7 @@
                                       ],
                                       "key": "rel"
                                     }
-                                  ],
-                                  "orderHint": 0
+                                  ]
                                 },
                                 "key": "links"
                               },
@@ -1536,80 +1861,23 @@
                                 "key": "businessRegion"
                               },
                               {
-                                "name": "User",
-                                "displayName": "User",
+                                "name": "owner",
+                                "displayName": "owner",
                                 "typePropertyKind": "TYPE_EXPRESSION",
-                                "type": "object",
-                                "required": true,
+                                "type": "o",
                                 "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
-                                "properties": [
-                                  {
-                                    "name": "links",
-                                    "displayName": "links",
-                                    "typePropertyKind": "TYPE_EXPRESSION",
-                                    "type": "array",
-                                    "required": true,
-                                    "items": {
-                                      "name": "Link",
-                                      "displayName": "Link",
-                                      "typePropertyKind": "TYPE_EXPRESSION",
-                                      "type": "object",
-                                      "description": "A pragmatic hypermedia link that does the job.",
-                                      "properties": [
-                                        {
-                                          "name": "href",
-                                          "displayName": "href",
-                                          "typePropertyKind": "TYPE_EXPRESSION",
-                                          "type": "string",
-                                          "required": true,
-                                          "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
-                                          "key": "href"
-                                        },
-                                        {
-                                          "name": "rel",
-                                          "displayName": "rel",
-                                          "typePropertyKind": "TYPE_EXPRESSION",
-                                          "type": "string",
-                                          "required": true,
-                                          "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
-                                          "enum": [
-                                            "self"
-                                          ],
-                                          "key": "rel"
-                                        }
-                                      ],
-                                      "orderHint": 0
-                                    },
-                                    "key": "links"
-                                  },
-                                  {
-                                    "name": "id",
-                                    "displayName": "id",
-                                    "typePropertyKind": "TYPE_EXPRESSION",
-                                    "type": "string",
-                                    "required": true,
-                                    "description": "The user's CRM ID.",
-                                    "key": "id"
-                                  },
-                                  {
-                                    "name": "email",
-                                    "displayName": "email",
-                                    "typePropertyKind": "TYPE_EXPRESSION",
-                                    "type": "string",
-                                    "required": true,
-                                    "key": "email"
-                                  },
-                                  {
-                                    "name": "name",
-                                    "displayName": "name",
-                                    "typePropertyKind": "TYPE_EXPRESSION",
-                                    "type": "string",
-                                    "required": true,
-                                    "description": "The user's full name.",
-                                    "key": "name"
-                                  }
-                                ],
                                 "orderHint": 4,
+                                "additionalProperties": true,
+                                "superTypes": [
+                                  "object",
+                                  "any"
+                                ],
+                                "subTypes": [
+                                  null,
+                                  null
+                                ],
+                                "required": true,
+                                "originalType": "User",
                                 "key": "owner"
                               },
                               {
@@ -1639,13 +1907,11 @@
                                 "description": "The main website URL of the account\n",
                                 "key": "website"
                               }
-                            ],
-                            "orderHint": 3
+                            ]
                           },
                           "key": "results"
                         }
                       ],
-                      "orderHint": 2,
                       "key": "application/json"
                     }
                   ],
@@ -1659,6 +1925,34 @@
                       "displayName": "ErrorResponse",
                       "typePropertyKind": "TYPE_EXPRESSION",
                       "type": "object",
+                      "orderHint": 5,
+                      "additionalProperties": true,
+                      "superTypes": [
+                        "object",
+                        "any"
+                      ],
+                      "subTypes": [
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json"
+                      ],
                       "properties": [
                         {
                           "name": "statusCode",
@@ -1680,6 +1974,13 @@
                             "displayName": "Error",
                             "typePropertyKind": "TYPE_EXPRESSION",
                             "type": "object",
+                            "orderHint": 6,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [],
                             "properties": [
                               {
                                 "name": "code",
@@ -1699,8 +2000,7 @@
                                 "description": "A plain text message containing further information.",
                                 "key": "message"
                               }
-                            ],
-                            "orderHint": 6
+                            ]
                           },
                           "key": "errors"
                         },
@@ -1714,7 +2014,6 @@
                           "key": "correlationId"
                         }
                       ],
-                      "orderHint": 5,
                       "key": "application/json"
                     }
                   ],
@@ -1728,6 +2027,34 @@
                       "displayName": "ErrorResponse",
                       "typePropertyKind": "TYPE_EXPRESSION",
                       "type": "object",
+                      "orderHint": 5,
+                      "additionalProperties": true,
+                      "superTypes": [
+                        "object",
+                        "any"
+                      ],
+                      "subTypes": [
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json"
+                      ],
                       "properties": [
                         {
                           "name": "statusCode",
@@ -1749,6 +2076,13 @@
                             "displayName": "Error",
                             "typePropertyKind": "TYPE_EXPRESSION",
                             "type": "object",
+                            "orderHint": 6,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [],
                             "properties": [
                               {
                                 "name": "code",
@@ -1768,8 +2102,7 @@
                                 "description": "A plain text message containing further information.",
                                 "key": "message"
                               }
-                            ],
-                            "orderHint": 6
+                            ]
                           },
                           "key": "errors"
                         },
@@ -1783,7 +2116,6 @@
                           "key": "correlationId"
                         }
                       ],
-                      "orderHint": 5,
                       "key": "application/json"
                     }
                   ],
@@ -1797,6 +2129,34 @@
                       "displayName": "ErrorResponse",
                       "typePropertyKind": "TYPE_EXPRESSION",
                       "type": "object",
+                      "orderHint": 5,
+                      "additionalProperties": true,
+                      "superTypes": [
+                        "object",
+                        "any"
+                      ],
+                      "subTypes": [
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json"
+                      ],
                       "properties": [
                         {
                           "name": "statusCode",
@@ -1818,6 +2178,13 @@
                             "displayName": "Error",
                             "typePropertyKind": "TYPE_EXPRESSION",
                             "type": "object",
+                            "orderHint": 6,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [],
                             "properties": [
                               {
                                 "name": "code",
@@ -1837,8 +2204,7 @@
                                 "description": "A plain text message containing further information.",
                                 "key": "message"
                               }
-                            ],
-                            "orderHint": 6
+                            ]
                           },
                           "key": "errors"
                         },
@@ -1852,7 +2218,6 @@
                           "key": "correlationId"
                         }
                       ],
-                      "orderHint": 5,
                       "key": "application/json"
                     },
                     {
@@ -1873,6 +2238,34 @@
                       "displayName": "ErrorResponse",
                       "typePropertyKind": "TYPE_EXPRESSION",
                       "type": "object",
+                      "orderHint": 5,
+                      "additionalProperties": true,
+                      "superTypes": [
+                        "object",
+                        "any"
+                      ],
+                      "subTypes": [
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json"
+                      ],
                       "properties": [
                         {
                           "name": "statusCode",
@@ -1894,6 +2287,13 @@
                             "displayName": "Error",
                             "typePropertyKind": "TYPE_EXPRESSION",
                             "type": "object",
+                            "orderHint": 6,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [],
                             "properties": [
                               {
                                 "name": "code",
@@ -1913,8 +2313,7 @@
                                 "description": "A plain text message containing further information.",
                                 "key": "message"
                               }
-                            ],
-                            "orderHint": 6
+                            ]
                           },
                           "key": "errors"
                         },
@@ -1928,7 +2327,6 @@
                           "key": "correlationId"
                         }
                       ],
-                      "orderHint": 5,
                       "key": "application/json"
                     }
                   ],
@@ -1942,6 +2340,34 @@
                       "displayName": "ErrorResponse",
                       "typePropertyKind": "TYPE_EXPRESSION",
                       "type": "object",
+                      "orderHint": 5,
+                      "additionalProperties": true,
+                      "superTypes": [
+                        "object",
+                        "any"
+                      ],
+                      "subTypes": [
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json"
+                      ],
                       "properties": [
                         {
                           "name": "statusCode",
@@ -1963,6 +2389,13 @@
                             "displayName": "Error",
                             "typePropertyKind": "TYPE_EXPRESSION",
                             "type": "object",
+                            "orderHint": 6,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [],
                             "properties": [
                               {
                                 "name": "code",
@@ -1982,8 +2415,7 @@
                                 "description": "A plain text message containing further information.",
                                 "key": "message"
                               }
-                            ],
-                            "orderHint": 6
+                            ]
                           },
                           "key": "errors"
                         },
@@ -1997,7 +2429,6 @@
                           "key": "correlationId"
                         }
                       ],
-                      "orderHint": 5,
                       "key": "application/json"
                     }
                   ],
@@ -2077,6 +2508,15 @@
                       "typePropertyKind": "TYPE_EXPRESSION",
                       "type": "object",
                       "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
+                      "orderHint": 3,
+                      "additionalProperties": true,
+                      "superTypes": [
+                        "object",
+                        "any"
+                      ],
+                      "subTypes": [
+                        "application/json"
+                      ],
                       "properties": [
                         {
                           "name": "links",
@@ -2090,6 +2530,13 @@
                             "typePropertyKind": "TYPE_EXPRESSION",
                             "type": "object",
                             "description": "A pragmatic hypermedia link that does the job.",
+                            "orderHint": 0,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [],
                             "properties": [
                               {
                                 "name": "href",
@@ -2112,8 +2559,7 @@
                                 ],
                                 "key": "rel"
                               }
-                            ],
-                            "orderHint": 0
+                            ]
                           },
                           "key": "links"
                         },
@@ -2171,80 +2617,23 @@
                           "key": "businessRegion"
                         },
                         {
-                          "name": "User",
-                          "displayName": "User",
+                          "name": "owner",
+                          "displayName": "owner",
                           "typePropertyKind": "TYPE_EXPRESSION",
-                          "type": "object",
-                          "required": true,
+                          "type": "o",
                           "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
-                          "properties": [
-                            {
-                              "name": "links",
-                              "displayName": "links",
-                              "typePropertyKind": "TYPE_EXPRESSION",
-                              "type": "array",
-                              "required": true,
-                              "items": {
-                                "name": "Link",
-                                "displayName": "Link",
-                                "typePropertyKind": "TYPE_EXPRESSION",
-                                "type": "object",
-                                "description": "A pragmatic hypermedia link that does the job.",
-                                "properties": [
-                                  {
-                                    "name": "href",
-                                    "displayName": "href",
-                                    "typePropertyKind": "TYPE_EXPRESSION",
-                                    "type": "string",
-                                    "required": true,
-                                    "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
-                                    "key": "href"
-                                  },
-                                  {
-                                    "name": "rel",
-                                    "displayName": "rel",
-                                    "typePropertyKind": "TYPE_EXPRESSION",
-                                    "type": "string",
-                                    "required": true,
-                                    "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
-                                    "enum": [
-                                      "self"
-                                    ],
-                                    "key": "rel"
-                                  }
-                                ],
-                                "orderHint": 0
-                              },
-                              "key": "links"
-                            },
-                            {
-                              "name": "id",
-                              "displayName": "id",
-                              "typePropertyKind": "TYPE_EXPRESSION",
-                              "type": "string",
-                              "required": true,
-                              "description": "The user's CRM ID.",
-                              "key": "id"
-                            },
-                            {
-                              "name": "email",
-                              "displayName": "email",
-                              "typePropertyKind": "TYPE_EXPRESSION",
-                              "type": "string",
-                              "required": true,
-                              "key": "email"
-                            },
-                            {
-                              "name": "name",
-                              "displayName": "name",
-                              "typePropertyKind": "TYPE_EXPRESSION",
-                              "type": "string",
-                              "required": true,
-                              "description": "The user's full name.",
-                              "key": "name"
-                            }
-                          ],
                           "orderHint": 4,
+                          "additionalProperties": true,
+                          "superTypes": [
+                            "object",
+                            "any"
+                          ],
+                          "subTypes": [
+                            null,
+                            null
+                          ],
+                          "required": true,
+                          "originalType": "User",
                           "key": "owner"
                         },
                         {
@@ -2275,7 +2664,6 @@
                           "key": "website"
                         }
                       ],
-                      "orderHint": 3,
                       "key": "application/json"
                     }
                   ],
@@ -2289,6 +2677,34 @@
                       "displayName": "ErrorResponse",
                       "typePropertyKind": "TYPE_EXPRESSION",
                       "type": "object",
+                      "orderHint": 5,
+                      "additionalProperties": true,
+                      "superTypes": [
+                        "object",
+                        "any"
+                      ],
+                      "subTypes": [
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json"
+                      ],
                       "properties": [
                         {
                           "name": "statusCode",
@@ -2310,6 +2726,13 @@
                             "displayName": "Error",
                             "typePropertyKind": "TYPE_EXPRESSION",
                             "type": "object",
+                            "orderHint": 6,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [],
                             "properties": [
                               {
                                 "name": "code",
@@ -2329,8 +2752,7 @@
                                 "description": "A plain text message containing further information.",
                                 "key": "message"
                               }
-                            ],
-                            "orderHint": 6
+                            ]
                           },
                           "key": "errors"
                         },
@@ -2344,7 +2766,6 @@
                           "key": "correlationId"
                         }
                       ],
-                      "orderHint": 5,
                       "key": "application/json"
                     }
                   ],
@@ -2358,6 +2779,34 @@
                       "displayName": "ErrorResponse",
                       "typePropertyKind": "TYPE_EXPRESSION",
                       "type": "object",
+                      "orderHint": 5,
+                      "additionalProperties": true,
+                      "superTypes": [
+                        "object",
+                        "any"
+                      ],
+                      "subTypes": [
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json"
+                      ],
                       "properties": [
                         {
                           "name": "statusCode",
@@ -2379,6 +2828,13 @@
                             "displayName": "Error",
                             "typePropertyKind": "TYPE_EXPRESSION",
                             "type": "object",
+                            "orderHint": 6,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [],
                             "properties": [
                               {
                                 "name": "code",
@@ -2398,8 +2854,7 @@
                                 "description": "A plain text message containing further information.",
                                 "key": "message"
                               }
-                            ],
-                            "orderHint": 6
+                            ]
                           },
                           "key": "errors"
                         },
@@ -2413,7 +2868,6 @@
                           "key": "correlationId"
                         }
                       ],
-                      "orderHint": 5,
                       "key": "application/json"
                     }
                   ],
@@ -2427,6 +2881,34 @@
                       "displayName": "ErrorResponse",
                       "typePropertyKind": "TYPE_EXPRESSION",
                       "type": "object",
+                      "orderHint": 5,
+                      "additionalProperties": true,
+                      "superTypes": [
+                        "object",
+                        "any"
+                      ],
+                      "subTypes": [
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json"
+                      ],
                       "properties": [
                         {
                           "name": "statusCode",
@@ -2448,6 +2930,13 @@
                             "displayName": "Error",
                             "typePropertyKind": "TYPE_EXPRESSION",
                             "type": "object",
+                            "orderHint": 6,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [],
                             "properties": [
                               {
                                 "name": "code",
@@ -2467,8 +2956,7 @@
                                 "description": "A plain text message containing further information.",
                                 "key": "message"
                               }
-                            ],
-                            "orderHint": 6
+                            ]
                           },
                           "key": "errors"
                         },
@@ -2482,7 +2970,6 @@
                           "key": "correlationId"
                         }
                       ],
-                      "orderHint": 5,
                       "key": "application/json"
                     },
                     {
@@ -2503,6 +2990,34 @@
                       "displayName": "ErrorResponse",
                       "typePropertyKind": "TYPE_EXPRESSION",
                       "type": "object",
+                      "orderHint": 5,
+                      "additionalProperties": true,
+                      "superTypes": [
+                        "object",
+                        "any"
+                      ],
+                      "subTypes": [
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json"
+                      ],
                       "properties": [
                         {
                           "name": "statusCode",
@@ -2524,6 +3039,13 @@
                             "displayName": "Error",
                             "typePropertyKind": "TYPE_EXPRESSION",
                             "type": "object",
+                            "orderHint": 6,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [],
                             "properties": [
                               {
                                 "name": "code",
@@ -2543,8 +3065,7 @@
                                 "description": "A plain text message containing further information.",
                                 "key": "message"
                               }
-                            ],
-                            "orderHint": 6
+                            ]
                           },
                           "key": "errors"
                         },
@@ -2558,7 +3079,6 @@
                           "key": "correlationId"
                         }
                       ],
-                      "orderHint": 5,
                       "key": "application/json"
                     }
                   ],
@@ -2572,6 +3092,34 @@
                       "displayName": "ErrorResponse",
                       "typePropertyKind": "TYPE_EXPRESSION",
                       "type": "object",
+                      "orderHint": 5,
+                      "additionalProperties": true,
+                      "superTypes": [
+                        "object",
+                        "any"
+                      ],
+                      "subTypes": [
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json",
+                        "application/json"
+                      ],
                       "properties": [
                         {
                           "name": "statusCode",
@@ -2593,6 +3141,13 @@
                             "displayName": "Error",
                             "typePropertyKind": "TYPE_EXPRESSION",
                             "type": "object",
+                            "orderHint": 6,
+                            "additionalProperties": true,
+                            "superTypes": [
+                              "object",
+                              "any"
+                            ],
+                            "subTypes": [],
                             "properties": [
                               {
                                 "name": "code",
@@ -2612,8 +3167,7 @@
                                 "description": "A plain text message containing further information.",
                                 "key": "message"
                               }
-                            ],
-                            "orderHint": 6
+                            ]
                           },
                           "key": "errors"
                         },
@@ -2627,7 +3181,6 @@
                           "key": "correlationId"
                         }
                       ],
-                      "orderHint": 5,
                       "key": "application/json"
                     }
                   ],
@@ -2734,16 +3287,24 @@
       "typePropertyKind": "TYPE_EXPRESSION",
       "type": "object",
       "description": "A pragmatic hypermedia link that does the job.",
-      "properties": {
-        "href": {
+      "orderHint": 0,
+      "additionalProperties": true,
+      "superTypes": [
+        "object",
+        "any"
+      ],
+      "subTypes": [],
+      "properties": [
+        {
           "name": "href",
           "displayName": "href",
           "typePropertyKind": "TYPE_EXPRESSION",
           "type": "string",
           "required": true,
-          "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo )."
+          "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
+          "key": "href"
         },
-        "rel": {
+        {
           "name": "rel",
           "displayName": "rel",
           "typePropertyKind": "TYPE_EXPRESSION",
@@ -2752,16 +3313,27 @@
           "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
           "enum": [
             "self"
-          ]
+          ],
+          "key": "rel"
         }
-      },
-      "orderHint": 0
+      ]
     },
     "PagedQueryResult": {
       "name": "PagedQueryResult",
       "displayName": "PagedQueryResult",
       "typePropertyKind": "TYPE_EXPRESSION",
       "type": "object",
+      "orderHint": 1,
+      "additionalProperties": true,
+      "superTypes": [
+        "object",
+        "any"
+      ],
+      "subTypes": [
+        "AccountsQueryResult",
+        "application/json",
+        "application/json"
+      ],
       "properties": {
         "offset": {
           "name": "offset",
@@ -2787,14 +3359,25 @@
           "required": true,
           "description": "The number of results contained in the API response.\nA total count of results beyond the ones returned is not available.\n"
         }
-      },
-      "orderHint": 1
+      }
     },
     "AccountsQueryResult": {
       "name": "AccountsQueryResult",
       "displayName": "AccountsQueryResult",
       "typePropertyKind": "TYPE_EXPRESSION",
-      "type": "PagedQueryResult",
+      "type": "object",
+      "orderHint": 2,
+      "additionalProperties": true,
+      "superTypes": [
+        "PagedQueryResult",
+        "object",
+        "any"
+      ],
+      "subTypes": [
+        "application/json",
+        "application/json"
+      ],
+      "originalType": "PagedQueryResult",
       "properties": {
         "offset": {
           "name": "offset",
@@ -2835,6 +3418,15 @@
             "typePropertyKind": "TYPE_EXPRESSION",
             "type": "object",
             "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
+            "orderHint": 3,
+            "additionalProperties": true,
+            "superTypes": [
+              "object",
+              "any"
+            ],
+            "subTypes": [
+              "application/json"
+            ],
             "properties": [
               {
                 "name": "links",
@@ -2848,6 +3440,13 @@
                   "typePropertyKind": "TYPE_EXPRESSION",
                   "type": "object",
                   "description": "A pragmatic hypermedia link that does the job.",
+                  "orderHint": 0,
+                  "additionalProperties": true,
+                  "superTypes": [
+                    "object",
+                    "any"
+                  ],
+                  "subTypes": [],
                   "properties": [
                     {
                       "name": "href",
@@ -2870,8 +3469,7 @@
                       ],
                       "key": "rel"
                     }
-                  ],
-                  "orderHint": 0
+                  ]
                 },
                 "key": "links"
               },
@@ -2929,80 +3527,23 @@
                 "key": "businessRegion"
               },
               {
-                "name": "User",
-                "displayName": "User",
+                "name": "owner",
+                "displayName": "owner",
                 "typePropertyKind": "TYPE_EXPRESSION",
-                "type": "object",
-                "required": true,
+                "type": "o",
                 "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
-                "properties": [
-                  {
-                    "name": "links",
-                    "displayName": "links",
-                    "typePropertyKind": "TYPE_EXPRESSION",
-                    "type": "array",
-                    "required": true,
-                    "items": {
-                      "name": "Link",
-                      "displayName": "Link",
-                      "typePropertyKind": "TYPE_EXPRESSION",
-                      "type": "object",
-                      "description": "A pragmatic hypermedia link that does the job.",
-                      "properties": [
-                        {
-                          "name": "href",
-                          "displayName": "href",
-                          "typePropertyKind": "TYPE_EXPRESSION",
-                          "type": "string",
-                          "required": true,
-                          "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
-                          "key": "href"
-                        },
-                        {
-                          "name": "rel",
-                          "displayName": "rel",
-                          "typePropertyKind": "TYPE_EXPRESSION",
-                          "type": "string",
-                          "required": true,
-                          "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
-                          "enum": [
-                            "self"
-                          ],
-                          "key": "rel"
-                        }
-                      ],
-                      "orderHint": 0
-                    },
-                    "key": "links"
-                  },
-                  {
-                    "name": "id",
-                    "displayName": "id",
-                    "typePropertyKind": "TYPE_EXPRESSION",
-                    "type": "string",
-                    "required": true,
-                    "description": "The user's CRM ID.",
-                    "key": "id"
-                  },
-                  {
-                    "name": "email",
-                    "displayName": "email",
-                    "typePropertyKind": "TYPE_EXPRESSION",
-                    "type": "string",
-                    "required": true,
-                    "key": "email"
-                  },
-                  {
-                    "name": "name",
-                    "displayName": "name",
-                    "typePropertyKind": "TYPE_EXPRESSION",
-                    "type": "string",
-                    "required": true,
-                    "description": "The user's full name.",
-                    "key": "name"
-                  }
-                ],
                 "orderHint": 4,
+                "additionalProperties": true,
+                "superTypes": [
+                  "object",
+                  "any"
+                ],
+                "subTypes": [
+                  null,
+                  null
+                ],
+                "required": true,
+                "originalType": "User",
                 "key": "owner"
               },
               {
@@ -3032,13 +3573,11 @@
                 "description": "The main website URL of the account\n",
                 "key": "website"
               }
-            ],
-            "orderHint": 3
+            ]
           },
           "key": "results"
         }
-      },
-      "orderHint": 2
+      }
     },
     "Account": {
       "name": "Account",
@@ -3046,8 +3585,17 @@
       "typePropertyKind": "TYPE_EXPRESSION",
       "type": "object",
       "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
-      "properties": {
-        "links": {
+      "orderHint": 3,
+      "additionalProperties": true,
+      "superTypes": [
+        "object",
+        "any"
+      ],
+      "subTypes": [
+        "application/json"
+      ],
+      "properties": [
+        {
           "name": "links",
           "displayName": "links",
           "typePropertyKind": "TYPE_EXPRESSION",
@@ -3059,6 +3607,13 @@
             "typePropertyKind": "TYPE_EXPRESSION",
             "type": "object",
             "description": "A pragmatic hypermedia link that does the job.",
+            "orderHint": 0,
+            "additionalProperties": true,
+            "superTypes": [
+              "object",
+              "any"
+            ],
+            "subTypes": [],
             "properties": [
               {
                 "name": "href",
@@ -3081,12 +3636,11 @@
                 ],
                 "key": "rel"
               }
-            ],
-            "orderHint": 0
+            ]
           },
           "key": "links"
         },
-        "id": {
+        {
           "name": "id",
           "displayName": "id",
           "typePropertyKind": "TYPE_EXPRESSION",
@@ -3094,7 +3648,7 @@
           "required": true,
           "key": "id"
         },
-        "name": {
+        {
           "name": "name",
           "displayName": "name",
           "typePropertyKind": "TYPE_EXPRESSION",
@@ -3103,7 +3657,7 @@
           "description": "The name of the company's legal entity.",
           "key": "name"
         },
-        "brand": {
+        {
           "name": "brand",
           "displayName": "brand",
           "typePropertyKind": "TYPE_EXPRESSION",
@@ -3112,7 +3666,7 @@
           "description": "If the brand differs from the company name, this field contains one or many\nbrand names as free text.\n",
           "key": "brand"
         },
-        "number": {
+        {
           "name": "number",
           "displayName": "number",
           "typePropertyKind": "TYPE_EXPRESSION",
@@ -3121,7 +3675,7 @@
           "description": "A number assigned to the account (company) to connect internal systems.\nThe master for this number is the financial accounting team and their IT system.\n",
           "key": "number"
         },
-        "type": {
+        {
           "name": "type",
           "displayName": "type",
           "typePropertyKind": "TYPE_EXPRESSION",
@@ -3130,7 +3684,7 @@
           "description": "A classification of the accounts by their relationship to the company.\nNew Values can be added any time.\n",
           "key": "type"
         },
-        "businessRegion": {
+        {
           "name": "businessRegion",
           "displayName": "businessRegion",
           "typePropertyKind": "TYPE_EXPRESSION",
@@ -3139,84 +3693,27 @@
           "description": "The regional organization structure inside the company that is responsible for\nthis account.\nValues can change any time as the structure of the sales organization changes.\n",
           "key": "businessRegion"
         },
-        "owner": {
-          "name": "User",
-          "displayName": "User",
+        {
+          "name": "owner",
+          "displayName": "owner",
           "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "object",
-          "required": true,
+          "type": "o",
           "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
-          "properties": [
-            {
-              "name": "links",
-              "displayName": "links",
-              "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "array",
-              "required": true,
-              "items": {
-                "name": "Link",
-                "displayName": "Link",
-                "typePropertyKind": "TYPE_EXPRESSION",
-                "type": "object",
-                "description": "A pragmatic hypermedia link that does the job.",
-                "properties": [
-                  {
-                    "name": "href",
-                    "displayName": "href",
-                    "typePropertyKind": "TYPE_EXPRESSION",
-                    "type": "string",
-                    "required": true,
-                    "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo ).",
-                    "key": "href"
-                  },
-                  {
-                    "name": "rel",
-                    "displayName": "rel",
-                    "typePropertyKind": "TYPE_EXPRESSION",
-                    "type": "string",
-                    "required": true,
-                    "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
-                    "enum": [
-                      "self"
-                    ],
-                    "key": "rel"
-                  }
-                ],
-                "orderHint": 0
-              },
-              "key": "links"
-            },
-            {
-              "name": "id",
-              "displayName": "id",
-              "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
-              "required": true,
-              "description": "The user's CRM ID.",
-              "key": "id"
-            },
-            {
-              "name": "email",
-              "displayName": "email",
-              "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
-              "required": true,
-              "key": "email"
-            },
-            {
-              "name": "name",
-              "displayName": "name",
-              "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
-              "required": true,
-              "description": "The user's full name.",
-              "key": "name"
-            }
-          ],
           "orderHint": 4,
+          "additionalProperties": true,
+          "superTypes": [
+            "object",
+            "any"
+          ],
+          "subTypes": [
+            null,
+            null
+          ],
+          "required": true,
+          "originalType": "User",
           "key": "owner"
         },
-        "country": {
+        {
           "name": "country",
           "displayName": "country",
           "typePropertyKind": "TYPE_EXPRESSION",
@@ -3225,7 +3722,7 @@
           "description": "The country the account is designated to internally.\nAn ISO two-letter country code where parsed and known.\nCan fall back to the name of the country, this is a bug - please report unmapped country names.\n",
           "key": "country"
         },
-        "generalEmail": {
+        {
           "name": "generalEmail",
           "displayName": "generalEmail",
           "typePropertyKind": "TYPE_EXPRESSION",
@@ -3234,7 +3731,7 @@
           "description": "The general contact email address of the account.\nAll email addresses are automatically lowercased in the current implementation of the CRM.\n",
           "key": "generalEmail"
         },
-        "website": {
+        {
           "name": "website",
           "displayName": "website",
           "typePropertyKind": "TYPE_EXPRESSION",
@@ -3243,8 +3740,7 @@
           "description": "The main website URL of the account\n",
           "key": "website"
         }
-      },
-      "orderHint": 3
+      ]
     },
     "User": {
       "name": "User",
@@ -3252,6 +3748,16 @@
       "typePropertyKind": "TYPE_EXPRESSION",
       "type": "object",
       "description": "A commerectools employee by her/his account in the CRM.\n",
+      "orderHint": 4,
+      "additionalProperties": true,
+      "superTypes": [
+        "object",
+        "any"
+      ],
+      "subTypes": [
+        null,
+        null
+      ],
       "properties": {
         "links": {
           "name": "links",
@@ -3265,6 +3771,13 @@
             "typePropertyKind": "TYPE_EXPRESSION",
             "type": "object",
             "description": "A pragmatic hypermedia link that does the job.",
+            "orderHint": 0,
+            "additionalProperties": true,
+            "superTypes": [
+              "object",
+              "any"
+            ],
+            "subTypes": [],
             "properties": [
               {
                 "name": "href",
@@ -3287,10 +3800,8 @@
                 ],
                 "key": "rel"
               }
-            ],
-            "orderHint": 0
-          },
-          "key": "links"
+            ]
+          }
         },
         "id": {
           "name": "id",
@@ -3298,16 +3809,14 @@
           "typePropertyKind": "TYPE_EXPRESSION",
           "type": "string",
           "required": true,
-          "description": "The user's CRM ID.",
-          "key": "id"
+          "description": "The user's CRM ID."
         },
         "email": {
           "name": "email",
           "displayName": "email",
           "typePropertyKind": "TYPE_EXPRESSION",
           "type": "string",
-          "required": true,
-          "key": "email"
+          "required": true
         },
         "name": {
           "name": "name",
@@ -3315,17 +3824,43 @@
           "typePropertyKind": "TYPE_EXPRESSION",
           "type": "string",
           "required": true,
-          "description": "The user's full name.",
-          "key": "name"
+          "description": "The user's full name."
         }
-      },
-      "orderHint": 4
+      }
     },
     "ErrorResponse": {
       "name": "ErrorResponse",
       "displayName": "ErrorResponse",
       "typePropertyKind": "TYPE_EXPRESSION",
       "type": "object",
+      "orderHint": 5,
+      "additionalProperties": true,
+      "superTypes": [
+        "object",
+        "any"
+      ],
+      "subTypes": [
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json",
+        "application/json"
+      ],
       "properties": {
         "statusCode": {
           "name": "statusCode",
@@ -3347,6 +3882,13 @@
             "displayName": "Error",
             "typePropertyKind": "TYPE_EXPRESSION",
             "type": "object",
+            "orderHint": 6,
+            "additionalProperties": true,
+            "superTypes": [
+              "object",
+              "any"
+            ],
+            "subTypes": [],
             "properties": [
               {
                 "name": "code",
@@ -3366,8 +3908,7 @@
                 "description": "A plain text message containing further information.",
                 "key": "message"
               }
-            ],
-            "orderHint": 6
+            ]
           },
           "key": "errors"
         },
@@ -3380,33 +3921,40 @@
           "description": "A unique random identifier that can be found in the server logs to identify the specific error situation",
           "key": "correlationId"
         }
-      },
-      "orderHint": 5
+      }
     },
     "Error": {
       "name": "Error",
       "displayName": "Error",
       "typePropertyKind": "TYPE_EXPRESSION",
       "type": "object",
-      "properties": {
-        "code": {
+      "orderHint": 6,
+      "additionalProperties": true,
+      "superTypes": [
+        "object",
+        "any"
+      ],
+      "subTypes": [],
+      "properties": [
+        {
           "name": "code",
           "displayName": "code",
           "typePropertyKind": "TYPE_EXPRESSION",
           "type": "string",
           "required": true,
-          "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n"
+          "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n",
+          "key": "code"
         },
-        "message": {
+        {
           "name": "message",
           "displayName": "message",
           "typePropertyKind": "TYPE_EXPRESSION",
           "type": "string",
           "required": true,
-          "description": "A plain text message containing further information."
+          "description": "A plain text message containing further information.",
+          "key": "message"
         }
-      },
-      "orderHint": 6
+      ]
     }
   }
 }

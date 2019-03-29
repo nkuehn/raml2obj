@@ -1,0 +1,25 @@
+#%RAML 1.0
+title: Types Test
+
+types:
+  Email:
+    type: string
+    pattern: ^.+@.+\..+$
+  Account:
+    description: A basic account in the inheritance test
+    properties:
+      name: string
+      email: Email
+      gender:
+        type: string
+        enum: [ "male", "female" ]
+        required: false
+  PasswordProtectedAccount:
+    description: An account which is password protected.
+    type: Account
+    properties:
+      password: string
+  BannableAccount:
+    type: PasswordProtectedAccount
+    properties:
+      banned: boolean

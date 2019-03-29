@@ -1,21 +1,30 @@
-// A simple, fast, incomplete alternative to the "datatype-expansion" library by raml.org
-// It flattens the inherited properties of a type into the type itself.
-// It can be necessary to use this if "datatype-expansion" is too slow, too memory-intensive
-// and/or not capable of handling the type structure (e.g. in recursive type structures)
-// E.g. it does not support:
-// - multiple inheritance and union types (TODO maybe the latter actually work)
-// - constraint validation
-// - constraint narrowing
-// - no support for JSON schema or XML schema external type descriptions
-// - likely more things, this list is long: https://github.com/raml-org/datatype-expansion/blob/6f1db08f1ff41c8ece51202c81462291b67d6377/doc/algorithms.md
-//
-// TODOs (things we'll need to fix here)
+/**
+ * A simple, fast, incomplete alternative to the "datatype-expansion" library by raml.org
+ * design goals:
+ * - fast
+ * - good enough for documentation, but not for other use cases like code generation
+ *  - restricted nesting: types have properties, but the properties of the properties are deleted
+ *
+ * Unsupported:
+ * - multiple inheritance
+ * - no support for JSON schema or XML schema external type descriptions
+ * - constraint validation
+ * - constraint narrowing
+ *
+ * Algorithm
+ * - first pull out copies of the types, type properties and annotations into separate collections
+ * - remove nested properties from properties
+ * - optionally enhance the types with extra information from the parser AST
+ * - independently expand the parent inherited information on types, properties and annotations
+ * - selectively expand and enhance (e.g. expand the contained type in array types)
+ */
+
+// TODOs:
 // * align the expansion of "items" property
 //   (it's expanded by the datatype-expansion, here it's a string with the type name)
 //   It would have to be aligned at least structurally to not break GraphQL
 // * align the way type names from libraries (with namespaceprefix) are put into name vs. key vs. displayName
-// * "additionalProperties" true/false is not on the response, if the parser provides that we should add it
-// * "originalType" field not implemented (denotes the parent or self if not user defined parent is there)
+// * "originalType" field on properties not as in datatype-expansion
 //
 const _ = require('lodash');
 
@@ -27,102 +36,211 @@ relevant documentation:
 https://raml-org.github.io/raml-js-parser-2/interfaces/_node_modules_raml_definition_system_node_modules_raml_typesystem_dist_src_nominal_interfaces_d_.itypedefinition.html
 https://raml-org.github.io/raml-js-parser-2/interfaces/_node_modules_raml_definition_system_node_modules_raml_typesystem_dist_src_nominal_interfaces_d_.iproperty.html
 */
-const expandTypes = (types, api) => {
-  // pass one: enhance orginal structure:
-  _.forOwn(types, type => {
-    expandItems(type, types);
-    if (type.properties) {
-      _.forEach(type.properties, prop => {
-        expandItems(prop, types);
-      });
+const expandTypes = (typesObj, api) => {
+  // first pull out copies of the types, type properties and annotations into separate collections
+  const types = {};
+  for (const typeKey in typesObj) {
+    types[typeKey] = _.cloneDeep(typesObj[typeKey]);
+    delete types[typeKey].properties;
+    delete types[typeKey].annotations;
+  }
+
+  const typeProperties = {};
+  for (const typeKey in typesObj) {
+    typeProperties[typeKey] = {
+      properties: _.cloneDeep(typesObj[typeKey].properties),
+    };
+    // remove nested properties from properties
+    if (typeProperties[typeKey].properties) {
+      delete typeProperties[typeKey].properties.properties;
     }
-  });
+  }
 
-  // important: the canonical structure is fresh object into which data is
-  // writen only as full clones.  This way it remains possible to always pick the non-expanded
-  // types from the "types" object to avoid random recursions and deep expansions
-  const canonicalTypes = {};
+  const typeAnnotations = {};
+  for (const typeKey in typesObj) {
+    typeAnnotations[typeKey] = {
+      annotations: _.cloneDeep(typesObj[typeKey].annotations),
+    };
+  }
 
-  _.forOwn(types, (type, key) => {
-    const typeDef = typeDefinitionByName(type.name, api);
-    if (!typeDef) {
-      console.log(
-        `lite-canonicalizer: could not find type definition for ${
-          type.name
-        } in api parser`
+  // enhance the types with extra information from the parser AST
+  // - additionalProperties = true/false
+  // - parentTypes = ["Account", "object", "any" ]  // TODO get rid of the parser-internal ones like "ValueType"
+  // - subTypes = [ "PasswordProtectedCustomerAccount" ]
+  for (const typeKey in types) {
+    const typeDef = typeDefinitionByName(typeKey, api);
+    const typeDecl = typeDeclarationByName(typeKey, api);
+    if (typeDecl && typeof typeDecl.additionalProperties === 'function') {
+      types[typeKey].additionalProperties = typeDecl.additionalProperties();
+      // additional Properties defaults to true:
+      // https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md#object-type
+      if (types[typeKey].additionalProperties === null)
+        types[typeKey].additionalProperties = true;
+    }
+    if (typeDef) {
+      const superTypes = superTypeNames(typeKey, api);
+      if (superTypes) {
+        types[typeKey].superTypes = superTypes;
+      }
+      const subTypes = subTypeNames(typeKey, api);
+      if (subTypes) {
+        types[typeKey].subTypes = subTypes;
+      }
+    }
+  }
+
+  // build a new type with flattened inheritance
+  const flatTypes = {};
+  for (const typeKey in types) {
+    const flatType = {};
+    // expand the parent inherited information on types
+    const reverseParents = _.reverse(_.cloneDeep(superTypeNames(typeKey, api)));
+    for (const parentKey of reverseParents) {
+      if (types[parentKey]) {
+        const typeDef = typeDefinitionByName(typeKey, api);
+        Object.assign(flatType, _.cloneDeep(types[parentKey]));
+        flatType.originalType = parentKey;
+        flatType.type = typeDef.kind()[0];
+      }
+    }
+    const typeDef = typeDefinitionByName(typeKey, api);
+    Object.assign(flatType, _.cloneDeep(types[typeKey]));
+    if (!typeDef.isValueType()) {
+      flatType.type = typeDef.kind()[0];
+    }
+
+    flatTypes[typeKey] = flatType;
+  }
+
+  // build the flattened inheritance on properties
+  const flatTypeProperties = {};
+  for (const typeKey in types) {
+    const parentNames = _.reverse(_.cloneDeep(superTypeNames(typeKey, api)));
+    flatTypeProperties[typeKey] = { properties: {} };
+    // TODO at this point use (or later check against) "allProperties" from the parser?
+    for (const parentName of parentNames) {
+      const parentType = typeProperties[parentName];
+      if (parentType && parentType.properties) {
+        for (const parentPropKey in parentType.properties) {
+          const parentProp = parentType.properties[parentPropKey];
+          setOrMixInProp(
+            flatTypeProperties[typeKey].properties,
+            parentProp,
+            parentPropKey
+          );
+        }
+      }
+    }
+    for (const ownPropKey in typeProperties[typeKey].properties) {
+      const ownProp = typeProperties[typeKey].properties[ownPropKey];
+      setOrMixInProp(
+        flatTypeProperties[typeKey].properties,
+        ownProp,
+        ownPropKey
       );
-      return;
     }
-
-    const parentTypes = typeDef
-      .allSuperTypes()
-      .map(typeDef => {
-        return typeObjByName(typeDef.nameId(), types);
-      })
-      .filter(t => !_.isUndefined(t));
-    _.reverse(parentTypes);
-
-    const canonical = { _newProperties: {} };
-    for (const parent of parentTypes) {
-      mixInDescendant(canonical, parent);
+    if (Object.keys(flatTypeProperties[typeKey].properties).length === 0) {
+      delete flatTypeProperties[typeKey].properties;
     }
-    mixInDescendant(canonical, type);
-    canonical.properties = canonical._newProperties;
-    _.unset(canonical, '_newProperties');
+  }
 
-    if (canonical.properties === {}) _.unset(canonical, 'properties');
-    // canonical.rawType = type
+  // inside the properties, flatten the type of the property and the specifics set on the property definition
+  // ,keeping the type information in "originalType"
+  for (const typeKey in flatTypeProperties) {
+    const typeProps = flatTypeProperties[typeKey].properties;
+    if (typeProps) {
+      for (const propKey in typeProps) {
+        const prop = typeProps[propKey];
+        const originalType = prop.type[0]; // no unions or stuff supported.
+        const propType = flatTypes[originalType];
+        if (propType) {
+          typeProps[propKey] = Object.assign(_.cloneDeep(propType), prop);
+          typeProps[propKey].type = propType.type[0];
+          typeProps[propKey].originalType = originalType;
+        }
+      }
+    }
+  }
 
-    canonicalTypes[key] = canonical;
-  });
+  // TODO build flattened inheritance on annotations
+  // const flatTypeAnnotations = {};
 
-  const canonicalTypesUnexpanded = _.cloneDeep(canonicalTypes);
-  _.forOwn(canonicalTypes, canonical => {
-    expandItems(canonical, canonicalTypesUnexpanded);
-    _.forEach(canonical.properties, prop => {
-      expandItems(prop, canonicalTypesUnexpanded);
-    });
-  });
-  return canonicalTypes;
+  // set flatProperties back into the flatTypes
+  for (const typeKey in flatTypes) {
+    if (
+      flatTypeProperties[typeKey].properties &&
+      Object.keys(flatTypeProperties[typeKey].properties).length > 0
+    ) {
+      flatTypes[typeKey].properties = flatTypeProperties[typeKey].properties;
+    }
+  }
+
+  // expand "items" (of array types) with flatType with properties, also in properties
+  for (const typeKey in flatTypes) {
+    const type = flatTypes[typeKey];
+    expandItems(type, flatTypes);
+    for (const propKey in type.properties) {
+      // expand the array contained items
+      expandItems(type.properties[propKey], flatTypes);
+    }
+  }
+
+  // TODO set flatAnnotations back into the flatTypes
+  // for(let typeKey in flatTypes){
+  //   if(Object.keys(flatTypeProperties[typeKey].annotations).length === 0){
+  //     flatTypes[typeKey].annotations = flatTypeProperties[typeKey].annotations
+  //   }
+  // }
+
+  return flatTypes;
 };
 
-const mixInDescendant = (target, descendant) => {
-  if (!_.has(target, '_newProperties')) target._newProperties = {};
-  _.assign(target, descendant);
-  _.forOwn(descendant.properties, (property, key) => {
-    if (_.has(target._newProperties, key)) {
-      _.assign(target._newProperties[key], property);
-    } else {
-      target._newProperties[key] = _.cloneDeep(property);
-    }
-  });
-  return target;
+const setOrMixInProp = (targetObj, obj, propName) => {
+  if (targetObj.hasOwnProperty(propName)) {
+    Object.assign(targetObj[propName], _.cloneDeep(obj));
+  } else {
+    targetObj[propName] = _.cloneDeep(obj);
+  }
 };
 
 const expandItems = (type, types) => {
   if (type.items && typeof type.items === 'string') {
-    const typeObj = typeObjByName(type.items, types);
-    type.items = typeObj ? typeObj : { type: type.items };
+    const itemsObj = types[type.items];
+    type.items = itemsObj
+      ? itemsObj
+      : {
+          name: type.items,
+        };
   }
 };
 
 const typeDeclarationByName = (name, api) => {
   return api.types().find(t => t.name() === name);
 };
+
 const typeDefinitionByName = (name, api) => {
   const typeDecl = typeDeclarationByName(name, api);
   return typeDecl ? typeDecl.runtimeDefinition() : undefined;
 };
-const typeObjByName = (name, types) => {
-  if (_.isPlainObject(types)) {
-    return types[name];
-  } else if (_.isArray(types)) {
-    return types.find(t => {
-      return t.name === name;
+
+const superTypeNames = (typeKey, api) => {
+  const typeDef = typeDefinitionByName(typeKey, api);
+  if (typeDef) {
+    return typeDef.allSuperTypes().map(typeDef => {
+      return typeDef.nameId();
     });
-  } else {
-    return types[name];
   }
+  return null;
+};
+
+const subTypeNames = (typeKey, api) => {
+  const typeDef = typeDefinitionByName(typeKey, api);
+  if (typeDef) {
+    return typeDef.allSubTypes().map(typeDef => {
+      return typeDef.nameId();
+    });
+  }
+  return null;
 };
 
 module.exports = {

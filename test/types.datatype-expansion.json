@@ -1,0 +1,153 @@
+{
+  "title": "Types Test",
+  "types": {
+    "Email": {
+      "type": "string",
+      "name": "Email",
+      "displayName": "Email",
+      "typePropertyKind": "TYPE_EXPRESSION",
+      "pattern": "^.+@.+\\..+$",
+      "orderHint": 0
+    },
+    "Account": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "name": "name",
+          "displayName": "name",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "required": true
+        },
+        "email": {
+          "type": "string",
+          "name": "email",
+          "displayName": "email",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "pattern": "^.+@.+\\..+$",
+          "orderHint": 0,
+          "originalType": "Email",
+          "required": true
+        },
+        "gender": {
+          "type": "string",
+          "name": "gender",
+          "displayName": "gender",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "required": false,
+          "enum": [
+            "male",
+            "female"
+          ]
+        }
+      },
+      "name": "Account",
+      "displayName": "Account",
+      "typePropertyKind": "TYPE_EXPRESSION",
+      "description": "A basic account in the inheritance test",
+      "orderHint": 1,
+      "additionalProperties": true
+    },
+    "PasswordProtectedAccount": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "name": "name",
+          "displayName": "name",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "required": true
+        },
+        "email": {
+          "type": "string",
+          "name": "email",
+          "displayName": "email",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "pattern": "^.+@.+\\..+$",
+          "orderHint": 0,
+          "originalType": "Email",
+          "required": true
+        },
+        "gender": {
+          "type": "string",
+          "name": "gender",
+          "displayName": "gender",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "required": false,
+          "enum": [
+            "male",
+            "female"
+          ]
+        },
+        "password": {
+          "type": "string",
+          "name": "password",
+          "displayName": "password",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "required": true
+        }
+      },
+      "name": "PasswordProtectedAccount",
+      "displayName": "PasswordProtectedAccount",
+      "typePropertyKind": "TYPE_EXPRESSION",
+      "description": "An account which is password protected.",
+      "orderHint": 2,
+      "additionalProperties": true,
+      "originalType": "Account"
+    },
+    "BannableAccount": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "name": "name",
+          "displayName": "name",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "required": true
+        },
+        "email": {
+          "type": "string",
+          "name": "email",
+          "displayName": "email",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "pattern": "^.+@.+\\..+$",
+          "orderHint": 0,
+          "originalType": "Email",
+          "required": true
+        },
+        "gender": {
+          "type": "string",
+          "name": "gender",
+          "displayName": "gender",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "required": false,
+          "enum": [
+            "male",
+            "female"
+          ]
+        },
+        "password": {
+          "type": "string",
+          "name": "password",
+          "displayName": "password",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "required": true
+        },
+        "banned": {
+          "type": "boolean",
+          "name": "banned",
+          "displayName": "banned",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "required": true
+        }
+      },
+      "name": "BannableAccount",
+      "displayName": "BannableAccount",
+      "typePropertyKind": "TYPE_EXPRESSION",
+      "description": "An account which is password protected.",
+      "orderHint": 3,
+      "additionalProperties": true,
+      "originalType": "PasswordProtectedAccount"
+    }
+  }
+}
