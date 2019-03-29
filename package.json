@@ -40,7 +40,8 @@
   "files": [
     "index.js",
     "arrays-objects-helpers.js",
-    "consistency-helpers.js"
+    "consistency-helpers.js",
+    "lite-canonicalizer.js"
   ],
   "engines": {
     "node": ">=4"
