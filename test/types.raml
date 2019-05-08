@@ -5,21 +5,18 @@ types:
   Email:
     type: string
     pattern: ^.+@.+\..+$
+  SomeObject:
+    type: object
+    minProperties: 1
+    properties:
+      myProp: boolean
   Account:
     description: A basic account in the inheritance test
     properties:
-      name: string
-      email: Email
-      gender:
-        type: string
-        enum: [ "male", "female" ]
-        required: false
-  PasswordProtectedAccount:
-    description: An account which is password protected.
-    type: Account
-    properties:
-      password: string
-  BannableAccount:
-    type: PasswordProtectedAccount
-    properties:
-      banned: boolean
+      emails:
+        type: Email[]
+#     email: Email
+      objects:
+        type: SomeObject[]
+      object:
+        type: SomeObject

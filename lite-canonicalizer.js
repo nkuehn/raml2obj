@@ -24,7 +24,7 @@
 //   (it's expanded by the datatype-expansion, here it's a string with the type name)
 //   It would have to be aligned at least structurally to not break GraphQL
 // * align the way type names from libraries (with namespaceprefix) are put into name vs. key vs. displayName
-// * "originalType" field on properties not as in datatype-expansion
+// * "originalType" field on items-types not as in datatype-expansion
 //
 const _ = require('lodash');
 
@@ -100,13 +100,13 @@ const expandTypes = (typesObj, api) => {
         const typeDef = typeDefinitionByName(typeKey, api);
         Object.assign(flatType, _.cloneDeep(types[parentKey]));
         flatType.originalType = parentKey;
-        flatType.type = typeDef.kind()[0];
+        flatType.type = typeString(typeDef.kind());
       }
     }
     const typeDef = typeDefinitionByName(typeKey, api);
     Object.assign(flatType, _.cloneDeep(types[typeKey]));
     if (!typeDef.isValueType()) {
-      flatType.type = typeDef.kind()[0];
+      flatType.type = typeString(typeDef.kind());
     }
 
     flatTypes[typeKey] = flatType;
@@ -151,11 +151,11 @@ const expandTypes = (typesObj, api) => {
     if (typeProps) {
       for (const propKey in typeProps) {
         const prop = typeProps[propKey];
-        const originalType = prop.type[0]; // no unions or stuff supported.
+        const originalType = typeString(prop.type); // no unions or stuff supported.
         const propType = flatTypes[originalType];
         if (propType) {
           typeProps[propKey] = Object.assign(_.cloneDeep(propType), prop);
-          typeProps[propKey].type = propType.type[0];
+          typeProps[propKey].type = typeString(propType.type)
           typeProps[propKey].originalType = originalType;
         }
       }
@@ -182,6 +182,8 @@ const expandTypes = (typesObj, api) => {
     for (const propKey in type.properties) {
       // expand the array contained items
       expandItems(type.properties[propKey], flatTypes);
+      // replace with a property-specific one:
+      type.properties[propKey] = propWithOrgiginalTypeInItems(type.properties[propKey])
     }
   }
 
@@ -194,6 +196,15 @@ const expandTypes = (typesObj, api) => {
 
   return flatTypes;
 };
+
+const typeString = type => {
+  if (Array.isArray(type)) {
+    return type[0]
+  } else if (typeof type === "object" && type.type) {
+    return type.type
+  }
+  return type
+}
 
 const setOrMixInProp = (targetObj, obj, propName) => {
   if (targetObj.hasOwnProperty(propName)) {
@@ -209,10 +220,25 @@ const expandItems = (type, types) => {
     type.items = itemsObj
       ? itemsObj
       : {
-          name: type.items,
-        };
+        type: type.items,
+      };
   }
 };
+
+// datatype-expanstion documents the "originalType" on array property items although
+// it (and RAML in general) doesn't actually allow overriding the type in-place in a property
+// so we're safe just copying the name as the orginalType
+const propWithOrgiginalTypeInItems = prop => {
+  const newProp = _.cloneDeep(prop)
+  if (newProp.items && !newProp.items.originalType) {
+    if (newProp.items.name) {
+      newProp.items.originalType = newProp.items.name
+    } else if (newProp.items.type) {
+      newProp.items.originalType = typeString(newProp.items.type)
+    }
+  }
+  return newProp
+}
 
 const typeDeclarationByName = (name, api) => {
   return api.types().find(t => t.name() === name);

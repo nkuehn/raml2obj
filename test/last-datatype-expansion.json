@@ -1,409 +1,326 @@
 {
   "Link": {
-    "name": "Link",
-    "displayName": "Link",
-    "typePropertyKind": "TYPE_EXPRESSION",
     "type": "object",
-    "description": "A pragmatic hypermedia link that does the job.",
-    "orderHint": 0,
-    "additionalProperties": true,
-    "properties": [
-      {
+    "properties": {
+      "href": {
+        "type": "string",
         "name": "href",
         "displayName": "href",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
         "required": true,
         "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo )."
       },
-      {
+      "rel": {
+        "type": "string",
         "name": "rel",
         "displayName": "rel",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
         "required": true,
         "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
         "enum": [
           "self"
         ]
       }
-    ]
+    },
+    "name": "Link",
+    "displayName": "Link",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "A pragmatic hypermedia link that does the job.",
+    "orderHint": 0,
+    "additionalProperties": true
   },
   "PagedQueryResult": {
-    "name": "PagedQueryResult",
-    "displayName": "PagedQueryResult",
-    "typePropertyKind": "TYPE_EXPRESSION",
     "type": "object",
-    "orderHint": 1,
-    "additionalProperties": true,
     "properties": {
       "offset": {
+        "type": "number",
         "name": "offset",
         "displayName": "offset",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "number",
         "required": true,
         "description": "The `offset` parameter that was effectively applied"
       },
       "limit": {
+        "type": "number",
         "name": "limit",
         "displayName": "limit",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "number",
         "required": true,
         "description": "The `limit` parameter that was effectively applied"
       },
       "count": {
+        "type": "number",
         "name": "count",
         "displayName": "count",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "number",
         "required": true,
         "description": "The number of results contained in the API response.\nA total count of results beyond the ones returned is not available.\n"
       }
-    }
+    },
+    "name": "PagedQueryResult",
+    "displayName": "PagedQueryResult",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "orderHint": 1,
+    "additionalProperties": true
   },
   "AccountsQueryResult": {
-    "name": "AccountsQueryResult",
-    "displayName": "AccountsQueryResult",
-    "typePropertyKind": "TYPE_EXPRESSION",
     "type": "object",
-    "orderHint": 2,
-    "additionalProperties": true,
-    "originalType": "PagedQueryResult",
     "properties": {
       "offset": {
+        "type": "number",
         "name": "offset",
         "displayName": "offset",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "number",
         "required": true,
         "description": "The `offset` parameter that was effectively applied"
       },
       "limit": {
+        "type": "number",
         "name": "limit",
         "displayName": "limit",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "number",
         "required": true,
         "description": "The `limit` parameter that was effectively applied"
       },
       "count": {
+        "type": "number",
         "name": "count",
         "displayName": "count",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "number",
         "required": true,
         "description": "The number of results contained in the API response.\nA total count of results beyond the ones returned is not available.\n"
       },
       "results": {
-        "name": "results",
-        "displayName": "results",
-        "typePropertyKind": "TYPE_EXPRESSION",
         "type": "array",
-        "required": true,
         "items": {
-          "name": "Account",
-          "displayName": "Account",
-          "typePropertyKind": "TYPE_EXPRESSION",
           "type": "object",
-          "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
-          "orderHint": 3,
-          "additionalProperties": true,
-          "properties": [
-            {
-              "name": "links",
-              "displayName": "links",
-              "typePropertyKind": "TYPE_EXPRESSION",
+          "properties": {
+            "links": {
               "type": "array",
-              "required": true,
               "items": {
-                "name": "Link",
-                "displayName": "Link",
-                "typePropertyKind": "TYPE_EXPRESSION",
                 "type": "object",
-                "description": "A pragmatic hypermedia link that does the job.",
-                "orderHint": 0,
-                "additionalProperties": true,
-                "properties": [
-                  {
+                "properties": {
+                  "href": {
+                    "type": "string",
                     "name": "href",
                     "displayName": "href",
                     "typePropertyKind": "TYPE_EXPRESSION",
-                    "type": "string",
                     "required": true,
                     "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo )."
                   },
-                  {
+                  "rel": {
+                    "type": "string",
                     "name": "rel",
                     "displayName": "rel",
                     "typePropertyKind": "TYPE_EXPRESSION",
-                    "type": "string",
                     "required": true,
                     "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
                     "enum": [
                       "self"
                     ]
                   }
-                ]
-              }
+                },
+                "name": "Link",
+                "displayName": "Link",
+                "typePropertyKind": "TYPE_EXPRESSION",
+                "description": "A pragmatic hypermedia link that does the job.",
+                "orderHint": 0,
+                "additionalProperties": true,
+                "originalType": "Link"
+              },
+              "name": "links",
+              "displayName": "links",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "required": true
             },
-            {
+            "id": {
+              "type": "string",
               "name": "id",
               "displayName": "id",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": true
             },
-            {
+            "name": {
+              "type": "string",
               "name": "name",
               "displayName": "name",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": true,
               "description": "The name of the company's legal entity."
             },
-            {
+            "brand": {
+              "type": "string",
               "name": "brand",
               "displayName": "brand",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": false,
               "description": "If the brand differs from the company name, this field contains one or many\nbrand names as free text.\n"
             },
-            {
+            "number": {
+              "type": "string",
               "name": "number",
               "displayName": "number",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": false,
               "description": "A number assigned to the account (company) to connect internal systems.\nThe master for this number is the financial accounting team and their IT system.\n"
             },
-            {
+            "type": {
+              "type": "string",
               "name": "type",
               "displayName": "type",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": false,
               "description": "A classification of the accounts by their relationship to the company.\nNew Values can be added any time.\n"
             },
-            {
+            "businessRegion": {
+              "type": "string",
               "name": "businessRegion",
               "displayName": "businessRegion",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": false,
               "description": "The regional organization structure inside the company that is responsible for\nthis account.\nValues can change any time as the structure of the sales organization changes.\n"
             },
-            {
+            "owner": {
+              "type": "object",
+              "properties": {
+                "links": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "name": "href",
+                        "displayName": "href",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "required": true,
+                        "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo )."
+                      },
+                      "rel": {
+                        "type": "string",
+                        "name": "rel",
+                        "displayName": "rel",
+                        "typePropertyKind": "TYPE_EXPRESSION",
+                        "required": true,
+                        "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                        "enum": [
+                          "self"
+                        ]
+                      }
+                    },
+                    "name": "Link",
+                    "displayName": "Link",
+                    "typePropertyKind": "TYPE_EXPRESSION",
+                    "description": "A pragmatic hypermedia link that does the job.",
+                    "orderHint": 0,
+                    "additionalProperties": true,
+                    "originalType": "Link"
+                  },
+                  "name": "links",
+                  "displayName": "links",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "required": true
+                },
+                "id": {
+                  "type": "string",
+                  "name": "id",
+                  "displayName": "id",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "required": true,
+                  "description": "The user's CRM ID."
+                },
+                "email": {
+                  "type": "string",
+                  "name": "email",
+                  "displayName": "email",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "required": true
+                },
+                "name": {
+                  "type": "string",
+                  "name": "name",
+                  "displayName": "name",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "required": true,
+                  "description": "The user's full name."
+                }
+              },
               "name": "owner",
               "displayName": "owner",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "object",
               "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
               "orderHint": 4,
               "additionalProperties": true,
-              "required": true,
-              "originalType": "User"
+              "originalType": "User",
+              "required": true
             },
-            {
+            "country": {
+              "type": "string",
               "name": "country",
               "displayName": "country",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": false,
               "description": "The country the account is designated to internally.\nAn ISO two-letter country code where parsed and known.\nCan fall back to the name of the country, this is a bug - please report unmapped country names.\n"
             },
-            {
+            "generalEmail": {
+              "type": "string",
               "name": "generalEmail",
               "displayName": "generalEmail",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": false,
               "description": "The general contact email address of the account.\nAll email addresses are automatically lowercased in the current implementation of the CRM.\n"
             },
-            {
+            "website": {
+              "type": "string",
               "name": "website",
               "displayName": "website",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": false,
               "description": "The main website URL of the account\n"
             }
-          ],
+          },
+          "name": "Account",
+          "displayName": "Account",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
+          "orderHint": 3,
+          "additionalProperties": true,
           "originalType": "Account"
-        }
+        },
+        "name": "results",
+        "displayName": "results",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
       }
-    }
+    },
+    "name": "AccountsQueryResult",
+    "displayName": "AccountsQueryResult",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "orderHint": 2,
+    "additionalProperties": true,
+    "originalType": "PagedQueryResult"
   },
   "Account": {
-    "name": "Account",
-    "displayName": "Account",
-    "typePropertyKind": "TYPE_EXPRESSION",
     "type": "object",
-    "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
-    "orderHint": 3,
-    "additionalProperties": true,
     "properties": {
       "links": {
-        "name": "links",
-        "displayName": "links",
-        "typePropertyKind": "TYPE_EXPRESSION",
         "type": "array",
-        "required": true,
         "items": {
-          "name": "Link",
-          "displayName": "Link",
-          "typePropertyKind": "TYPE_EXPRESSION",
           "type": "object",
-          "description": "A pragmatic hypermedia link that does the job.",
-          "orderHint": 0,
-          "additionalProperties": true,
-          "properties": [
-            {
-              "name": "href",
-              "displayName": "href",
-              "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
-              "required": true,
-              "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo )."
-            },
-            {
-              "name": "rel",
-              "displayName": "rel",
-              "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
-              "required": true,
-              "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
-              "enum": [
-                "self"
-              ]
-            }
-          ],
-          "originalType": "Link"
-        }
-      },
-      "id": {
-        "name": "id",
-        "displayName": "id",
-        "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
-        "required": true
-      },
-      "name": {
-        "name": "name",
-        "displayName": "name",
-        "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
-        "required": true,
-        "description": "The name of the company's legal entity."
-      },
-      "brand": {
-        "name": "brand",
-        "displayName": "brand",
-        "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
-        "required": false,
-        "description": "If the brand differs from the company name, this field contains one or many\nbrand names as free text.\n"
-      },
-      "number": {
-        "name": "number",
-        "displayName": "number",
-        "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
-        "required": false,
-        "description": "A number assigned to the account (company) to connect internal systems.\nThe master for this number is the financial accounting team and their IT system.\n"
-      },
-      "type": {
-        "name": "type",
-        "displayName": "type",
-        "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
-        "required": false,
-        "description": "A classification of the accounts by their relationship to the company.\nNew Values can be added any time.\n"
-      },
-      "businessRegion": {
-        "name": "businessRegion",
-        "displayName": "businessRegion",
-        "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
-        "required": false,
-        "description": "The regional organization structure inside the company that is responsible for\nthis account.\nValues can change any time as the structure of the sales organization changes.\n"
-      },
-      "owner": {
-        "name": "owner",
-        "displayName": "owner",
-        "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "object",
-        "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
-        "orderHint": 4,
-        "additionalProperties": true,
-        "required": true,
-        "originalType": "User"
-      },
-      "country": {
-        "name": "country",
-        "displayName": "country",
-        "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
-        "required": false,
-        "description": "The country the account is designated to internally.\nAn ISO two-letter country code where parsed and known.\nCan fall back to the name of the country, this is a bug - please report unmapped country names.\n"
-      },
-      "generalEmail": {
-        "name": "generalEmail",
-        "displayName": "generalEmail",
-        "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
-        "required": false,
-        "description": "The general contact email address of the account.\nAll email addresses are automatically lowercased in the current implementation of the CRM.\n"
-      },
-      "website": {
-        "name": "website",
-        "displayName": "website",
-        "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
-        "required": false,
-        "description": "The main website URL of the account\n"
-      }
-    }
-  },
-  "User": {
-    "name": "User",
-    "displayName": "User",
-    "typePropertyKind": "TYPE_EXPRESSION",
-    "type": "object",
-    "description": "A commerectools employee by her/his account in the CRM.\n",
-    "orderHint": 4,
-    "additionalProperties": true,
-    "properties": {
-      "links": {
-        "name": "links",
-        "displayName": "links",
-        "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "array",
-        "required": true,
-        "items": {
-          "name": "Link",
-          "displayName": "Link",
-          "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "object",
-          "description": "A pragmatic hypermedia link that does the job.",
-          "orderHint": 0,
-          "additionalProperties": true,
           "properties": {
             "href": {
+              "type": "string",
               "name": "href",
               "displayName": "href",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": true,
               "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo )."
             },
             "rel": {
+              "type": "string",
               "name": "rel",
               "displayName": "rel",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": true,
               "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
               "enum": [
@@ -411,118 +328,328 @@
               ]
             }
           },
+          "name": "Link",
+          "displayName": "Link",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "description": "A pragmatic hypermedia link that does the job.",
+          "orderHint": 0,
+          "additionalProperties": true,
           "originalType": "Link"
-        }
+        },
+        "name": "links",
+        "displayName": "links",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
       },
       "id": {
+        "type": "string",
         "name": "id",
         "displayName": "id",
         "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      },
+      "name": {
         "type": "string",
+        "name": "name",
+        "displayName": "name",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "The name of the company's legal entity."
+      },
+      "brand": {
+        "type": "string",
+        "name": "brand",
+        "displayName": "brand",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": false,
+        "description": "If the brand differs from the company name, this field contains one or many\nbrand names as free text.\n"
+      },
+      "number": {
+        "type": "string",
+        "name": "number",
+        "displayName": "number",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": false,
+        "description": "A number assigned to the account (company) to connect internal systems.\nThe master for this number is the financial accounting team and their IT system.\n"
+      },
+      "type": {
+        "type": "string",
+        "name": "type",
+        "displayName": "type",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": false,
+        "description": "A classification of the accounts by their relationship to the company.\nNew Values can be added any time.\n"
+      },
+      "businessRegion": {
+        "type": "string",
+        "name": "businessRegion",
+        "displayName": "businessRegion",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": false,
+        "description": "The regional organization structure inside the company that is responsible for\nthis account.\nValues can change any time as the structure of the sales organization changes.\n"
+      },
+      "owner": {
+        "type": "object",
+        "properties": {
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string",
+                  "name": "href",
+                  "displayName": "href",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "required": true,
+                  "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo )."
+                },
+                "rel": {
+                  "type": "string",
+                  "name": "rel",
+                  "displayName": "rel",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "required": true,
+                  "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+                  "enum": [
+                    "self"
+                  ]
+                }
+              },
+              "name": "Link",
+              "displayName": "Link",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "description": "A pragmatic hypermedia link that does the job.",
+              "orderHint": 0,
+              "additionalProperties": true,
+              "originalType": "Link"
+            },
+            "name": "links",
+            "displayName": "links",
+            "typePropertyKind": "TYPE_EXPRESSION",
+            "required": true
+          },
+          "id": {
+            "type": "string",
+            "name": "id",
+            "displayName": "id",
+            "typePropertyKind": "TYPE_EXPRESSION",
+            "required": true,
+            "description": "The user's CRM ID."
+          },
+          "email": {
+            "type": "string",
+            "name": "email",
+            "displayName": "email",
+            "typePropertyKind": "TYPE_EXPRESSION",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "name": "name",
+            "displayName": "name",
+            "typePropertyKind": "TYPE_EXPRESSION",
+            "required": true,
+            "description": "The user's full name."
+          }
+        },
+        "name": "owner",
+        "displayName": "owner",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
+        "orderHint": 4,
+        "additionalProperties": true,
+        "originalType": "User",
+        "required": true
+      },
+      "country": {
+        "type": "string",
+        "name": "country",
+        "displayName": "country",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": false,
+        "description": "The country the account is designated to internally.\nAn ISO two-letter country code where parsed and known.\nCan fall back to the name of the country, this is a bug - please report unmapped country names.\n"
+      },
+      "generalEmail": {
+        "type": "string",
+        "name": "generalEmail",
+        "displayName": "generalEmail",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": false,
+        "description": "The general contact email address of the account.\nAll email addresses are automatically lowercased in the current implementation of the CRM.\n"
+      },
+      "website": {
+        "type": "string",
+        "name": "website",
+        "displayName": "website",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": false,
+        "description": "The main website URL of the account\n"
+      }
+    },
+    "name": "Account",
+    "displayName": "Account",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
+    "orderHint": 3,
+    "additionalProperties": true
+  },
+  "User": {
+    "type": "object",
+    "properties": {
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "name": "href",
+              "displayName": "href",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "required": true,
+              "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo )."
+            },
+            "rel": {
+              "type": "string",
+              "name": "rel",
+              "displayName": "rel",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "required": true,
+              "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
+              "enum": [
+                "self"
+              ]
+            }
+          },
+          "name": "Link",
+          "displayName": "Link",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "description": "A pragmatic hypermedia link that does the job.",
+          "orderHint": 0,
+          "additionalProperties": true,
+          "originalType": "Link"
+        },
+        "name": "links",
+        "displayName": "links",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      },
+      "id": {
+        "type": "string",
+        "name": "id",
+        "displayName": "id",
+        "typePropertyKind": "TYPE_EXPRESSION",
         "required": true,
         "description": "The user's CRM ID."
       },
       "email": {
+        "type": "string",
         "name": "email",
         "displayName": "email",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
         "required": true
       },
       "name": {
+        "type": "string",
         "name": "name",
         "displayName": "name",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
         "required": true,
         "description": "The user's full name."
       }
-    }
+    },
+    "name": "User",
+    "displayName": "User",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "A commerectools employee by her/his account in the CRM.\n",
+    "orderHint": 4,
+    "additionalProperties": true
   },
   "ErrorResponse": {
-    "name": "ErrorResponse",
-    "displayName": "ErrorResponse",
-    "typePropertyKind": "TYPE_EXPRESSION",
     "type": "object",
-    "orderHint": 5,
-    "additionalProperties": true,
     "properties": {
       "statusCode": {
+        "type": "integer",
         "name": "statusCode",
         "displayName": "statusCode",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "integer",
         "required": true,
         "description": "The HTTP status code, repeated."
       },
       "errors": {
-        "name": "errors",
-        "displayName": "errors",
-        "typePropertyKind": "TYPE_EXPRESSION",
         "type": "array",
-        "required": true,
         "items": {
-          "name": "Error",
-          "displayName": "Error",
-          "typePropertyKind": "TYPE_EXPRESSION",
           "type": "object",
-          "orderHint": 6,
-          "additionalProperties": true,
-          "properties": [
-            {
+          "properties": {
+            "code": {
+              "type": "string",
               "name": "code",
               "displayName": "code",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": true,
               "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n"
             },
-            {
+            "message": {
+              "type": "string",
               "name": "message",
               "displayName": "message",
               "typePropertyKind": "TYPE_EXPRESSION",
-              "type": "string",
               "required": true,
               "description": "A plain text message containing further information."
             }
-          ],
+          },
+          "name": "Error",
+          "displayName": "Error",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "orderHint": 6,
+          "additionalProperties": true,
           "originalType": "Error"
-        }
+        },
+        "name": "errors",
+        "displayName": "errors",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
       },
       "correlationId": {
+        "type": "string",
         "name": "correlationId",
         "displayName": "correlationId",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
         "required": true,
         "description": "A unique random identifier that can be found in the server logs to identify the specific error situation"
       }
-    }
+    },
+    "name": "ErrorResponse",
+    "displayName": "ErrorResponse",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "orderHint": 5,
+    "additionalProperties": true
   },
   "Error": {
-    "name": "Error",
-    "displayName": "Error",
-    "typePropertyKind": "TYPE_EXPRESSION",
     "type": "object",
-    "orderHint": 6,
-    "additionalProperties": true,
     "properties": {
       "code": {
+        "type": "string",
         "name": "code",
         "displayName": "code",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
         "required": true,
         "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n"
       },
       "message": {
+        "type": "string",
         "name": "message",
         "displayName": "message",
         "typePropertyKind": "TYPE_EXPRESSION",
-        "type": "string",
         "required": true,
         "description": "A plain text message containing further information."
       }
-    }
+    },
+    "name": "Error",
+    "displayName": "Error",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "orderHint": 6,
+    "additionalProperties": true
   }
 }

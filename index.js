@@ -130,10 +130,22 @@ function _enhanceRamlObj(ramlObj, options, api) {
   var types = ramlObj.types;
   if (options.canonicalTypeImpl === 'datatype-expansion') {
     types = makeExamplesAndTypesConsistent(_expandRootTypes(types, options));
+    // DEBUG
+    fs.writeFileSync(
+      'test/last-datatype-expansion.json',
+      JSON.stringify(types, null, 2)
+    );
+    // END DEBUG
   } else if (options.canonicalTypeImpl === 'lite-canonicalizer') {
     types = makeExamplesAndTypesConsistent(
       liteCanonicalizer.expandTypes(types, api)
     );
+    // DEBUG
+    fs.writeFileSync(
+      'test/last-lite-canonicalizer.json',
+      JSON.stringify(types, null, 2)
+    );
+    // END DEBUG
   }
 
   // Delete the types from the ramlObj so it's not processed again later on.

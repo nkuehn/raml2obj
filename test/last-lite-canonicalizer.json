@@ -7,8 +7,13 @@
     "description": "A pragmatic hypermedia link that does the job.",
     "orderHint": 0,
     "additionalProperties": true,
-    "properties": [
-      {
+    "superTypes": [
+      "object",
+      "any"
+    ],
+    "subTypes": [],
+    "properties": {
+      "href": {
         "name": "href",
         "displayName": "href",
         "typePropertyKind": "TYPE_EXPRESSION",
@@ -16,7 +21,7 @@
         "required": true,
         "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo )."
       },
-      {
+      "rel": {
         "name": "rel",
         "displayName": "rel",
         "typePropertyKind": "TYPE_EXPRESSION",
@@ -27,7 +32,7 @@
           "self"
         ]
       }
-    ]
+    }
   },
   "PagedQueryResult": {
     "name": "PagedQueryResult",
@@ -36,6 +41,15 @@
     "type": "object",
     "orderHint": 1,
     "additionalProperties": true,
+    "superTypes": [
+      "object",
+      "any"
+    ],
+    "subTypes": [
+      "AccountsQueryResult",
+      "application/json",
+      "application/json"
+    ],
     "properties": {
       "offset": {
         "name": "offset",
@@ -70,6 +84,15 @@
     "type": "object",
     "orderHint": 2,
     "additionalProperties": true,
+    "superTypes": [
+      "PagedQueryResult",
+      "object",
+      "any"
+    ],
+    "subTypes": [
+      "application/json",
+      "application/json"
+    ],
     "originalType": "PagedQueryResult",
     "properties": {
       "offset": {
@@ -110,52 +133,30 @@
           "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
           "orderHint": 3,
           "additionalProperties": true,
-          "properties": [
-            {
+          "superTypes": [
+            "object",
+            "any"
+          ],
+          "subTypes": [
+            "application/json"
+          ],
+          "properties": {
+            "links": {
               "name": "links",
               "displayName": "links",
               "typePropertyKind": "TYPE_EXPRESSION",
               "type": "array",
               "required": true,
-              "items": {
-                "name": "Link",
-                "displayName": "Link",
-                "typePropertyKind": "TYPE_EXPRESSION",
-                "type": "object",
-                "description": "A pragmatic hypermedia link that does the job.",
-                "orderHint": 0,
-                "additionalProperties": true,
-                "properties": [
-                  {
-                    "name": "href",
-                    "displayName": "href",
-                    "typePropertyKind": "TYPE_EXPRESSION",
-                    "type": "string",
-                    "required": true,
-                    "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo )."
-                  },
-                  {
-                    "name": "rel",
-                    "displayName": "rel",
-                    "typePropertyKind": "TYPE_EXPRESSION",
-                    "type": "string",
-                    "required": true,
-                    "description": "Only \"self\" for now. See https://tools.ietf.org/html/rfc5988#section-6.2.2",
-                    "enum": [
-                      "self"
-                    ]
-                  }
-                ]
-              }
+              "items": "Link"
             },
-            {
+            "id": {
               "name": "id",
               "displayName": "id",
               "typePropertyKind": "TYPE_EXPRESSION",
               "type": "string",
               "required": true
             },
-            {
+            "name": {
               "name": "name",
               "displayName": "name",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -163,7 +164,7 @@
               "required": true,
               "description": "The name of the company's legal entity."
             },
-            {
+            "brand": {
               "name": "brand",
               "displayName": "brand",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -171,7 +172,7 @@
               "required": false,
               "description": "If the brand differs from the company name, this field contains one or many\nbrand names as free text.\n"
             },
-            {
+            "number": {
               "name": "number",
               "displayName": "number",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -179,7 +180,7 @@
               "required": false,
               "description": "A number assigned to the account (company) to connect internal systems.\nThe master for this number is the financial accounting team and their IT system.\n"
             },
-            {
+            "type": {
               "name": "type",
               "displayName": "type",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -187,7 +188,7 @@
               "required": false,
               "description": "A classification of the accounts by their relationship to the company.\nNew Values can be added any time.\n"
             },
-            {
+            "businessRegion": {
               "name": "businessRegion",
               "displayName": "businessRegion",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -195,7 +196,7 @@
               "required": false,
               "description": "The regional organization structure inside the company that is responsible for\nthis account.\nValues can change any time as the structure of the sales organization changes.\n"
             },
-            {
+            "owner": {
               "name": "owner",
               "displayName": "owner",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -203,10 +204,18 @@
               "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
               "orderHint": 4,
               "additionalProperties": true,
+              "superTypes": [
+                "object",
+                "any"
+              ],
+              "subTypes": [
+                null,
+                null
+              ],
               "required": true,
               "originalType": "User"
             },
-            {
+            "country": {
               "name": "country",
               "displayName": "country",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -214,7 +223,7 @@
               "required": false,
               "description": "The country the account is designated to internally.\nAn ISO two-letter country code where parsed and known.\nCan fall back to the name of the country, this is a bug - please report unmapped country names.\n"
             },
-            {
+            "generalEmail": {
               "name": "generalEmail",
               "displayName": "generalEmail",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -222,7 +231,7 @@
               "required": false,
               "description": "The general contact email address of the account.\nAll email addresses are automatically lowercased in the current implementation of the CRM.\n"
             },
-            {
+            "website": {
               "name": "website",
               "displayName": "website",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -230,7 +239,7 @@
               "required": false,
               "description": "The main website URL of the account\n"
             }
-          ],
+          },
           "originalType": "Account"
         }
       }
@@ -244,6 +253,13 @@
     "description": "An Account is the identity of a Corporation or Private Person that we could have a customer or partner contract with.\nIt's not a Contract (an Account can have multiple contracts or contract opportunities with us)\nand it's not the Person itself (that's a \"Contact\")\n",
     "orderHint": 3,
     "additionalProperties": true,
+    "superTypes": [
+      "object",
+      "any"
+    ],
+    "subTypes": [
+      "application/json"
+    ],
     "properties": {
       "links": {
         "name": "links",
@@ -259,8 +275,13 @@
           "description": "A pragmatic hypermedia link that does the job.",
           "orderHint": 0,
           "additionalProperties": true,
-          "properties": [
-            {
+          "superTypes": [
+            "object",
+            "any"
+          ],
+          "subTypes": [],
+          "properties": {
+            "href": {
               "name": "href",
               "displayName": "href",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -268,7 +289,7 @@
               "required": true,
               "description": "Relative or host-absolute URL to the linked API resource (e.g. /accounts/id=foo )."
             },
-            {
+            "rel": {
               "name": "rel",
               "displayName": "rel",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -279,7 +300,7 @@
                 "self"
               ]
             }
-          ],
+          },
           "originalType": "Link"
         }
       },
@@ -338,6 +359,14 @@
         "description": "The sales manager or partner manager responsible for the account.\nIn doubt all decisions concerning the account are to be taken by this person.\nResponsibility can be superseded by ownership of a specific Contract (Opportunity).\n",
         "orderHint": 4,
         "additionalProperties": true,
+        "superTypes": [
+          "object",
+          "any"
+        ],
+        "subTypes": [
+          null,
+          null
+        ],
         "required": true,
         "originalType": "User"
       },
@@ -375,6 +404,14 @@
     "description": "A commerectools employee by her/his account in the CRM.\n",
     "orderHint": 4,
     "additionalProperties": true,
+    "superTypes": [
+      "object",
+      "any"
+    ],
+    "subTypes": [
+      null,
+      null
+    ],
     "properties": {
       "links": {
         "name": "links",
@@ -390,6 +427,11 @@
           "description": "A pragmatic hypermedia link that does the job.",
           "orderHint": 0,
           "additionalProperties": true,
+          "superTypes": [
+            "object",
+            "any"
+          ],
+          "subTypes": [],
           "properties": {
             "href": {
               "name": "href",
@@ -446,6 +488,32 @@
     "type": "object",
     "orderHint": 5,
     "additionalProperties": true,
+    "superTypes": [
+      "object",
+      "any"
+    ],
+    "subTypes": [
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json",
+      "application/json"
+    ],
     "properties": {
       "statusCode": {
         "name": "statusCode",
@@ -468,8 +536,13 @@
           "type": "object",
           "orderHint": 6,
           "additionalProperties": true,
-          "properties": [
-            {
+          "superTypes": [
+            "object",
+            "any"
+          ],
+          "subTypes": [],
+          "properties": {
+            "code": {
               "name": "code",
               "displayName": "code",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -477,7 +550,7 @@
               "required": true,
               "description": "On HTTP 502 the error code from the backing CRM API, prefixed with \"BACKEND:\",\nE.g. \"BACKEND:INVALID_FIELD\".\nElse an error code defined by this service.\n"
             },
-            {
+            "message": {
               "name": "message",
               "displayName": "message",
               "typePropertyKind": "TYPE_EXPRESSION",
@@ -485,7 +558,7 @@
               "required": true,
               "description": "A plain text message containing further information."
             }
-          ],
+          },
           "originalType": "Error"
         }
       },
@@ -506,6 +579,11 @@
     "type": "object",
     "orderHint": 6,
     "additionalProperties": true,
+    "superTypes": [
+      "object",
+      "any"
+    ],
+    "subTypes": [],
     "properties": {
       "code": {
         "name": "code",

@@ -1,207 +1,91 @@
 {
-  "title": "Types Test",
-  "types": {
-    "Email": {
-      "name": "Email",
-      "displayName": "Email",
-      "typePropertyKind": "TYPE_EXPRESSION",
-      "type": "string",
-      "pattern": "^.+@.+\\..+$",
-      "orderHint": 0,
-      "superTypes": [
-        "StringType",
-        "ValueType",
-        "Annotable",
-        "scalar",
-        "any"
-      ],
-      "subTypes": []
-    },
-    "Account": {
-      "name": "Account",
-      "displayName": "Account",
-      "typePropertyKind": "TYPE_EXPRESSION",
-      "type": "object",
-      "description": "A basic account in the inheritance test",
-      "orderHint": 1,
-      "additionalProperties": true,
-      "superTypes": [
-        "object",
-        "any"
-      ],
-      "subTypes": [
-        "PasswordProtectedAccount",
-        "BannableAccount"
-      ],
-      "properties": {
-        "name": {
-          "name": "name",
-          "displayName": "name",
-          "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "string",
-          "required": true
-        },
-        "email": {
-          "name": "email",
-          "displayName": "email",
-          "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "string",
-          "pattern": "^.+@.+\\..+$",
-          "orderHint": 0,
-          "superTypes": [
-            "StringType",
-            "ValueType",
-            "Annotable",
-            "scalar",
-            "any"
-          ],
-          "subTypes": [],
-          "required": true,
-          "originalType": "Email"
-        },
-        "gender": {
-          "name": "gender",
-          "displayName": "gender",
-          "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "string",
-          "required": false,
-          "enum": [
-            "male",
-            "female"
-          ]
-        }
+  "Email": {
+    "name": "Email",
+    "displayName": "Email",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "type": "string",
+    "pattern": "^.+@.+\\..+$",
+    "orderHint": 0
+  },
+  "SomeObject": {
+    "name": "SomeObject",
+    "displayName": "SomeObject",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "type": "object",
+    "minProperties": 1,
+    "orderHint": 1,
+    "additionalProperties": true,
+    "properties": {
+      "myProp": {
+        "name": "myProp",
+        "displayName": "myProp",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "type": "boolean",
+        "required": true
       }
-    },
-    "PasswordProtectedAccount": {
-      "name": "PasswordProtectedAccount",
-      "displayName": "PasswordProtectedAccount",
-      "typePropertyKind": "TYPE_EXPRESSION",
-      "type": "object",
-      "description": "An account which is password protected.",
-      "orderHint": 2,
-      "additionalProperties": true,
-      "superTypes": [
-        "Account",
-        "object",
-        "any"
-      ],
-      "subTypes": [
-        "BannableAccount"
-      ],
-      "originalType": "Account",
-      "properties": {
-        "name": {
-          "name": "name",
-          "displayName": "name",
-          "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "string",
-          "required": true
-        },
-        "email": {
-          "name": "email",
-          "displayName": "email",
+    }
+  },
+  "Account": {
+    "name": "Account",
+    "displayName": "Account",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "type": "object",
+    "description": "A basic account in the inheritance test",
+    "orderHint": 2,
+    "additionalProperties": true,
+    "properties": {
+      "emails": {
+        "name": "emails",
+        "displayName": "emails",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "type": "array",
+        "required": true,
+        "items": {
+          "name": "Email",
+          "displayName": "Email",
           "typePropertyKind": "TYPE_EXPRESSION",
           "type": "string",
           "pattern": "^.+@.+\\..+$",
           "orderHint": 0,
-          "superTypes": [
-            "StringType",
-            "ValueType",
-            "Annotable",
-            "scalar",
-            "any"
-          ],
-          "subTypes": [],
-          "required": true,
           "originalType": "Email"
-        },
-        "gender": {
-          "name": "gender",
-          "displayName": "gender",
-          "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "string",
-          "required": false,
-          "enum": [
-            "male",
-            "female"
-          ]
-        },
-        "password": {
-          "name": "password",
-          "displayName": "password",
-          "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "string",
-          "required": true
         }
-      }
-    },
-    "BannableAccount": {
-      "name": "BannableAccount",
-      "displayName": "BannableAccount",
-      "typePropertyKind": "TYPE_EXPRESSION",
-      "type": "object",
-      "description": "An account which is password protected.",
-      "orderHint": 3,
-      "additionalProperties": true,
-      "superTypes": [
-        "PasswordProtectedAccount",
-        "Account",
-        "object",
-        "any"
-      ],
-      "subTypes": [],
-      "originalType": "PasswordProtectedAccount",
-      "properties": {
-        "name": {
-          "name": "name",
-          "displayName": "name",
+      },
+      "objects": {
+        "name": "objects",
+        "displayName": "objects",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "type": "array",
+        "required": true,
+        "items": {
+          "name": "SomeObject",
+          "displayName": "SomeObject",
           "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "string",
-          "required": true
-        },
-        "email": {
-          "name": "email",
-          "displayName": "email",
-          "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "string",
-          "pattern": "^.+@.+\\..+$",
-          "orderHint": 0,
-          "superTypes": [
-            "StringType",
-            "ValueType",
-            "Annotable",
-            "scalar",
-            "any"
-          ],
-          "subTypes": [],
-          "required": true,
-          "originalType": "Email"
-        },
-        "gender": {
-          "name": "gender",
-          "displayName": "gender",
-          "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "string",
-          "required": false,
-          "enum": [
-            "male",
-            "female"
-          ]
-        },
-        "password": {
-          "name": "password",
-          "displayName": "password",
-          "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "string",
-          "required": true
-        },
-        "banned": {
-          "name": "banned",
-          "displayName": "banned",
-          "typePropertyKind": "TYPE_EXPRESSION",
-          "type": "boolean",
-          "required": true
+          "type": "object",
+          "minProperties": 1,
+          "orderHint": 1,
+          "additionalProperties": true,
+          "properties": {
+            "myProp": {
+              "name": "myProp",
+              "displayName": "myProp",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": "boolean",
+              "required": true
+            }
+          },
+          "originalType": "SomeObject"
         }
+      },
+      "object": {
+        "name": "object",
+        "displayName": "object",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "type": "object",
+        "minProperties": 1,
+        "orderHint": 1,
+        "additionalProperties": true,
+        "required": true,
+        "originalType": "SomeObject"
       }
     }
   }
