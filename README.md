@@ -44,7 +44,7 @@ raml2obj.parse(source, {
 | `collectionFormat` value | output |
 | --- | --- |
 |`objects` (*default*)|`{name1: { orderHint: 0, ..}, name2: { orderHint: 1, ..}}`  (eases e.g. property access). *Applies to top-level collections only, nested are arrays except type properties.*|
-|`arrays`|`[ {key: "name1", ..}, {key: "name2", ..}]`  (eases e.g. representation in a database). *Applies recursively everywhere.* |
+|`arrays`|`[ {key: "name1", ..}, {key: "name2", ..}]`  (eases e.g. representation in a database or an API with a strict schema). *Applies recursively everywhere.* |
 
 
 ## Questions & Support
