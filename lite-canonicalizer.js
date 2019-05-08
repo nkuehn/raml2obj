@@ -155,7 +155,7 @@ const expandTypes = (typesObj, api) => {
         const propType = flatTypes[originalType];
         if (propType) {
           typeProps[propKey] = Object.assign(_.cloneDeep(propType), prop);
-          typeProps[propKey].type = typeString(propType.type)
+          typeProps[propKey].type = typeString(propType.type);
           typeProps[propKey].originalType = originalType;
         }
       }
@@ -183,7 +183,9 @@ const expandTypes = (typesObj, api) => {
       // expand the array contained items
       expandItems(type.properties[propKey], flatTypes);
       // replace with a property-specific one:
-      type.properties[propKey] = propWithOrgiginalTypeInItems(type.properties[propKey])
+      type.properties[propKey] = propWithOrgiginalTypeInItems(
+        type.properties[propKey]
+      );
     }
   }
 
@@ -199,12 +201,12 @@ const expandTypes = (typesObj, api) => {
 
 const typeString = type => {
   if (Array.isArray(type)) {
-    return type[0]
-  } else if (typeof type === "object" && type.type) {
-    return type.type
+    return type[0];
+  } else if (typeof type === 'object' && type.type) {
+    return type.type;
   }
-  return type
-}
+  return type;
+};
 
 const setOrMixInProp = (targetObj, obj, propName) => {
   if (targetObj.hasOwnProperty(propName)) {
@@ -220,25 +222,28 @@ const expandItems = (type, types) => {
     type.items = itemsObj
       ? itemsObj
       : {
-        type: type.items,
-      };
+          type: type.items,
+        };
   }
 };
 
 // datatype-expanstion documents the "originalType" on array property items although
 // it (and RAML in general) doesn't actually allow overriding the type in-place in a property
-// so we're safe just copying the name as the orginalType
+// so we're safe just copying the name as the orginalType if it differs from the type
 const propWithOrgiginalTypeInItems = prop => {
-  const newProp = _.cloneDeep(prop)
+  const newProp = _.cloneDeep(prop);
   if (newProp.items && !newProp.items.originalType) {
     if (newProp.items.name) {
-      newProp.items.originalType = newProp.items.name
+      newProp.items.originalType = newProp.items.name;
     } else if (newProp.items.type) {
-      newProp.items.originalType = typeString(newProp.items.type)
+      const originalType = typeString(newProp.items.type);
+      if (newProp.items.type !== originalType) {
+        newProp.items.originalType = originalType;
+      }
     }
   }
-  return newProp
-}
+  return newProp;
+};
 
 const typeDeclarationByName = (name, api) => {
   return api.types().find(t => t.name() === name);

@@ -1,0 +1,269 @@
+#%RAML 1.0
+---
+title: Commercetools Test API Spec
+version: v0.1 beta
+mediaType: application/json
+baseUri: https:/example.com/test-api
+
+# This API represents a series of test cases from which to generate API documentation
+
+types:
+  # Scalars
+  IntegerTestType:
+    description: This is a type which contains test data for Integer properties.
+    properties:
+      integerExample:
+        required: true
+        type: integer
+        description: Description Text of that [integer value](http://google.com) including rendered **markdown**.
+        default: 1
+        minimum: 0
+        maximum: 64650
+      integerExampleInt32:
+        type: number
+        format: int32
+        description: Tests an int32.
+  FloatTestType:
+    description: This is a type which contains test data for Float properties.
+    properties:
+      floatExample:
+        required: true
+        type: number
+        # https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md/#number
+        format: float
+        description: _Description Text_ including rendered markdown. not queryable, PII
+        default: 1.5
+        minimum: 0.1
+        maximum: 2.23
+  NumberTestType:
+    description: Tests JSON type "number",
+    properties:
+      numberExample:
+        required: true
+        type: number
+  StringTestType:
+    description: This is a type which contains test data for string properties.
+    properties:
+      stringExample:
+        required: true
+        type: string
+        default: "0"
+        description: Description Text including rendered *markdown*.
+        minLength: 1
+        maxLength: 70909
+        pattern: "[0-9|-]+"
+  RegexPropertiesType:
+    description: This is a type that can have arbitrary properties as long as they match a certain expression
+    type: object
+    properties:
+      /^[a-z]{2}(-[A-Z]{2})?$/:
+        type: string
+  AnyPropertiesType:
+    description: This is a type that can have arbitrary properties
+    type: object
+    properties:
+      //:
+        type: string
+
+  BooleanTestType:
+    properties:
+      booleanExample:
+        type: boolean
+        description: Description text including rendered `markdown`.
+        default: true
+
+  # Using RAML's datetime
+  DateTestType:
+    description: Test data for supported date formats.
+    properties:
+      dateOnlyExample:
+        type: date-only
+      timeOnlyExample:
+        type: time-only
+      dateTimeOnlyExample:
+        type: datetime-only
+      dateTimeExample:
+        type: datetime
+        format: rfc3339
+
+  # Objects
+  ObjectTestType:
+    description: A type which contains properties with an object type.
+    properties:
+      objectTypeExample:
+        type: ArrayTestType
+
+  # Any
+  AnyTestType:
+    description: Tests acceptance of JSON blobs.
+    properties:
+      anyTypeExample:
+        description: A test of type "any", i.e. any JSON allowed here. To be displayed as "any JSON".
+        type: any
+
+  # Enums
+  EnumTest:
+    description: Example enumeration for the SetOfEnumTestTypes type.
+    type: string
+    enum:
+      - EnumEntryOne
+      - EnumEntryTwo
+      - EnumEntryThree
+  EnumPropertiesType:
+    description: Test data for properties with enums that are of differing primitive types
+    properties:
+      intWithEnumExample:
+        description: An int with enum values
+        type: number
+        enum: [ 1, 2, 3 ]
+      floatWithEnumExample:
+        description: A float with enum values
+        type: number
+        format: float
+        default: 1.0
+        enum: [ 1.0, 2.0, 3.0 ]
+      enumOfStringExample:
+        description: A string with enum values (undescribed)
+        type: string
+        enum:
+          - "dog"
+          - "cat"
+          - "elephant"
+  SetOfEnumTestType:
+    description: A type containing a property with a set of Enums
+    # I.e. how `ChannelDraft` has `ChannelRole`s
+    properties:
+      setofEnumExample:
+        description: |
+          Contains a Set of `EnumTest`. If `uniqueItems` is `true` for an Array,
+          the then instead of "Array of ______", it needs to read "Set of _______".
+        type: EnumTest[]
+        uniqueItems: true
+  EnumWithDescriptionExample:
+    description: Enum with agreed upon description annotation.
+    type: string
+    (enumDescriptions):
+      value1: description 1
+      value2: description 2
+      value3: description 3
+    enum:
+      - value1
+      - value2
+      - value3
+
+  # Arrays
+  ArrayTestType:
+    description: A type containing arrays of different kinds.
+    properties:
+      arrayOfIntExample:
+        description: A property with an array of ints. JSON primitive is `array`, display type is "Array of Int".
+        type: integer[]
+        minItems: 1
+        uniqueItems: false
+      arrayOfUniqueIntExample:
+        description: A property with an array of ints in which items must be unique. JSON primitive is `array`, display type is "Array of Int"
+        type: integer[]
+        minItems: 1
+        uniqueItems: true
+      arrayOfTwonumbersExample:
+        type: integer[]
+        minItems: 2
+        maxItems: 2
+      arrayOfFloatExample:
+        description: An array of float. JSON primitive is `array`, display type is "Array of Float"
+        type: number[]
+        format: float
+        minItems: 1
+        maxItems: 1
+        uniqueItems: false
+      arrayOfNumberNoDefaultsExample:
+        description: An array of float. JSON primitive is `array`, display type is "Array of `number`"
+        type: number[]
+      arrayOfStringExample:
+        description: An array of strings. JSON primitive is `array`, display type is "Array of String"
+        type: string[]
+        uniqueItems: false
+      arrayOfObjectType:
+        description: An array of IntegerTestType. JSON primitive is `array`, display type is "Array of IntegerTestType"
+        type: IntegerTestType[]
+        uniqueItems: false
+
+  # Not supporting actual RAML Union types, only a pattern that has a parent without own properties except the discriminator
+  UnionLikeType:
+    type: object
+    discriminator: kind
+    properties:
+      name: string
+      kind: string
+  UnionLikeSubType1:
+    type: UnionLikeType
+    discriminatorValue: subtype1 # override default
+    properties:
+      foo: string
+  UnionLikeSubType2:
+    type: UnionLikeType
+    discriminatorValue: subtype2 # override default
+    properties:
+      bar: string
+
+  # Making constant values explicit is more usable so we render this pattern differnt than a regular Enum:
+  ConstantLikeType:
+    type: string
+    description: render an enum with one value as a constant.
+    enum: [constantExampleValue]
+
+  # Tests "optional"/required fields
+  OptionalPropertyTestType:
+    description: Example of optional/non-optional properties.
+    properties:
+      requiredTrueExample:
+        type: string
+        description: this should be required.
+        required: true
+      requiredNotSetExample:
+        type: string
+        description: this should default to required = true.
+      requiredFalseExample:
+        type: string
+        required: false
+
+  # References
+  # TODO fill this with the actual complexity of ResourceIdentifier and Reference and a specific Reference
+  CategoryReference:
+    description: TODO
+    properties:
+      typeId:
+        type: string
+        enum: [category]
+      id:
+        type: string
+
+  # Annotations
+  AnnotationsTestType:
+    description: Example for References and other anotations. Don't implement before the test data are final!!
+    properties:
+      testReferenceType:
+        type: CategoryReference
+        description: Type Should be rendered as "Reference to Category" (with links to both the Reference in general and the Category)
+      arrayOfReferenceType:
+        type: CategoryReference[]
+        description: Type Should be rendered as "Array of References to Category" (with links to both the Reference in general and the Category)
+      isBetaType:
+        description: Beta property. If the `isBeta` present, a "beta" flag should appear beside the type name.
+        type: string
+        (beta): true
+
+annotationTypes:
+  enumDescriptions:
+    description: |
+      Describes the values of an enum type.
+    type: object
+    properties:
+      //:
+        description: |
+          Adds a description for the enum value given by the key.
+        type: string
+  beta:
+    type: boolean
+  deprecated:
+    type: boolean

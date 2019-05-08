@@ -11,7 +11,9 @@ describe('raml2obj', () => {
   describe('*.raml (lite-canonicalizer)', () => {
     let results;
     // const testFile = 'types';
-    const testFile = 'crm-accounts';
+    // const testFile = 'crm-accounts';
+    const testFile = 'synthetic';
+
     before(done => {
       Promise.all([
         raml2obj.parse(`test/${testFile}.raml`),
@@ -49,22 +51,21 @@ describe('raml2obj', () => {
       // - types.$typeName.items.properties
       // - types.$typeName.properties.$propName.properties
       // - types.$typeName.properties.$propName.items.properties
-      for(let typeKey in datatypeExpObj.types){
-        const type = datatypeExpObj.types[typeKey]
-        if(type.items && type.items.properties){
-          delete type.items.properties
+      for (const typeKey in datatypeExpObj.types) {
+        const type = datatypeExpObj.types[typeKey];
+        if (type.items && type.items.properties) {
+          delete type.items.properties;
         }
-        if(type.properties){
-          for(let propKey in type.properties){
-            const prop = type.properties[propKey]
-            delete prop.properties
-            if(prop.items && prop.items.properties){
-              delete prop.items.properties
+        if (type.properties) {
+          for (const propKey in type.properties) {
+            const prop = type.properties[propKey];
+            delete prop.properties;
+            if (prop.items && prop.items.properties) {
+              delete prop.items.properties;
             }
           }
         }
       }
-
 
       // help debugging outside the assert output:
       fs.writeFileSync(

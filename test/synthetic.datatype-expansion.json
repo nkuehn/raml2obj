@@ -1,0 +1,680 @@
+{
+  "IntegerTestType": {
+    "type": "object",
+    "properties": {
+      "integerExample": {
+        "type": "integer",
+        "name": "integerExample",
+        "displayName": "integerExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "default": 1,
+        "required": true,
+        "description": "Description Text of that [integer value](http://google.com) including rendered **markdown**.",
+        "minimum": 0,
+        "maximum": 64650
+      },
+      "integerExampleInt32": {
+        "type": "number",
+        "name": "integerExampleInt32",
+        "displayName": "integerExampleInt32",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "Tests an int32.",
+        "format": "int32"
+      }
+    },
+    "name": "IntegerTestType",
+    "displayName": "IntegerTestType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "This is a type which contains test data for Integer properties.",
+    "orderHint": 0,
+    "additionalProperties": true
+  },
+  "FloatTestType": {
+    "type": "object",
+    "properties": {
+      "floatExample": {
+        "type": "number",
+        "name": "floatExample",
+        "displayName": "floatExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "default": 1.5,
+        "required": true,
+        "description": "_Description Text_ including rendered markdown. not queryable, PII",
+        "minimum": 0.1,
+        "maximum": 2.23,
+        "format": "float"
+      }
+    },
+    "name": "FloatTestType",
+    "displayName": "FloatTestType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "This is a type which contains test data for Float properties.",
+    "orderHint": 1,
+    "additionalProperties": true
+  },
+  "NumberTestType": {
+    "type": "object",
+    "properties": {
+      "numberExample": {
+        "type": "number",
+        "name": "numberExample",
+        "displayName": "numberExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      }
+    },
+    "name": "NumberTestType",
+    "displayName": "NumberTestType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "Tests JSON type \"number\",",
+    "orderHint": 2,
+    "additionalProperties": true
+  },
+  "StringTestType": {
+    "type": "object",
+    "properties": {
+      "stringExample": {
+        "type": "string",
+        "name": "stringExample",
+        "displayName": "stringExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "default": "0",
+        "required": true,
+        "description": "Description Text including rendered *markdown*.",
+        "pattern": "[0-9|-]+",
+        "minLength": 1,
+        "maxLength": 70909
+      }
+    },
+    "name": "StringTestType",
+    "displayName": "StringTestType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "This is a type which contains test data for string properties.",
+    "orderHint": 3,
+    "additionalProperties": true
+  },
+  "RegexPropertiesType": {
+    "type": "object",
+    "properties": {
+      "/^[a-z]{2}(-[A-Z]{2})?$/": {
+        "type": "string",
+        "name": "/^[a-z]{2}(-[A-Z]{2})?$/",
+        "displayName": "/^[a-z]{2}(-[A-Z]{2})?$/",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      }
+    },
+    "name": "RegexPropertiesType",
+    "displayName": "RegexPropertiesType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "This is a type that can have arbitrary properties as long as they match a certain expression",
+    "orderHint": 4,
+    "additionalProperties": true
+  },
+  "AnyPropertiesType": {
+    "type": "object",
+    "properties": {
+      "//": {
+        "type": "string",
+        "name": "//",
+        "displayName": "//",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      }
+    },
+    "name": "AnyPropertiesType",
+    "displayName": "AnyPropertiesType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "This is a type that can have arbitrary properties",
+    "orderHint": 5,
+    "additionalProperties": true
+  },
+  "BooleanTestType": {
+    "type": "object",
+    "properties": {
+      "booleanExample": {
+        "type": "boolean",
+        "name": "booleanExample",
+        "displayName": "booleanExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "default": true,
+        "required": true,
+        "description": "Description text including rendered `markdown`."
+      }
+    },
+    "name": "BooleanTestType",
+    "displayName": "BooleanTestType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "orderHint": 6,
+    "additionalProperties": true
+  },
+  "DateTestType": {
+    "type": "object",
+    "properties": {
+      "dateOnlyExample": {
+        "type": "date-only",
+        "name": "dateOnlyExample",
+        "displayName": "dateOnlyExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      },
+      "timeOnlyExample": {
+        "type": "time-only",
+        "name": "timeOnlyExample",
+        "displayName": "timeOnlyExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      },
+      "dateTimeOnlyExample": {
+        "type": "datetime-only",
+        "name": "dateTimeOnlyExample",
+        "displayName": "dateTimeOnlyExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      },
+      "dateTimeExample": {
+        "type": "datetime",
+        "name": "dateTimeExample",
+        "displayName": "dateTimeExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "format": "rfc3339"
+      }
+    },
+    "name": "DateTestType",
+    "displayName": "DateTestType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "Test data for supported date formats.",
+    "orderHint": 7,
+    "additionalProperties": true
+  },
+  "ObjectTestType": {
+    "type": "object",
+    "properties": {
+      "objectTypeExample": {
+        "type": "object",
+        "name": "objectTypeExample",
+        "displayName": "objectTypeExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "description": "A type containing arrays of different kinds.",
+        "orderHint": 14,
+        "additionalProperties": true,
+        "originalType": "ArrayTestType",
+        "required": true
+      }
+    },
+    "name": "ObjectTestType",
+    "displayName": "ObjectTestType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "A type which contains properties with an object type.",
+    "orderHint": 8,
+    "additionalProperties": true
+  },
+  "AnyTestType": {
+    "type": "object",
+    "properties": {
+      "anyTypeExample": {
+        "type": "any",
+        "name": "anyTypeExample",
+        "displayName": "anyTypeExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "A test of type \"any\", i.e. any JSON allowed here. To be displayed as \"any JSON\"."
+      }
+    },
+    "name": "AnyTestType",
+    "displayName": "AnyTestType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "Tests acceptance of JSON blobs.",
+    "orderHint": 9,
+    "additionalProperties": true
+  },
+  "EnumTest": {
+    "type": "string",
+    "name": "EnumTest",
+    "displayName": "EnumTest",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "Example enumeration for the SetOfEnumTestTypes type.",
+    "enum": [
+      "EnumEntryOne",
+      "EnumEntryTwo",
+      "EnumEntryThree"
+    ],
+    "orderHint": 10
+  },
+  "EnumPropertiesType": {
+    "type": "object",
+    "properties": {
+      "intWithEnumExample": {
+        "type": "number",
+        "name": "intWithEnumExample",
+        "displayName": "intWithEnumExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "An int with enum values",
+        "enum": [
+          1,
+          2,
+          3
+        ]
+      },
+      "floatWithEnumExample": {
+        "type": "number",
+        "name": "floatWithEnumExample",
+        "displayName": "floatWithEnumExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "default": 1,
+        "required": true,
+        "description": "A float with enum values",
+        "enum": [
+          1,
+          2,
+          3
+        ],
+        "format": "float"
+      },
+      "enumOfStringExample": {
+        "type": "string",
+        "name": "enumOfStringExample",
+        "displayName": "enumOfStringExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "A string with enum values (undescribed)",
+        "enum": [
+          "dog",
+          "cat",
+          "elephant"
+        ]
+      }
+    },
+    "name": "EnumPropertiesType",
+    "displayName": "EnumPropertiesType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "Test data for properties with enums that are of differing primitive types",
+    "orderHint": 11,
+    "additionalProperties": true
+  },
+  "SetOfEnumTestType": {
+    "type": "object",
+    "properties": {
+      "setofEnumExample": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "name": "EnumTest",
+          "displayName": "EnumTest",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "description": "Example enumeration for the SetOfEnumTestTypes type.",
+          "enum": [
+            "EnumEntryOne",
+            "EnumEntryTwo",
+            "EnumEntryThree"
+          ],
+          "orderHint": 10,
+          "originalType": "EnumTest"
+        },
+        "name": "setofEnumExample",
+        "displayName": "setofEnumExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "Contains a Set of `EnumTest`. If `uniqueItems` is `true` for an Array,\nthe then instead of \"Array of ______\", it needs to read \"Set of _______\".\n",
+        "uniqueItems": true
+      }
+    },
+    "name": "SetOfEnumTestType",
+    "displayName": "SetOfEnumTestType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "A type containing a property with a set of Enums",
+    "orderHint": 12,
+    "additionalProperties": true
+  },
+  "EnumWithDescriptionExample": {
+    "type": "string",
+    "annotations": {
+      "enumDescriptions": {
+        "structuredValue": {
+          "value1": "description 1",
+          "value2": "description 2",
+          "value3": "description 3"
+        },
+        "name": "enumDescriptions"
+      }
+    },
+    "name": "EnumWithDescriptionExample",
+    "displayName": "EnumWithDescriptionExample",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "Enum with agreed upon description annotation.",
+    "enum": [
+      "value1",
+      "value2",
+      "value3"
+    ],
+    "orderHint": 13
+  },
+  "ArrayTestType": {
+    "type": "object",
+    "properties": {
+      "arrayOfIntExample": {
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
+        "name": "arrayOfIntExample",
+        "displayName": "arrayOfIntExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "A property with an array of ints. JSON primitive is `array`, display type is \"Array of Int\".",
+        "uniqueItems": false,
+        "minItems": 1
+      },
+      "arrayOfUniqueIntExample": {
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
+        "name": "arrayOfUniqueIntExample",
+        "displayName": "arrayOfUniqueIntExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "A property with an array of ints in which items must be unique. JSON primitive is `array`, display type is \"Array of Int\"",
+        "uniqueItems": true,
+        "minItems": 1
+      },
+      "arrayOfTwonumbersExample": {
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
+        "name": "arrayOfTwonumbersExample",
+        "displayName": "arrayOfTwonumbersExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "arrayOfFloatExample": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "name": "arrayOfFloatExample",
+        "displayName": "arrayOfFloatExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "An array of float. JSON primitive is `array`, display type is \"Array of Float\"",
+        "uniqueItems": false,
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "arrayOfNumberNoDefaultsExample": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "name": "arrayOfNumberNoDefaultsExample",
+        "displayName": "arrayOfNumberNoDefaultsExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "An array of float. JSON primitive is `array`, display type is \"Array of `number`\""
+      },
+      "arrayOfStringExample": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "name": "arrayOfStringExample",
+        "displayName": "arrayOfStringExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "An array of strings. JSON primitive is `array`, display type is \"Array of String\"",
+        "uniqueItems": false
+      },
+      "arrayOfObjectType": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "name": "IntegerTestType",
+          "displayName": "IntegerTestType",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "description": "This is a type which contains test data for Integer properties.",
+          "orderHint": 0,
+          "additionalProperties": true,
+          "originalType": "IntegerTestType"
+        },
+        "name": "arrayOfObjectType",
+        "displayName": "arrayOfObjectType",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "An array of IntegerTestType. JSON primitive is `array`, display type is \"Array of IntegerTestType\"",
+        "uniqueItems": false
+      }
+    },
+    "name": "ArrayTestType",
+    "displayName": "ArrayTestType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "A type containing arrays of different kinds.",
+    "orderHint": 14,
+    "additionalProperties": true
+  },
+  "UnionLikeType": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "name": "name",
+        "displayName": "name",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      },
+      "kind": {
+        "type": "string",
+        "name": "kind",
+        "displayName": "kind",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      }
+    },
+    "name": "UnionLikeType",
+    "displayName": "UnionLikeType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "discriminator": "kind",
+    "orderHint": 15,
+    "additionalProperties": true
+  },
+  "UnionLikeSubType1": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "name": "name",
+        "displayName": "name",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      },
+      "kind": {
+        "type": "string",
+        "name": "kind",
+        "displayName": "kind",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      },
+      "foo": {
+        "type": "string",
+        "name": "foo",
+        "displayName": "foo",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      }
+    },
+    "name": "UnionLikeSubType1",
+    "displayName": "UnionLikeSubType1",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "discriminator": "kind",
+    "orderHint": 16,
+    "additionalProperties": true,
+    "originalType": "UnionLikeType",
+    "discriminatorValue": "subtype1"
+  },
+  "UnionLikeSubType2": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "name": "name",
+        "displayName": "name",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      },
+      "kind": {
+        "type": "string",
+        "name": "kind",
+        "displayName": "kind",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      },
+      "bar": {
+        "type": "string",
+        "name": "bar",
+        "displayName": "bar",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      }
+    },
+    "name": "UnionLikeSubType2",
+    "displayName": "UnionLikeSubType2",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "discriminator": "kind",
+    "orderHint": 17,
+    "additionalProperties": true,
+    "originalType": "UnionLikeType",
+    "discriminatorValue": "subtype2"
+  },
+  "ConstantLikeType": {
+    "type": "string",
+    "name": "ConstantLikeType",
+    "displayName": "ConstantLikeType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "render an enum with one value as a constant.",
+    "enum": [
+      "constantExampleValue"
+    ],
+    "orderHint": 18
+  },
+  "OptionalPropertyTestType": {
+    "type": "object",
+    "properties": {
+      "requiredTrueExample": {
+        "type": "string",
+        "name": "requiredTrueExample",
+        "displayName": "requiredTrueExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "this should be required."
+      },
+      "requiredNotSetExample": {
+        "type": "string",
+        "name": "requiredNotSetExample",
+        "displayName": "requiredNotSetExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "this should default to required = true."
+      },
+      "requiredFalseExample": {
+        "type": "string",
+        "name": "requiredFalseExample",
+        "displayName": "requiredFalseExample",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": false
+      }
+    },
+    "name": "OptionalPropertyTestType",
+    "displayName": "OptionalPropertyTestType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "Example of optional/non-optional properties.",
+    "orderHint": 19,
+    "additionalProperties": true
+  },
+  "CategoryReference": {
+    "type": "object",
+    "properties": {
+      "typeId": {
+        "type": "string",
+        "name": "typeId",
+        "displayName": "typeId",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "enum": [
+          "category"
+        ]
+      },
+      "id": {
+        "type": "string",
+        "name": "id",
+        "displayName": "id",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true
+      }
+    },
+    "name": "CategoryReference",
+    "displayName": "CategoryReference",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "TODO",
+    "orderHint": 20,
+    "additionalProperties": true
+  },
+  "AnnotationsTestType": {
+    "type": "object",
+    "properties": {
+      "testReferenceType": {
+        "type": "object",
+        "name": "testReferenceType",
+        "displayName": "testReferenceType",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "description": "Type Should be rendered as \"Reference to Category\" (with links to both the Reference in general and the Category)",
+        "orderHint": 20,
+        "additionalProperties": true,
+        "originalType": "CategoryReference",
+        "required": true
+      },
+      "arrayOfReferenceType": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "name": "CategoryReference",
+          "displayName": "CategoryReference",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "description": "TODO",
+          "orderHint": 20,
+          "additionalProperties": true,
+          "originalType": "CategoryReference"
+        },
+        "name": "arrayOfReferenceType",
+        "displayName": "arrayOfReferenceType",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "Type Should be rendered as \"Array of References to Category\" (with links to both the Reference in general and the Category)"
+      },
+      "isBetaType": {
+        "type": "string",
+        "annotations": {
+          "beta": {
+            "structuredValue": true,
+            "name": "beta"
+          }
+        },
+        "name": "isBetaType",
+        "displayName": "isBetaType",
+        "typePropertyKind": "TYPE_EXPRESSION",
+        "required": true,
+        "description": "Beta property. If the `isBeta` present, a \"beta\" flag should appear beside the type name."
+      }
+    },
+    "name": "AnnotationsTestType",
+    "displayName": "AnnotationsTestType",
+    "typePropertyKind": "TYPE_EXPRESSION",
+    "description": "Example for References and other anotations. Don't implement before the test data are final!!",
+    "orderHint": 21,
+    "additionalProperties": true
+  }
+}
