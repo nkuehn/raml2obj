@@ -397,11 +397,9 @@
         "required": true,
         "description": "An array of float. JSON primitive is `array`, display type is \"Array of Float\"",
         "uniqueItems": false,
+        "items": "number",
         "minItems": 1,
-        "maxItems": 1,
-        "items": {
-          "type": "number"
-        }
+        "maxItems": 1
       },
       "arrayOfNumberNoDefaultsExample": {
         "name": "arrayOfNumberNoDefaultsExample",
