@@ -196,6 +196,8 @@ function _sourceToRamlObj(source, options = {}) {
       return raml
         .loadApi(source, options.extensionsAndOverlays || [], {
           rejectOnErrors: !!options.validate,
+          httpResolver: options.httpResolver,
+          fsResolver: options.fsResolver,
         })
         .then(result => {
           if (result.RAMLVersion() === 'RAML08') {

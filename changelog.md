@@ -1,3 +1,9 @@
+6.4.0 - May 29, 2019
+- Array output format and orderHints in object output (via options flag)
+
+6.3.0 - May 29, 2019
+- Add support for RAML parser resolvers options
+
 6.2.0 - April 2, 2019
 - Updated dependencies
 
